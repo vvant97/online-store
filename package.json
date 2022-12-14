@@ -4,7 +4,7 @@
     "scripts": {
         "build-dev": "node_modules/.bin/webpack",
         "build-prod": "node_modules/.bin/webpack --node-env=production",
-        "format": "node_modules/.bin/prettier src/ --write",
+        "format": "node_modules/.bin/prettier ./ --write",
         "lint": "node_modules/.bin/eslint src/**/*.ts",
         "fix": "node_modules/.bin/eslint src/**/*.ts --fix",
         "server": "node_modules/.bin/webpack serve"
