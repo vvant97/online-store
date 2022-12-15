@@ -1,0 +1,173 @@
+.cart {
+  position: absolute;
+  top: 0;
+  right: -320px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100vh;
+  background: $color-bg;
+  visibility: hidden;
+  opacity: 0;
+  transition: $transition;
+
+  &.active {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+  }
+
+  &__amount-title {
+    font-size: 1.4rem;
+    line-height: 1;
+    color: $color-paragraph;
+  }
+
+  &__amount {
+    padding: 0 5px;
+    color: $color-font-primary;
+    background: $color-font-secondary;
+  }
+
+  &__close {
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__main {
+    flex: 1 0 auto;
+    padding: 10px 15px;
+    border-top: 1px solid $color-border;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    border-top: 1px solid $color-border;
+  }
+
+  &__total-title {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: $color-paragraph;
+  }
+
+  &__total {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-font-primary;
+  }
+
+  &__controls {
+    padding: 15px 15px;
+    border-top: 1px solid $color-border;
+  }
+
+  &__agreement-label {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__agreement {
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    border: 1px solid $color-border;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:checked:before {
+      content: "\f272";
+      font-family: 'bootstrap-icons';
+      font-size: 1rem;
+    }
+  }
+
+  &__agreement-text {
+    margin: 0;
+    font-size: 1.3rem;
+    color: $color-paragraph;
+  }
+
+  &__agreement-link {
+    text-decoration: underline;
+    color: rgba(111, 111, 111, 0.7);
+    transition: all 0.3s;
+
+    &:visited {
+      color: rgba(111, 111, 111, 0.7);
+    }
+
+    &:hover {
+      color: $color-paragraph;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 0 0;
+  }
+
+  &__button {
+    padding: 12px 35px;
+    border: 2px solid $color-font-primary;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    background: $color-font-primary;
+    color: $color-bg;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-font-secondary;
+      border: 2px solid $color-font-secondary;
+    }
+
+    &_disabled {
+      background: #ababab;
+      border: 2px solid #ababab;
+      cursor: default;
+
+      &:hover {
+        background: #ababab;
+        border: 2px solid #ababab;
+      }
+    }
+  }
+}

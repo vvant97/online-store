@@ -8,6 +8,10 @@ html {
   font-size: 10px;
 }
 
+body {
+  overflow: hidden;
+}
+
 .bg-overlay {
   position: fixed;
   top: 0;
