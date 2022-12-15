@@ -1,6 +1,6 @@
 import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
 
-export const showFilter = (): void => {
+export const showFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
   const filterButton = document.querySelector('.filter-open') as HTMLButtonElement;
 
@@ -11,7 +11,7 @@ export const showFilter = (): void => {
   });
 };
 
-export const hideFilter = (): void => {
+export const hideFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
 
   document.addEventListener('click', (event: Event) => {
