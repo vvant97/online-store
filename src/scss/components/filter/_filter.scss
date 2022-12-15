@@ -7,7 +7,7 @@
   height: 100vh;
   padding: 50px 15px 30px;
   overflow-y: scroll;
-  background: $color-bg;
+  background: $colorBg;
   visibility: hidden;
   opacity: 0;
   transition: $transition;
@@ -39,7 +39,7 @@
     flex-direction: column;
     margin: 30px 0 0;
     padding: 30px 0 0;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid $colorBorder;
 
     &:nth-of-type(1) {
       margin: 0;
@@ -54,7 +54,7 @@
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 1;
-    color: $color-font-primary;
+    color: $colorFontPrimary;
 
     &:before {
       content: "";
@@ -62,7 +62,7 @@
       left: 0;
       width: 2px;
       height: 100%;
-      background: $color-title-before;
+      background: $colorTitleBefore;
     }
   }
 }

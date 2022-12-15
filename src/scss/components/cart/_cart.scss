@@ -7,7 +7,7 @@
   flex-direction: column;
   width: 320px;
   height: 100vh;
-  background: $color-bg;
+  background: $colorBg;
   visibility: hidden;
   opacity: 0;
   transition: $transition;
@@ -28,13 +28,13 @@
   &__amount-title {
     font-size: 1.4rem;
     line-height: 1;
-    color: $color-paragraph;
+    color: $colorParagraph;
   }
 
   &__amount {
     padding: 0 5px;
-    color: $color-font-primary;
-    background: $color-font-secondary;
+    color: $colorFontPrimary;
+    background: $colorFontSecondary;
   }
 
   &__close {
@@ -45,7 +45,7 @@
   &__main {
     flex: 1 0 auto;
     padding: 10px 15px;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid $colorBorder;
   }
 
   &__list {
@@ -66,14 +66,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 15px;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid $colorBorder;
   }
 
   &__total-title {
     margin: 0;
     font-size: 1.4rem;
     line-height: 1;
-    color: $color-paragraph;
+    color: $colorParagraph;
   }
 
   &__total {
@@ -81,12 +81,12 @@
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
-    color: $color-font-primary;
+    color: $colorFontPrimary;
   }
 
   &__controls {
     padding: 15px 15px;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid $colorBorder;
   }
 
   &__agreement-label {
@@ -102,7 +102,7 @@
     width: 17px;
     height: 17px;
     margin: 0;
-    border: 1px solid $color-border;
+    border: 1px solid $colorBorder;
     border-radius: 3px;
     cursor: pointer;
 
@@ -116,7 +116,7 @@
   &__agreement-text {
     margin: 0;
     font-size: 1.3rem;
-    color: $color-paragraph;
+    color: $colorParagraph;
   }
 
   &__agreement-link {
@@ -129,7 +129,7 @@
     }
 
     &:hover {
-      color: $color-paragraph;
+      color: $colorParagraph;
     }
   }
 
@@ -142,21 +142,21 @@
 
   &__button {
     padding: 12px 35px;
-    border: 2px solid $color-font-primary;
+    border: 2px solid $colorFontPrimary;
     border-radius: 0;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     line-height: 1;
-    background: $color-font-primary;
-    color: $color-bg;
+    background: $colorFontPrimary;
+    color: $colorBg;
     transition: all 0.3s;
     cursor: pointer;
 
     &:hover {
-      background: $color-font-secondary;
-      border: 2px solid $color-font-secondary;
+      background: $colorFontSecondary;
+      border: 2px solid $colorFontSecondary;
     }
 
     &_disabled {

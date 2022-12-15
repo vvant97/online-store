@@ -54,13 +54,11 @@ const filterTestTemplate = `
 
 document.body.innerHTML = filterTestTemplate;
 
-// Filter
 import  { showFilter, hideFilter } from './ts/components/filter/filter';
 
 showFilter();
 hideFilter();
 
-// Cart
 import  { showCart, hideCart } from './ts/components/cart/cart';
 
 showCart();
