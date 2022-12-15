@@ -1,4 +1,6 @@
 import './scss/style.scss';
+import { changeSearchButton } from './ts/components/headerSearch/headerSearch';
+changeSearchButton();
 
 // Filter
 const filterTestTemplate = `
@@ -26,9 +28,9 @@ const filterTestTemplate = `
   </div>
 `;
 
-document.body.innerHTML = filterTestTemplate;
+// document.body.innerHTML = filterTestTemplate;
 
-import  { showFilter, hideFilter } from './ts/components/filter/filter';
+import { showFilter, hideFilter } from './ts/components/filter/filter';
 
 showFilter();
 hideFilter();
