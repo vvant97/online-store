@@ -33,7 +33,7 @@ module.exports = {
         use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/img/[contenthash][ext]',
