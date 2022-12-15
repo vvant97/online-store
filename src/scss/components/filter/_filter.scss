@@ -1,0 +1,68 @@
+.filter {
+  position: absolute;
+  top: 0;
+  left: -320px;
+  z-index: 2;
+  width: 320px;
+  height: 100vh;
+  padding: 50px 15px 30px;
+  overflow-y: scroll;
+  background: $color-bg;
+  visibility: hidden;
+  opacity: 0;
+  transition: $transition;
+
+  &.active {
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 0;
+    padding: 30px 0 0;
+    border-top: 1px solid $color-border;
+
+    &:nth-of-type(1) {
+      margin: 0;
+      padding: 0;
+      border-top: none;
+    }
+  }
+
+  &__title {
+    position: relative;
+    padding: 0 0 0 10px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    color: $color-font-title;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: $color-title-before;
+    }
+  }
+}
