@@ -13,33 +13,55 @@
 </head>
 
 <body>
-  
-  <header class="header">
-    <div class="header__big-container">
-      <div class="header__search search">
-        <div class="search-form">
-          <button type="button" class="search-form__icon"><i class="bi bi-search"></i></button>
-          <form action="#" class="search-form__item">
-            <button type="submit" class="search-form__btn"><i class="bi bi-search"></i></button>
-            <input autocomplete="off" type="text" name="form[]" placeholder="Search product here..."
-              class="search-form__input">
-          </form>
+
+  <div class="root">
+    <header class="header">
+      <div class="header__big-container">
+        <div class="header__search search">
+          <div class="search-form">
+            <button type="button" class="search-form__icon"><i class="bi bi-search"></i></button>
+            <form action="#" class="search-form__item">
+              <button type="submit" class="search-form__btn"><i class="bi bi-search"></i></button>
+              <input autocomplete="off" type="text" name="form[]" placeholder="Search product here..."
+                class="search-form__input">
+            </form>
+          </div>
+        </div>
+        <div class="header__logo">
+          <img class="header__logo-img" src="assets/svg/logo.svg" alt="logo">
+        </div>
+        <div class="header__cart">
+          <p class="header__cart-total">Total: <span class="header__total-amount">$1,500.00</span></p>
+          <button type="button" class="header__cart-icon">
+            <i class="cart-open bi bi-cart"></i>
+            <span class="header__cart-quantity">1</span>
+          </button>
         </div>
       </div>
-      <div class="header__logo">
-        <img class="header__logo-img" src="assets/svg/logo.svg" alt="logo">
-      </div>
-      <div class="header__cart">
-        <p class="header__cart-total">Total: <span class="header__total-amount">$1,500.00</span></p>
-        <button type="button" class="header__cart-icon">
-          <i class="cart-open bi bi-cart"></i>
-          <span class="header__cart-quantity">1</span>
-        </button>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="main">
+    <main class="main"></main>
+
+    <footer class="footer">
+      <div class="footer__big-container">
+        <div class="footer__authors">
+          <div class="footer__git-icon">
+            <img src="assets/svg/github.svg" alt="git logo">
+          </div>
+          <div class="footer__author-names">
+            <a href="https://github.com/vvant97" target="_blank" class="footer__author-name">Vladislav Antonov</a>
+            <a href="https://github.com/elian-cheng" target="_blank" class="footer__author-name">Olga Chernega</a>
+          </div>
+        </div>
+        <div class="footer__info">
+          <p class="footer__year">2022</p>
+          <a href="https://rs.school/js/" target="_blank" class="footer__rs-link">
+            <img src="assets/svg/rs-school.svg" alt="rs school logo">
+          </a>
+        </div>
+      </div>
+    </footer>
+
     <div class="bg-overlay"></div>
 
     <div class="filter">
@@ -88,7 +110,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
 </body>
 

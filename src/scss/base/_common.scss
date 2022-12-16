@@ -91,6 +91,14 @@ h6 {
   padding-right: 15px;
 }
 
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 .bg-overlay {
   position: fixed;
   top: 0;
@@ -110,7 +118,5 @@ h6 {
 }
 
 .main {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden;
+  flex: 1;
 }
