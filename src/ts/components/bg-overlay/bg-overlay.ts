@@ -2,12 +2,12 @@ export const showOverlay = () => {
   const overlay = document.querySelector('.bg-overlay') as HTMLDivElement;
 
   overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  (document.querySelector('.root') as HTMLDivElement).style.overflow = 'hidden';
 };
 
 export const hideOverlay = () => {
   const overlay = document.querySelector('.bg-overlay') as HTMLDivElement;
 
   overlay.classList.remove('active');
-  document.body.style.overflow = '';
+  (document.querySelector('.root') as HTMLDivElement).style.overflow = '';
 };
