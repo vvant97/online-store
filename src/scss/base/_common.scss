@@ -120,3 +120,8 @@ h6 {
 .main {
   flex: 1;
 }
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
