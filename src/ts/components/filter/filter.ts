@@ -2,7 +2,7 @@ import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
 
 export const showFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
-  const filterButton = document.querySelector('.filter-open') as HTMLButtonElement;
+  const filterButton = document.querySelector('.filter-button') as HTMLButtonElement;
 
   filterButton.addEventListener('click', () => {
     filter.classList.add('active');
