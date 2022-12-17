@@ -18,6 +18,8 @@ function init() {
   }
   if (document.body.classList.contains('product')) {
     createProductPage();
+    showCart();
+    hideCart();
   }
   changeSearchButton();
 }
