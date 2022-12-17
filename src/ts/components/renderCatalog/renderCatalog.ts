@@ -27,7 +27,7 @@ export function createProductGridCard(product: Pick<Product, 'id' | 'title' | 'p
           class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
       <div class="product__info catalog-grid__product-info">
         <p class="product__name catalog-grid__product-name">${product.title}</p>
-        <p class="product__price catalog-grid__product-price">${product.price}</p>
+        <p class="product__price catalog-grid__product-price">$${product.price}</p>
       </div>
     </div>
   </a>
