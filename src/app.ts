@@ -1,13 +1,19 @@
 import './scss/style.scss';
 import { changeSearchButton } from './ts/components/headerSearch/headerSearch';
-changeSearchButton();
 
 import { showFilter, hideFilter } from './ts/components/filter/filter';
 
-showFilter();
-hideFilter();
+import { showCart, hideCart } from './ts/components/cart/cart';
+import { productData } from './ts/components/productData';
+import { renderCatalog } from './ts/components/renderCatalog/renderCatalog';
 
-import  { showCart, hideCart } from './ts/components/cart/cart';
+async function init() {
+  renderCatalog(productData);
+  changeSearchButton();
+  showFilter();
+  hideFilter();
+  showCart();
+  hideCart();
+}
 
-showCart();
-hideCart();
+init();
