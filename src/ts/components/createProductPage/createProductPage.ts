@@ -26,9 +26,7 @@ function createProductTempCard(product: Pick<Product, 'id' | 'title' | 'price' |
 export function createProductPage() {
   const productContainter = document.querySelector('.product__body') as HTMLDivElement;
   const productId = +location.href.split('?')[1] || 0;
-  console.log(typeof productId);
   const productItem = productData.find((item) => item.id === productId);
-  console.log(productItem);
   if (productItem !== undefined) {
     const CardTemp = createProductTempCard(productItem);
     productContainter.append(CardTemp);
