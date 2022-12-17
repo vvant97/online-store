@@ -7,7 +7,7 @@ import { showCart, hideCart } from './ts/components/cart/cart';
 import { productData } from './ts/components/productData';
 import { renderCatalog } from './ts/components/renderCatalog/renderCatalog';
 
-async function init() {
+function init() {
   renderCatalog(productData);
   changeSearchButton();
   showFilter();
