@@ -149,12 +149,14 @@
   display: grid;
   column-gap: 20px;
   row-gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 250px));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 270px));
+  justify-content: center;
+  @media (max-width: $mobile) {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
   &__product {
     position: relative;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
     outline: none;
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -172,6 +174,11 @@
         }
       }
     }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
   }
 
   &__image {
@@ -271,8 +278,6 @@
   }
 
   &__product {
-    display: flex;
-    column-gap: 20px;
     padding: 1.2rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     border-radius: 0.5rem;
@@ -290,6 +295,14 @@
       &:not(:last-child) {
         margin-bottom: 15px;
       }
+    }
+  }
+
+  &__body {
+    display: flex;
+    column-gap: 20px;
+    @media (max-width: $mobile) {
+      flex-direction: column;
     }
   }
 
