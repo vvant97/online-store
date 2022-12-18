@@ -35,11 +35,11 @@ function createProductListCard(
           <img src="${product.images[0]}" alt="${product.title}">
         </div>
         <div class="product__info catalog-list__product-info">
-          <p class="product__name catalog-list__product-name">${product.title}</p>
-          <p class="product__price catalog-list__product-price">$${product.price}</p>
-          <p class="product__price catalog-list__product-description">${product.description}</p>
-          <button class="product__buy-button buy-button catalog-list__buy-button"><span
-              class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
+        <p class="product__name catalog-list__product-name">${product.title}</p>
+        <p class="product__price catalog-list__product-price">$${product.price}</p>
+        <button class="product__buy-button buy-button catalog-list__buy-button"><span
+            class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
+        <p class="product__price catalog-list__product-description">${product.description}</p>
         </div>
       </div>
     </a>
