@@ -266,7 +266,6 @@
   column-gap: 20px;
   row-gap: 20px;
   justify-content: flex-start;
-  align-items: center;
 
   @media (max-width: $mobile) {
     flex-direction: row;
@@ -308,10 +307,10 @@
 
   &__image {
     align-self: center;
-    min-width: 25%;
+    width: 25%;
+    height: 200px;
     img {
       max-width: 100%;
-      height: auto;
       object-fit: cover;
     }
   }
@@ -370,5 +369,6 @@
   &__product-description {
     font-size: 1.5rem;
     line-height: 1.8rem;
+    margin-bottom: 5px;
   }
 }
