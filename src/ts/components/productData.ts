@@ -1,6 +1,24 @@
 export const productData = [
   {
     id: 1,
+    title: 'Wireless mouse',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 549,
+    discountPercentage: 12.96,
+    rating: 4.69,
+    stock: 94,
+    brand: 'Mouse',
+    category: 'mouses',
+    thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+    images: [
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/1_22926035-6bb9-446c-b307-e41f66fb7c06.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/2_8e04415d-fcf4-4a84-9c42-786a27f08860.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/3_14c0490f-8312-410c-90cb-682923f1c3b9.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/4_798d3e36-2843-41f6-bb54-4c0b3e6f6995.jpg?v=1635741603',
+    ],
+  },
+  {
+    id: 1,
     title: 'iPhone 9',
     description: 'An apple mobile which is nothing like apple',
     price: 549,

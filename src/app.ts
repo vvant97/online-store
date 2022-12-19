@@ -7,6 +7,7 @@ import { showCart, hideCart } from './ts/components/cart/cart';
 import { productData } from './ts/components/productData';
 import { renderCatalog } from './ts/components/renderCatalog/renderCatalog';
 import { createProductPage } from './ts/components/createProductPage/createProductPage';
+import { createImageSlider } from './ts/components/product-card/image-slider';
 
 function init() {
   if (document.body.classList.contains('home')) {
@@ -17,9 +18,10 @@ function init() {
     hideCart();
   }
   if (document.body.classList.contains('product')) {
-    createProductPage();
+    // createProductPage();
     showCart();
     hideCart();
+    createImageSlider(1);
   }
   changeSearchButton();
 }

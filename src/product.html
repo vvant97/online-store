@@ -42,33 +42,40 @@
 
     <main class="main">
       <div class="main__container">
-        <div class="product__body"></div>
-
-        <div class="bg-overlay"></div>
-
-        <div class="cart">
-          <div class="cart__header">
-            <div class="cart__amount-title">There are <span class="cart__amount">0</span> products</div>
-            <i class="cart__close bi bi-x-lg"></i>
-          </div>
-          <div class="cart__main">
-            <ul class="cart__list"></ul>
-          </div>
-          <div class="cart__footer">
-            <div class="cart__total-container">
-              <p class="cart__total-title">Subtotal</p>
-              <p class="cart__total">$45.00</p>
+        <div class="product__body">
+          <div class="product-slider">
+            <div class="product-slider__list-wrapper">
+              <ul class="product-slider__list"></ul>
             </div>
-            <div class="cart__controls">
-              <label class="cart__agreement-label" for="cart__agreement">
-                <input class="cart__agreement" type="checkbox" id="cart__agreement">
-                <p class="cart__agreement-text">I have read and agree with the <br> <a href="#"
-                    class="cart__agreement-link">terms & condition.</a></p>
-              </label>
-              <div class="cart__buttons">
-                <button class="cart__button">View cart</button>
-                <button class="cart__button cart__button_disabled">Checkout</button>
-              </div>
+            <ul class="product-slider__gallery"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-overlay"></div>
+
+      <div class="cart">
+        <div class="cart__header">
+          <div class="cart__amount-title">There are <span class="cart__amount">0</span> products</div>
+          <i class="cart__close bi bi-x-lg"></i>
+        </div>
+        <div class="cart__main">
+          <ul class="cart__list"></ul>
+        </div>
+        <div class="cart__footer">
+          <div class="cart__total-container">
+            <p class="cart__total-title">Subtotal</p>
+            <p class="cart__total">$45.00</p>
+          </div>
+          <div class="cart__controls">
+            <label class="cart__agreement-label" for="cart__agreement">
+              <input class="cart__agreement" type="checkbox" id="cart__agreement">
+              <p class="cart__agreement-text">I have read and agree with the <br> <a href="#"
+                  class="cart__agreement-link">terms & condition.</a></p>
+            </label>
+            <div class="cart__buttons">
+              <button class="cart__button">View cart</button>
+              <button class="cart__button cart__button_disabled">Checkout</button>
             </div>
           </div>
         </div>
