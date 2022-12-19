@@ -22,6 +22,11 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
 
 export const createRating = (id: number) => {
   const productRating = productData[id - 1].rating;
+
+  if (productRating < 0 || productRating > 5) {
+    throw new Error('Incorrect rating');
+  }
+
   const rating = document.createElement('div');
   const container = document.createElement('div');
   const fullRating = Math.floor(productRating);
@@ -32,7 +37,11 @@ export const createRating = (id: number) => {
     container.append(...createRatingStars({ amount: fullRating, type: 'star-fill' }));
   }
   if (halfRating) {
-    container.append(...createRatingStars({ amount: 1, type: 'star-half' }));
+    if (halfRating >= 0.5) {
+      container.append(...createRatingStars({ amount: 1, type: 'star-half' }));
+    } else {
+      container.append(...createRatingStars({ amount: 1, type: 'star' }));
+    }
   }
   if (emptyRating) {
     container.append(...createRatingStars({ amount: emptyRating, type: 'star' }));
