@@ -1,6 +1,7 @@
 import { productData } from '../productData';
 import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
+import { createProductQuantity } from '../product-quantity/product-quantity';
 
 const setProductTitle = (id: number) => {
   const title = document.querySelector('.product-info__title') as HTMLHeadingElement;
@@ -56,8 +57,10 @@ const setProductBrand = (id: number) => {
 export const createProductCard = () => {
   const productId = +location.href.slice(-1);
   const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
+  const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 
   productInfoContainer.prepend(createRating(productId));
+  productQuantity.append(createProductQuantity());
   createImageSlider(productId);
   setProductTitle(productId);
   setProductPrice(productId);

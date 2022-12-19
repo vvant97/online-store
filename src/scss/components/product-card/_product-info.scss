@@ -91,6 +91,23 @@
     display: flex;
     gap: 30px;
     margin: 30px 0 0;
+
+    @media screen and (max-width: $mobileSmall) {
+      flex-direction: column;
+    }
+  }
+
+  &__quantity-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0 0;
+  }
+
+  &__quantity-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $colorFontPrimary;
   }
 
   &__cart-button,
