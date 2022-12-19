@@ -38,7 +38,7 @@ export const createProductQuantity = () => {
   controls.append(plus, minus);
   container.append(input, controls);
 
-  container.addEventListener('click', handleQuantityEvents);
+  controls.addEventListener('click', handleQuantityEvents);
 
   return container;
 };
