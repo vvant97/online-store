@@ -11,10 +11,14 @@
 @import './components/catalog/catalog';
 @import './components/rating/rating';
 @import './components/product-card/image-slider';
+@import './components/product-card/product-info';
 
 // Layout
 @import './layout/header';
 @import './layout/footer';
+
+// Pages
+@import './pages/product';
 
 // Vendors
 @import './vendors/bootstrap-icons';

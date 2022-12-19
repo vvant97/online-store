@@ -1,3 +1,5 @@
+import { productData } from "../productData";
+
 type Star = 'star' | 'star-fill' | 'star-half';
 
 interface StarInfo {
@@ -18,7 +20,8 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
   return stars;
 };
 
-export const createRating = (productRating: number) => {
+export const createRating = (id: number) => {
+  const productRating = productData[id - 1].rating;
   const rating = document.createElement('div');
   const container = document.createElement('div');
   const fullRating = Math.floor(productRating);

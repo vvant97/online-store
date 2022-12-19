@@ -6,8 +6,8 @@ import { showFilter, hideFilter } from './ts/components/filter/filter';
 import { showCart, hideCart } from './ts/components/cart/cart';
 import { productData } from './ts/components/productData';
 import { renderCatalog } from './ts/components/renderCatalog/renderCatalog';
-import { createProductPage } from './ts/components/createProductPage/createProductPage';
-import { createImageSlider } from './ts/components/product-card/image-slider';
+// import { createProductPage } from './ts/components/createProductPage/createProductPage';
+import { createProductCard } from './ts/components/product-card/product-card';
 
 function init() {
   if (document.body.classList.contains('home')) {
@@ -21,7 +21,7 @@ function init() {
     // createProductPage();
     showCart();
     hideCart();
-    createImageSlider(1);
+    createProductCard(1);
   }
   changeSearchButton();
 }
