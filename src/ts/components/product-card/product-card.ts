@@ -16,8 +16,8 @@ const setProductPrice = (id: number) => {
   const discountContainer = document.querySelector('.product-info__discount') as HTMLSpanElement;
 
   if (discount) {
-    
     const newPrice = price - (price * (discount / 100));
+    
     actualPriceContainer.textContent = `$${newPrice.toFixed(2)}`;
     oldPriceContainer.textContent = `$${price.toFixed(2)}`;
     discountContainer.textContent = `-${discount}%`;
@@ -53,13 +53,14 @@ const setProductBrand = (id: number) => {
   brand.textContent = productData[id - 1].brand;
 };
 
-export const createProductCard = (id: number) => {
+export const createProductCard = () => {
+  const productId = +location.href.slice(-1);
   const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
 
-  createImageSlider(id);
-  productInfoContainer.prepend(createRating(id));
-  setProductTitle(id);
-  setProductPrice(id);
-  setProductAvailability(id);
-  setProductBrand(id);
+  productInfoContainer.prepend(createRating(productId));
+  createImageSlider(productId);
+  setProductTitle(productId);
+  setProductPrice(productId);
+  setProductAvailability(productId);
+  setProductBrand(productId);
 };
