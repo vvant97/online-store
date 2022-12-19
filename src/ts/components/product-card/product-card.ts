@@ -1,11 +1,11 @@
 import { productData } from '../productData';
 import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
-import { createProductQuantity } from '../product-quantity/product-quantity';
+import { createProductQuantity, disableProductButtons } from '../product-quantity/product-quantity';
 
 const setProductTitle = (id: number) => {
   const title = document.querySelector('.product-info__title') as HTMLHeadingElement;
-  
+
   title.textContent = productData[id - 1].title;
 };
 
@@ -17,8 +17,8 @@ const setProductPrice = (id: number) => {
   const discountContainer = document.querySelector('.product-info__discount') as HTMLSpanElement;
 
   if (discount) {
-    const newPrice = price - (price * (discount / 100));
-    
+    const newPrice = price - price * (discount / 100);
+
     actualPriceContainer.textContent = `$${newPrice.toFixed(2)}`;
     oldPriceContainer.textContent = `$${price.toFixed(2)}`;
     discountContainer.textContent = `-${discount}%`;
@@ -43,6 +43,7 @@ const setProductAvailability = (id: number) => {
   } else {
     status.dataset.availability = 'out-of-stock';
     statusTitle.textContent = 'Out of stock';
+    disableProductButtons();
   }
 
   quantity.textContent = `(${availability})`;

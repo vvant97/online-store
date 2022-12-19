@@ -1,3 +1,12 @@
+import { productData } from '../productData';
+
+const isAvailableProduct = (): boolean => {
+  const productId = +location.href.slice(-1) - 1;
+  const isAvailable = productData[productId].stock !== 0;
+
+  return isAvailable;
+};
+
 const handleQuantityEvents = (event: Event) => {
   const target = (<HTMLElement>event.target).closest('.product-quantity__control') as HTMLElement;
   const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
@@ -21,12 +30,13 @@ export const createProductQuantity = () => {
   const minus = document.createElement('div');
   const plusIcon = document.createElement('i');
   const minusIcon = document.createElement('i');
+  const isAvailable = isAvailableProduct();
 
   container.className = 'product-quantity';
   input.className = 'product-quantity__input';
   input.type = 'number';
-  input.value = '1';
   input.min = '1';
+  input.value = '1';
   controls.className = 'product-quantity__controls';
   plus.className = 'product-quantity__plus product-quantity__control';
   minus.className = 'product-quantity__minus product-quantity__control';
@@ -38,7 +48,19 @@ export const createProductQuantity = () => {
   controls.append(plus, minus);
   container.append(input, controls);
 
-  controls.addEventListener('click', handleQuantityEvents);
+  if (!isAvailable) {
+    input.disabled = true;
+    input.min = '0';
+    input.value = '0';
+  } else {
+    controls.addEventListener('click', handleQuantityEvents);
+  }
 
   return container;
+};
+
+export const disableProductButtons = () => {
+  const buttons = document.querySelector('.product-info__buttons-wrapper') as HTMLDivElement;
+
+  buttons.remove();
 };
