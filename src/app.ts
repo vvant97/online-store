@@ -10,12 +10,13 @@ import { renderCatalog } from './ts/components/renderCatalog/renderCatalog';
 import { createProductCard } from './ts/components/product-card/product-card';
 
 function init() {
+  showCart();
+  hideCart();
+  changeSearchButton();
   if (document.body.classList.contains('home')) {
     renderCatalog(productData);
     showFilter();
     hideFilter();
-    showCart();
-    hideCart();
   }
   if (document.body.classList.contains('product')) {
     // createProductPage();
@@ -23,7 +24,6 @@ function init() {
     hideCart();
     createProductCard(1);
   }
-  changeSearchButton();
 }
 
 init();
