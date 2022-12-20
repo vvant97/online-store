@@ -1,24 +1,16 @@
 .rating {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex($ai: center, $g: 10px);
 
   &__average {
-    font-size: 1.4rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #6f6f6f;
+    @include font($fsz: 1.4rem, $fw: 300, $lh: 1.5, $c: $colorParagraph);
   }
 
   &__container {
-    display: flex;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
+    @include flex($g: 5px);
+    @include size;
   }
 
   &__star {
-    font-size: 1.4rem;
-    color: #fe9704;
+    @include font($fsz: 1.4rem, $c: $colorRating);
   }
 }

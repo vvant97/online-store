@@ -1,33 +1,54 @@
+@mixin flex($fd: row, $jc: flex-start, $ai: stretch, $g: 0) {
+  display: flex;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $g;
+}
+
+@mixin font($fsz: 1rem, $fw: 500, $lh: 1, $c: $colorFontPrimary) {
+  font-size: $fsz;
+  font-weight: $fw;
+  line-height: $lh;
+  color: $c;
+}
+
+@mixin size($w: auto, $h: auto, $m: 0, $p: 0) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+
 @mixin button {
-  padding: 12px 35px;
+  @include size($p: 12px 35px);
+  @include font($fsz: 1.6rem);
+
   border: 2px solid $colorFontPrimary;
   border-radius: 0;
-  font-size: 16px;
-  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  line-height: 1;
   background: $colorFontPrimary;
   color: $colorBg;
-  transition: all 0.3s;
+  transition: $transition;
   cursor: pointer;
 
   &:hover {
     border: 2px solid $colorFontSecondary;
     background: $colorFontSecondary;
-    color: #000000;
+    color: $colorFontPrimary;
   }
 
   &_disabled {
-    border: 2px solid #ababab;
-    background: #ababab;
-    color: #ffffff;
+    border: 2px solid $colorBorderThird;
+    background: $colorBorderThird;
+    color: $colorFontLight;
     cursor: default;
 
     &:hover {
-      border: 2px solid #ababab;
-      background: #ababab;
-      color: #ffffff;
+      border: 2px solid $colorBorderThird;
+      background: $colorBorderThird;
+      color: $colorFontLight;
     }
   }
 
@@ -39,7 +60,7 @@
     &:hover {
       border: 2px solid $colorFontPrimary;
       background: $colorFontPrimary;
-      color: #ffffff;
+      color: $colorFontLight;
     }
   }
 }

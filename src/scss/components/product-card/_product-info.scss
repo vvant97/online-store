@@ -2,95 +2,75 @@
   flex: 1;
 
   &__title {
-    margin: 30px 0 0;
-    font-size: 3rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 3rem);
+    @include size($m: 30px 0 0);
   }
 
   &__price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 30px 0 0;
+    @include flex($ai: center, $g: 10px);
+    @include size($m: 30px 0 0);
   }
 
   &__actual-price {
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.8rem);
   }
 
   &__old-price-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    @include flex($ai: center, $g: 5px);
   }
 
   &__old-price {
-    font-size: 1.8rem;
-    font-weight: 500;
+    @include font($fsz: 1.8rem, $c: $colorParagraph);
+
     text-decoration: line-through;
-    color: #6f6f6f;
   }
 
   &__discount {
-    padding: 5px 10px;
-    font-size: 1.4rem;
-    background: #333333;
-    color: #ffffff;
+    @include font($fsz: 1.4rem, $c: $colorFontLight);
+    @include size($p: 5px 10px);
+
+    background: $colorFontPrimary;
   }
 
   &__availability-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 30px 0 0;
+    @include flex($ai: center, $g: 15px);
+    @include size($m: 30px 0 0);
   }
 
   &__availability-title {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
   }
 
   &__availability {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 14px;
-    font-weight: 500;
+    @include flex($ai: center, $g: 5px);
+    @include font($fsz: 1.4rem);
 
-    &[data-availability="in-stock"] {
+    &[data-availability='in-stock'] {
       color: #198754;
     }
 
-    &[data-availability="out-of-stock"] {
+    &[data-availability='out-of-stock'] {
       color: #871919;
     }
   }
 
   &__availability-icon {
-    font-size: 1.6rem;
+    @include font($fsz: 1.6rem, $c: #198754);
   }
 
   &__brand-title {
-    margin: 30px 0 0;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
+    @include size($m: 30px 0 0);
   }
 
   &__brand {
-    margin: 0 0 0 10px;
-    font-size: 1.4rem;
-    font-weight: 300;
+    @include font($fsz: 1.4rem, $fw: 300);
+    @include size($m: 0 0 0 10px);
   }
 
   &__buttons-wrapper {
-    display: flex;
-    gap: 30px;
-    margin: 30px 0 0;
+    @include flex($g: 30px);
+    @include size($m: 30px 0 0);
 
     @media screen and (max-width: $mobileSmall) {
       flex-direction: column;
@@ -98,69 +78,52 @@
   }
 
   &__quantity-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 30px 0 0;
+    @include flex($ai: center, $g: 15px);
+    @include size($m: 30px 0 0);
   }
 
   &__quantity-title {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
   }
 
   &__cart-button,
   &__buy-button {
     @include button;
+    @include size($p: 15px 35px);
 
     min-width: 200px;
-    padding: 15px 35px;
   }
 
   &__id-title {
-    margin: 30px 0 0;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
+    @include size($m: 30px 0 0);
   }
 
   &__id {
-    margin: 0 0 0 10px;
-    font-size: 1.4rem;
-    font-weight: 300;
+    @include font($fsz: 1.4rem, $fw: 300);
+    @include size($m: 0 0 0 10px);
   }
 
   &__category-title {
-    margin: 30px 0 0;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
+    @include size($m: 30px 0 0);
   }
 
   &__category {
-    margin: 0 0 0 10px;
-    font-size: 1.4rem;
-    font-weight: 300;
+    @include font($fsz: 1.4rem, $fw: 300);
+    @include size($m: 0 0 0 10px);
   }
 
   &__description-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 30px 0 0;
+    @include flex($fd: column, $g: 15px);
+    @include size($m: 30px 0 0);
   }
 
   &__description-title {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: $colorFontPrimary;
+    @include font($fsz: 1.6rem);
   }
 
   &__description {
-    font-size: 1.4rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #6f6f6f;
+    @include font($fsz: 1.4rem, $fw: 300, $lh: 1.5, $c: $colorParagraph);
   }
 }
