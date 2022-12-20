@@ -151,7 +151,7 @@ const handleSliderControlsEvents = () => {
 };
 
 export const createImageSlider = (id: number) => {
-  if (!productData[id]) {
+  if (!productData[id - 1]) {
     throw new Error('There is no data!');
   }
 
