@@ -1,20 +1,19 @@
 import { productData } from '../productData';
+import { showOverlay } from '../bg-overlay/bg-overlay';
 
 type Image = 'list' | 'gallery';
 
 const getImageItems = (id: number, type: Image) => {
   const imagesArray = productData[id - 1].images;
-  const alt = productData[id - 1].title;
 
   const imageElements: HTMLLIElement[] = imagesArray.map((source, index) => {
     const item = document.createElement('li');
-    const img = document.createElement('img');
 
     item.className = `product-slider__${type}-item`;
-    img.className = `product-slider__${type}-image`;
-    img.src = source;
-    img.alt = alt;
-    item.append(img);
+    item.style.backgroundImage = `url("${source}")`;
+    item.style.backgroundRepeat = 'no-repeat';
+    item.style.backgroundSize = '100%';
+    item.style.backgroundPosition = '50%';
 
     if (type === 'gallery') {
       item.dataset.itemId = index.toString();
@@ -28,6 +27,66 @@ const getImageItems = (id: number, type: Image) => {
   });
 
   return imageElements.slice(0, 4);
+};
+
+const openFullImage = () => {
+  const openButton = document.querySelector('.product-slider__full-image') as HTMLDivElement;
+
+  openButton.addEventListener('click', () => {
+    const activeItem = document.querySelector('.product-slider__gallery-item.active') as HTMLLIElement;
+    const url = activeItem.style.backgroundImage.slice(5, -2);
+    const image = document.createElement('img');
+    
+    image.src = url;
+    image.className = 'product-full-image';
+
+    showOverlay();
+
+    const overlay = document.querySelector('.bg-overlay') as HTMLDivElement;
+
+    overlay.classList.add('image');
+    overlay.append(image);
+  });
+};
+
+const removeFullImage = () => {
+  const overlay = document.querySelector('.bg-overlay') as HTMLDivElement;
+
+  overlay.addEventListener('click', (event: Event) => {
+    if (event.target === event.currentTarget) {
+      const children = Array.from((<HTMLDivElement>event.currentTarget).children);
+
+      children.forEach((child) => {
+        if (child.className === 'product-full-image') {
+          child.remove();
+        }
+      });
+    }
+  });
+};
+
+const resizeCurrentImage = () => {
+  const slider = document.querySelector('.product-slider__list-wrapper') as HTMLDialogElement;
+
+  slider.addEventListener('mousemove', (event: Event) => {
+    const target = <HTMLLIElement>event.target;
+    const percentX = target.clientWidth / 100;
+    const percentY = target.clientHeight / 100;
+    const coordX = (<MouseEvent>event).offsetX / percentX;
+    const coordY = (<MouseEvent>event).offsetY / percentY;
+
+    target.style.backgroundSize = '200%';
+    target.style.backgroundPosition = `${coordX}% ${coordY}%`;
+  });
+
+  slider.addEventListener('mouseout', () => {
+    const sliderItems = Array.from(document.querySelectorAll('.product-slider__list-item')) as HTMLLIElement[];
+
+    sliderItems.forEach((item) => {
+      item.style.backgroundSize = '100%';
+      item.style.backgroundPosition = '50%';
+    });
+  });
 };
 
 const handleSliderMovement = () => {
@@ -104,4 +163,7 @@ export const createImageSlider = (id: number) => {
 
   handleSliderMovement();
   handleSliderControlsEvents();
+  resizeCurrentImage();
+  openFullImage();
+  removeFullImage();
 };
