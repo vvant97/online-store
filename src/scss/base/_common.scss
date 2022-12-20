@@ -131,3 +131,13 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+.product-error-title {
+  @include font($fsz: 1.6rem);
+}
+
+.product-error-id {
+  padding: 0 5px;
+  color: $colorFontPrimary;
+  background: $colorFontSecondary;
+}

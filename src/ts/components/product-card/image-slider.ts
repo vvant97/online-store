@@ -151,10 +151,6 @@ const handleSliderControlsEvents = () => {
 };
 
 export const createImageSlider = (id: number) => {
-  if (!productData[id - 1]) {
-    throw new Error('There is no data!');
-  }
-
   const slider = document.querySelector('.product-slider__list') as HTMLUListElement;
   const gallery = document.querySelector('.product-slider__gallery') as HTMLUListElement;
 

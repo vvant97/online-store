@@ -78,17 +78,30 @@ const setProductBrand = (id: number) => {
 
 export const createProductCard = () => {
   const productId = +location.href.split('?')[1];
-  const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
-  const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 
-  productInfoContainer.prepend(createRating(productId));
-  productQuantity.append(createProductQuantity());
-  createImageSlider(productId);
-  setProductTitle(productId);
-  setProductPrice(productId);
-  setProductAvailability(productId);
-  setProductBrand(productId);
-  setProductId(productId);
-  setProductCategory(productId);
-  setProductDescription(productId);
+  if (!productData[productId - 1]) {
+    const productBody = document.querySelector('.product__body') as HTMLDivElement;
+    
+    productBody.innerHTML = `
+      <h2 class="product-error-title">
+        There is no product with
+        <span class="product-error-id">${productId}</span>
+        id.
+      </h2>
+    `;
+  } else {
+    const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
+    const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
+  
+    productInfoContainer.prepend(createRating(productId));
+    productQuantity.append(createProductQuantity());
+    createImageSlider(productId);
+    setProductTitle(productId);
+    setProductPrice(productId);
+    setProductAvailability(productId);
+    setProductBrand(productId);
+    setProductId(productId);
+    setProductCategory(productId);
+    setProductDescription(productId);
+  }
 };
