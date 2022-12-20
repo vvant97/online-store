@@ -8,7 +8,7 @@ export const productData = [
     rating: 4.69,
     stock: 94,
     brand: 'Mouse',
-    category: 'mouses',
+    category: 'Mouses',
     thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
     images: [
       '//cdn.shopify.com/s/files/1/0604/5021/0008/products/1_22926035-6bb9-446c-b307-e41f66fb7c06.jpg?v=1635741603',

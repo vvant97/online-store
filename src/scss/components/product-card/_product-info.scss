@@ -117,4 +117,50 @@
     min-width: 200px;
     padding: 15px 35px;
   }
+
+  &__id-title {
+    margin: 30px 0 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $colorFontPrimary;
+  }
+
+  &__id {
+    margin: 0 0 0 10px;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  &__category-title {
+    margin: 30px 0 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $colorFontPrimary;
+  }
+
+  &__category {
+    margin: 0 0 0 10px;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  &__description-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0 0;
+  }
+
+  &__description-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $colorFontPrimary;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #6f6f6f;
+  }
 }

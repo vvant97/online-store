@@ -3,6 +3,27 @@ import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
 import { createProductQuantity, disableProductButtons } from '../product-quantity/product-quantity';
 
+const setProductId = (id: number) => {
+  const idContainer = document.querySelector('.product-info__id') as HTMLSpanElement;
+  const productId = productData[id - 1].id;
+
+  idContainer.textContent = productId.toString();
+};
+
+const setProductCategory = (id: number) => {
+  const categoryContainer = document.querySelector('.product-info__category') as HTMLSpanElement;
+  const productCategory = productData[id - 1].category;
+
+  categoryContainer.textContent = productCategory;
+};
+
+const setProductDescription = (id: number) => {
+  const descriptionContainer = document.querySelector('.product-info__description') as HTMLParagraphElement;
+  const description = productData[id - 1].description;
+
+  descriptionContainer.textContent = description;
+};
+
 const setProductTitle = (id: number) => {
   const title = document.querySelector('.product-info__title') as HTMLHeadingElement;
 
@@ -67,4 +88,7 @@ export const createProductCard = () => {
   setProductPrice(productId);
   setProductAvailability(productId);
   setProductBrand(productId);
+  setProductId(productId);
+  setProductCategory(productId);
+  setProductDescription(productId);
 };
