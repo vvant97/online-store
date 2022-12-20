@@ -77,7 +77,7 @@ const setProductBrand = (id: number) => {
 };
 
 export const createProductCard = () => {
-  const productId = +location.href.slice(-1);
+  const productId = +location.href.split('?')[1];
   const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
   const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 

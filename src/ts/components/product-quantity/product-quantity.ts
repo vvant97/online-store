@@ -1,7 +1,7 @@
 import { productData } from '../productData';
 
 const isAvailableProduct = (): boolean => {
-  const productId = +location.href.slice(-1) - 1;
+  const productId = +location.href.split('?')[1] - 1;
   const isAvailable = productData[productId].stock !== 0;
 
   return isAvailable;
