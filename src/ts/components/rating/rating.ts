@@ -29,6 +29,7 @@ export const createRating = (id: number) => {
 
   const rating = document.createElement('div');
   const container = document.createElement('div');
+  const average = document.createElement('span');
   const fullRating = Math.floor(productRating);
   const halfRating = productRating - fullRating;
   const emptyRating = Math.floor(5 - productRating);
@@ -47,9 +48,11 @@ export const createRating = (id: number) => {
     container.append(...createRatingStars({ amount: emptyRating, type: 'star' }));
   }
 
+  average.className = 'rating__average';
+  average.textContent = `(${productRating})`;
   rating.className = 'rating';
   container.className = 'rating__container';
-  rating.append(container);
+  rating.append(container, average);
 
   return rating;
 };

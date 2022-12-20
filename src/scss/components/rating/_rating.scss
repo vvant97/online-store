@@ -1,10 +1,24 @@
-.rating__container {
+.rating {
   display: flex;
-  gap: 5px;
-  padding: 0;
-}
+  align-items: center;
+  gap: 10px;
 
-.rating__star {
-  font-size: 1.4rem;
-  color: #fe9704;
+  &__average {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #6f6f6f;
+  }
+
+  &__container {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__star {
+    font-size: 1.4rem;
+    color: #fe9704;
+  }
 }
