@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { NetlifyPlugin } = require('netlify-webpack-plugin');
+const EslintPlugin = require('eslint-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -10,9 +12,13 @@ module.exports = {
   mode,
   devtool: devMode ? 'inline-source-map' : undefined,
   devServer: {
-    static: './dist',
+    historyApiFallback: {
+      rewrites: [{ from: /./, to: '/index.html' }],
+    },
     port: 8000,
-    watchFiles: ['./src/*'],
+    // hot: false,
+    // static: './dist',
+    // watchFiles: ['./src/*'],
     open: true,
     hot: true,
   },
@@ -67,12 +73,18 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
-    new HtmlWebpackPlugin({
-      template: './src/product.html',
-      filename: 'product.html',
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
+    }),
+    new EslintPlugin({ extensions: 'ts' }),
+    new NetlifyPlugin({
+      redirects: [
+        {
+          from: '/*',
+          to: '/index.html',
+          status: 200,
+        },
+      ],
     }),
   ],
   optimization: {

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta http-equiv="refresh" content="0; URL=/404.html" /> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap">
@@ -27,9 +28,9 @@
             </form>
           </div>
         </div>
-        <div class="header__logo">
+        <a href="/" class="header__logo">
           <img class="header__logo-img" src="assets/svg/logo.svg" alt="logo">
-        </div>
+        </a>
         <div class="header__cart">
           <p class="header__cart-total">Total: <span class="header__total-amount">$1,500.00</span></p>
           <button type="button" class="header__cart-icon">
@@ -42,66 +43,9 @@
 
     <main class="main">
       <div class="main__container">
-        <section class="main__products products">
-          <h2 class="products__title visually-hidden">Catalog</h2>
-
-          <div class="products__top">
-            <div class="products__filter">
-              <button class="filter__button filter-button" type="button">
-                <i class="bi bi-funnel"></i>
-                <span class="filter__button-text">Filter</span>
-              </button>
-            </div>
-
-            <div class="products__view">
-              <button type="button" class="products__view-mode grid-view view-mode-active" data-grid-view="3"><i
-                  class="bi bi-grid-3x3-gap"></i></button>
-              <button type="button" class="products__view-mode list-view" data-grid-view="1"><i
-                  class="bi bi-list-ul"></i></button>
-            </div>
-
-            <div class="products__sort">
-              <p class="products__found found-products">Found:<span class="found-products__count">5</span></p>
-              <label class="products__sort-label" for="SortBy">Sort by:</label>
-              <select class="products__sort-select" name="sortby" id="SortBy">
-                <option selected value="manual">Featured</option>
-                <option value="best-selling">Best Selling</option>
-                <option value="title-ascending">Alphabetically, A-Z</option>
-                <option value="title-descending">Alphabetically, Z-A</option>
-                <option value="price-ascending">Price, low to high</option>
-                <option value="price-descending">Price, high to low</option>
-                <option value="created-descending">Date, new to old</option>
-                <option value="created-ascending">Date, old to new</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="products__body"></div>
-
-        </section>
+        <div class="main__app" id="app"></div>
 
         <div class="bg-overlay"></div>
-
-        <div class="filter">
-          <i class="filter__close bi bi-x-lg"></i>
-          <ul class="filter__list">
-            <li class="filter__item">
-              <div class="filter__title">Filter</div>
-            </li>
-            <li class="filter__item">
-              <div class="filter__title">Availability</div>
-            </li>
-            <li class="filter__item">
-              <div class="filter__title">Brand</div>
-            </li>
-            <li class="filter__item">
-              <div class="filter__title">Category</div>
-            </li>
-            <li class="filter__item">
-              <div class="filter__title">Price</div>
-            </li>
-          </ul>
-        </div>
 
         <div class="cart">
           <div class="cart__header">
@@ -123,8 +67,8 @@
                     class="cart__agreement-link">terms & condition.</a></p>
               </label>
               <div class="cart__buttons">
-                <button class="cart__button">View cart</button>
-                <button class="cart__button cart__button_disabled">Checkout</button>
+                <a href="/cart" class="cart__button">View cart</a>
+                <a href="/cart" class="cart__button cart__button_disabled">Checkout</a>
               </div>
             </div>
           </div>
@@ -140,13 +84,13 @@
             <img src="assets/svg/github.svg" alt="git logo">
           </div>
           <div class="footer__author-names">
-            <a href="https://github.com/vvant97" target="_blank" class="footer__author-name">Vladyslav Tyshchenko</a>
-            <a href="https://github.com/elian-cheng" target="_blank" class="footer__author-name">Olga Chernega</a>
+            <a href="/vvant" class="footer__author-name">Vladyslav Tyshchenko</a>
+            <a href="/elian" class="footer__author-name">Olga Chernega</a>
           </div>
         </div>
         <div class="footer__info">
           <p class="footer__year">2022</p>
-          <a href="https://rs.school/js/" target="_blank" class="footer__rs-link">
+          <a href="/rs" class="footer__rs-link">
             <img src="assets/svg/rs-school.svg" alt="rs school logo">
           </a>
         </div>
