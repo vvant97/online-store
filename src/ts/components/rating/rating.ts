@@ -22,8 +22,9 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
 
 export const createRating = (id: number) => {
   const productRating = productData[id - 1].rating;
+  const maxRating = 5;
 
-  if (productRating < 0 || productRating > 5) {
+  if (productRating < 0 || productRating > maxRating) {
     throw new Error('Incorrect rating');
   }
 

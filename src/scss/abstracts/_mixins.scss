@@ -1,28 +1,28 @@
-@mixin flex($fd: row, $jc: flex-start, $ai: stretch, $g: 0) {
+@mixin flex($flexDirection: row, $justifyContent: flex-start, $alignItems: stretch, $gap: 0) {
   display: flex;
-  flex-direction: $fd;
-  justify-content: $jc;
-  align-items: $ai;
-  gap: $g;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  gap: $gap;
 }
 
-@mixin font($fsz: 1rem, $fw: 500, $lh: 1, $c: $colorFontPrimary) {
-  font-size: $fsz;
-  font-weight: $fw;
-  line-height: $lh;
-  color: $c;
+@mixin font($fontSize: 1rem, $fontWeight: 500, $lineHeight: 1, $color: $colorFontPrimary) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: $color;
 }
 
-@mixin size($w: auto, $h: auto, $m: 0, $p: 0) {
-  width: $w;
-  height: $h;
-  margin: $m;
-  padding: $p;
+@mixin size($width: auto, $height: auto, $margin: 0, $padding: 0) {
+  width: $width;
+  height: $height;
+  margin: $margin;
+  padding: $padding;
 }
 
 @mixin button {
-  @include size($p: 12px 35px);
-  @include font($fsz: 1.6rem);
+  @include size($padding: 12px 35px);
+  @include font($fontSize: 1.6rem);
 
   border: 2px solid $colorFontPrimary;
   border-radius: 0;
