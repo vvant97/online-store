@@ -66,7 +66,7 @@ export function createProductGridCard(product: Pick<Product, 'id' | 'title' | 'p
   productItem.className = 'products__item catalog-grid__product';
 
   productItem.innerHTML = `
-    <a class="products__link" href="/product?${product.id}">
+    <a class="products__link" href="/product-${product.id}">
     <div class="products__body catalog-grid__body">
       <div class="product__image catalog-grid__image">
         <img src="${product.images[0]}" alt="${product.title}">
@@ -90,7 +90,7 @@ function createProductListCard(
   productItem.className = 'products__item catalog-list__product';
 
   productItem.innerHTML = `
-    <a class="products__link" href="./product.html?${product.id}">
+    <a class="products__link" href="/product-${product.id}">
       <div class="products__body catalog-list__body">
         <div class="product__image catalog-list__image">
           <img src="${product.images[0]}" alt="${product.title}">

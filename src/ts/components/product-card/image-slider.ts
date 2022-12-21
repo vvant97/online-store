@@ -1,10 +1,10 @@
-import { productData } from '../productData';
+// import { productData } from '../productData';
 import { showOverlay } from '../bg-overlay/bg-overlay';
 
 type Image = 'list' | 'gallery';
 
-const getImageItems = (id: number, type: Image) => {
-  const imagesArray = productData[id - 1].images;
+const getImageItems = (imagesArray: string[], type: Image) => {
+  // const imagesArray = productData[id - 1].images;
 
   const imageElements: HTMLLIElement[] = imagesArray.map((source, index) => {
     const item = document.createElement('li');
@@ -36,7 +36,7 @@ const openFullImage = () => {
     const activeItem = document.querySelector('.product-slider__gallery-item.active') as HTMLLIElement;
     const url = activeItem.style.backgroundImage.slice(5, -2);
     const image = document.createElement('img');
-    
+
     image.src = url;
     image.className = 'product-full-image';
 
@@ -150,12 +150,12 @@ const handleSliderControlsEvents = () => {
   });
 };
 
-export const createImageSlider = (id: number) => {
+export const createImageSlider = (images: string[]) => {
   const slider = document.querySelector('.product-slider__list') as HTMLUListElement;
   const gallery = document.querySelector('.product-slider__gallery') as HTMLUListElement;
 
-  slider.append(...getImageItems(id, 'list'));
-  gallery.append(...getImageItems(id, 'gallery'));
+  slider.append(...getImageItems(images, 'list'));
+  gallery.append(...getImageItems(images, 'gallery'));
 
   handleSliderMovement();
   handleSliderControlsEvents();

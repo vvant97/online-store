@@ -16,9 +16,7 @@ module.exports = {
       rewrites: [{ from: /./, to: '/index.html' }],
     },
     port: 8000,
-    // hot: false,
-    // static: './dist',
-    // watchFiles: ['./src/*'],
+    watchFiles: ['./src/*'],
     open: true,
     hot: true,
   },
@@ -26,7 +24,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[contenthash].bundle.js',
-    clean: true,
+    clean: process.env.NODE_ENV === 'production',
   },
   module: {
     rules: [

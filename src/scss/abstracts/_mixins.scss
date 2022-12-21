@@ -24,6 +24,7 @@
   @include size($p: 12px 35px);
   @include font($fsz: 1.6rem);
 
+  text-align: center;
   border: 2px solid $colorFontPrimary;
   border-radius: 0;
   text-transform: uppercase;

@@ -64,6 +64,7 @@
   }
 
   &__brand {
+    text-transform: capitalize;
     @include font($fsz: 1.4rem, $fw: 300);
     @include size($m: 0 0 0 10px);
   }
@@ -110,6 +111,7 @@
   }
 
   &__category {
+    text-transform: capitalize;
     @include font($fsz: 1.4rem, $fw: 300);
     @include size($m: 0 0 0 10px);
   }

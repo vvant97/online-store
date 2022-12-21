@@ -1,6 +1,6 @@
 import { errorComponent } from '../404/404';
-// import { createProductPage } from '../createProductPage/createProductPage';
 import { hideFilter, showFilter } from '../filter/filter';
+import { createProductCard, productComponent } from '../product-card/product-card';
 import { productData } from '../productData';
 import { catalogComponent, renderCatalog } from '../renderCatalog/renderCatalog';
 
@@ -13,19 +13,18 @@ export function routing() {
 
   const routes: Routes = {
     '/': catalogComponent,
-    // '/product': productComponent,
+    '/product': productComponent,
     '/cart': 'This is cart page',
     '404': errorComponent,
   };
 
   const loaderComponents = (pathname: string) => {
     window.history.pushState({}, pathname, window.location.origin + pathname);
-
     if (pathname.slice(1, 8) == 'product') {
-      document.title = `Product`;
-      // content.innerHTML = routes['/product'];
-      // createProductPage();
-      // productPageLoader(pathname.slice(12));
+      document.title = 'Product';
+      content.innerHTML = routes['/product'];
+      const productId = +pathname.split('-')[1];
+      createProductCard(productId);
     } else {
       switch (pathname) {
         case '/':
@@ -36,7 +35,7 @@ export function routing() {
           hideFilter();
           break;
         case '/cart':
-          document.title = `Cart`;
+          document.title = 'Cart';
           content.innerHTML = routes[pathname];
           break;
         case '/rs':

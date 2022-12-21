@@ -1,5 +1,3 @@
-import { productData } from "../productData";
-
 type Star = 'star' | 'star-fill' | 'star-half';
 
 interface StarInfo {
@@ -20,8 +18,7 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
   return stars;
 };
 
-export const createRating = (id: number) => {
-  const productRating = productData[id - 1].rating;
+export const createRating = (productRating: number) => {
 
   if (productRating < 0 || productRating > 5) {
     throw new Error('Incorrect rating');
