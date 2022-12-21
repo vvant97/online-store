@@ -107,7 +107,7 @@
     cursor: pointer;
 
     &:checked:before {
-      content: "\f272";
+      content: '\f272';
       font-family: 'bootstrap-icons';
       font-size: 1rem;
     }
@@ -141,6 +141,7 @@
   }
 
   &__button {
+    text-align: center;
     padding: 12px 35px;
     border: 2px solid $colorFontPrimary;
     border-radius: 0;
