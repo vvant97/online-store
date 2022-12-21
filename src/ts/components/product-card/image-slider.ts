@@ -1,11 +1,8 @@
-// import { productData } from '../productData';
 import { showOverlay } from '../bg-overlay/bg-overlay';
 
 type Image = 'list' | 'gallery';
 
 const getImageItems = (imagesArray: string[], type: Image) => {
-  // const imagesArray = productData[id - 1].images;
-
   const imageElements: HTMLLIElement[] = imagesArray.map((source, index) => {
     const item = document.createElement('li');
 

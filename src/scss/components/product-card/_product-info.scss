@@ -64,14 +64,9 @@
   }
 
   &__brand {
-<<<<<<< HEAD
     text-transform: capitalize;
-    @include font($fsz: 1.4rem, $fw: 300);
-    @include size($m: 0 0 0 10px);
-=======
     @include font($fontSize: 1.4rem, $fontWeight: 300);
     @include size($margin: 0 0 0 10px);
->>>>>>> 766428e (refactor: rename variables for better readability)
   }
 
   &__buttons-wrapper {
@@ -116,14 +111,9 @@
   }
 
   &__category {
-<<<<<<< HEAD
     text-transform: capitalize;
-    @include font($fsz: 1.4rem, $fw: 300);
-    @include size($m: 0 0 0 10px);
-=======
     @include font($fontSize: 1.4rem, $fontWeight: 300);
     @include size($margin: 0 0 0 10px);
->>>>>>> 766428e (refactor: rename variables for better readability)
   }
 
   &__description-wrapper {
