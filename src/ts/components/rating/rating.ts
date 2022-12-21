@@ -2,7 +2,7 @@ type Star = 'star' | 'star-fill' | 'star-half';
 
 interface StarInfo {
   amount: number;
-  type : Star;
+  type: Star;
 }
 
 const createRatingStars = ({ amount, type }: StarInfo) => {
