@@ -1,3 +1,5 @@
+import { productData } from "../productData";
+
 type Star = 'star' | 'star-fill' | 'star-half';
 
 interface StarInfo {
@@ -18,13 +20,17 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
   return stars;
 };
 
-export const createRating = (productRating: number) => {
-  if (productRating < 0 || productRating > 5) {
+export const createRating = (id: number) => {
+  const productRating = productData[id - 1].rating;
+  const maxRating = 5;
+
+  if (productRating < 0 || productRating > maxRating) {
     throw new Error('Incorrect rating');
   }
 
   const rating = document.createElement('div');
   const container = document.createElement('div');
+  const average = document.createElement('span');
   const fullRating = Math.floor(productRating);
   const halfRating = productRating - fullRating;
   const emptyRating = Math.floor(5 - productRating);
@@ -43,9 +49,11 @@ export const createRating = (productRating: number) => {
     container.append(...createRatingStars({ amount: emptyRating, type: 'star' }));
   }
 
+  average.className = 'rating__average';
+  average.textContent = `(${productRating})`;
   rating.className = 'rating';
   container.className = 'rating__container';
-  rating.append(container);
+  rating.append(container, average);
 
   return rating;
 };

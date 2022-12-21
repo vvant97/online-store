@@ -1,6 +1,24 @@
 export const productData = [
   {
     id: 1,
+    title: 'Wireless mouse',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 549,
+    discountPercentage: 12.96,
+    rating: 4.69,
+    stock: 94,
+    brand: 'Mouse',
+    category: 'Mouses',
+    thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+    images: [
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/1_22926035-6bb9-446c-b307-e41f66fb7c06.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/2_8e04415d-fcf4-4a84-9c42-786a27f08860.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/3_14c0490f-8312-410c-90cb-682923f1c3b9.jpg?v=1635741603',
+      '//cdn.shopify.com/s/files/1/0604/5021/0008/products/4_798d3e36-2843-41f6-bb54-4c0b3e6f6995.jpg?v=1635741603',
+    ],
+  },
+  {
+    id: 2,
     title: 'iPhone 9',
     description: 'An apple mobile which is nothing like apple',
     price: 549,
@@ -19,7 +37,7 @@ export const productData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'iPhone X',
     description:
       'SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...',
@@ -38,7 +56,7 @@ export const productData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'Samsung Universe 9',
     description: "Samsung's new variant which goes beyond Galaxy to the Universe",
     price: 1249,
@@ -51,7 +69,7 @@ export const productData = [
     images: ['https://i.dummyjson.com/data/products/3/1.jpg'],
   },
   {
-    id: 4,
+    id: 5,
     title: 'OPPOF19',
     description: 'OPPO F19 is officially announced on April 2021.',
     price: 280,
@@ -70,7 +88,7 @@ export const productData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Huawei P30',
     description:
       'Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.',
@@ -88,7 +106,7 @@ export const productData = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: 'MacBook Pro',
     description: 'MacBook Pro 2021 with mini-LED display may launch between September, November',
     price: 1749,
@@ -106,7 +124,7 @@ export const productData = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     title: 'Samsung Galaxy Book',
     description: 'Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched',
     price: 1499,
@@ -124,7 +142,7 @@ export const productData = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     title: 'Microsoft Surface Laptop 4',
     description:
       'Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.',
@@ -144,7 +162,7 @@ export const productData = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     title: 'Infinix INBOOK',
     description: 'Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty',
     price: 1099,
@@ -163,7 +181,7 @@ export const productData = [
     ],
   },
   {
-    id: 10,
+    id: 11,
     title: 'HP Pavilion 15-DK1056WM',
     description: 'HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10',
     price: 1099,

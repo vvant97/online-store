@@ -1,0 +1,167 @@
+.product-slider {
+  @include flex($flexDirection: column, $alignItems: center, $gap: 30px);
+
+  flex: 0 0 45%;
+
+  @media screen and (max-width: $tablet) {
+    flex: 100%;
+  }
+
+  &__list-wrapper {
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 545px, $height: 627px);
+
+    position: relative;
+    border: $border;
+    background: $colorBgSecondary;
+    overflow: hidden;
+
+    @media screen and (max-width: $desktop) {
+      width: 440px;
+      height: 518px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      width: 600px;
+      height: 678px;
+    }
+
+    @media screen and (max-width: $mobile) {
+      width: 420px;
+      height: 498px;
+    }
+
+    @media screen and (max-width: $mobileSmall) {
+      width: 100%;
+      height: 498px;
+    }
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      height: 400px;
+    }
+  }
+
+  &__list {
+    @include size($width: 100%, $height: 100%);
+
+    display: flex;
+    transition: $transition;
+  }
+
+  &__list-item {
+    @include flex($justifyContent: center, $alignItems: center);
+
+    flex: 0 0 100%;
+    cursor: crosshair;
+  }
+
+  &__gallery {
+    @include flex($gap: 15px);
+    @include size($margin: 0 30px);
+
+    position: relative;
+
+    @media screen and (max-width: $mobileSmall) {
+      gap: 10px;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__gallery-item {
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 110px, $height: 120px);
+
+    border: $border;
+    background: $colorBgSecondary;
+    cursor: pointer;
+
+    &:hover {
+      border: $borderSecondary;
+    }
+
+    &.active {
+      border: $borderSecondary;
+    }
+
+    @media screen and (max-width: $desktop) {
+      width: 90px;
+      height: 100px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      width: 120px;
+      height: 130px;
+    }
+
+    @media screen and (max-width: $mobile) {
+      width: 80px;
+      height: 90px;
+    }
+
+    @media screen and (max-width: $mobileSmall) {
+      width: 25%;
+      height: 100px;
+    }
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      height: 80px;
+    }
+  }
+
+  &__gallery-icon {
+    @include font($fontSize: 2rem);
+    @include size($padding: 5px);
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: $transition;
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &-prev {
+      left: -35px;
+    }
+
+    &-next {
+      right: -35px;
+    }
+
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__full-image {
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 35px, $height: 35px);
+    @include font($fontSize: 1.6rem);
+
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1;
+    background-color: $colorBg;
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.product-full-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 90%;
+  max-height: 90%;
+  transform: translate(-50%, -50%);
+}

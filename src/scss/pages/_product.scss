@@ -1,0 +1,10 @@
+.product__body {
+  display: flex;
+  gap: 60px;
+  padding: 100px 0;
+
+  @media screen and (max-width: $tablet) {
+    flex-wrap: wrap;
+    padding: 50px 0;
+  }
+}

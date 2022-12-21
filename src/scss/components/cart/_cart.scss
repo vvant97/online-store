@@ -141,33 +141,6 @@
   }
 
   &__button {
-    padding: 12px 35px;
-    border: 2px solid $colorFontPrimary;
-    border-radius: 0;
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1;
-    background: $colorFontPrimary;
-    color: $colorBg;
-    transition: all 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      background: $colorFontSecondary;
-      border: 2px solid $colorFontSecondary;
-    }
-
-    &_disabled {
-      background: #ababab;
-      border: 2px solid #ababab;
-      cursor: default;
-
-      &:hover {
-        background: #ababab;
-        border: 2px solid #ababab;
-      }
-    }
+    @include button;
   }
 }

@@ -1,10 +1,16 @@
-.rating__container {
-  display: flex;
-  gap: 5px;
-  padding: 0;
-}
+.rating {
+  @include flex($alignItems: center, $gap: 10px);
 
-.rating__star {
-  font-size: 1.4rem;
-  color: #fe9704;
+  &__average {
+    @include font($fontSize: 1.4rem, $fontWeight: 300, $lineHeight: 1.5, $color: $colorParagraph);
+  }
+
+  &__container {
+    @include flex($gap: 5px);
+    @include size;
+  }
+
+  &__star {
+    @include font($fontSize: 1.4rem, $color: $colorRating);
+  }
 }

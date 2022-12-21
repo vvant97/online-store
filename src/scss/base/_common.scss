@@ -125,3 +125,19 @@ h6 {
   position: fixed;
   transform: scale(0);
 }
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product-error-title {
+  @include font($fontSize: 1.6rem);
+}
+
+.product-error-id {
+  padding: 0 5px;
+  color: $colorFontPrimary;
+  background: $colorFontSecondary;
+}

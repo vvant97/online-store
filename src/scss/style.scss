@@ -10,10 +10,16 @@
 @import './components/cart/cart';
 @import './components/catalog/catalog';
 @import './components/rating/rating';
+@import './components/product-card/image-slider';
+@import './components/product-card/product-info';
+@import './components/product-quantity/product-quantity';
 
 // Layout
 @import './layout/header';
 @import './layout/footer';
+
+// Pages
+@import './pages/product';
 
 // Vendors
 @import './vendors/bootstrap-icons';
