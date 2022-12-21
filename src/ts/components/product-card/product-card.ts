@@ -49,7 +49,7 @@ export const createProductCard = (id: number) => {
     productBody.innerHTML = `
       <h2 class="product-error-title">
         There is no product with id
-        <span class="product-error-id">${id}</span>.
+        <span class="product-error-id">${id || 0}</span>.
       </h2>
     `;
   } else {
