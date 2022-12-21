@@ -1,5 +1,5 @@
 .product-slider {
-  @include flex($fd: column, $ai: center, $g: 30px);
+  @include flex($flexDirection: column, $alignItems: center, $gap: 30px);
 
   flex: 0 0 45%;
 
@@ -8,8 +8,8 @@
   }
 
   &__list-wrapper {
-    @include flex($jc: center, $ai: center);
-    @include size($w: 545px, $h: 627px);
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 545px, $height: 627px);
 
     position: relative;
     border: $border;
@@ -42,22 +42,22 @@
   }
 
   &__list {
-    @include size($w: 100%, $h: 100%);
+    @include size($width: 100%, $height: 100%);
 
     display: flex;
     transition: $transition;
   }
 
   &__list-item {
-    @include flex($jc: center, $ai: center);
+    @include flex($justifyContent: center, $alignItems: center);
 
     flex: 0 0 100%;
     cursor: crosshair;
   }
 
   &__gallery {
-    @include flex($g: 15px);
-    @include size($m: 0 30px);
+    @include flex($gap: 15px);
+    @include size($margin: 0 30px);
 
     position: relative;
 
@@ -69,8 +69,8 @@
   }
 
   &__gallery-item {
-    @include flex($jc: center, $ai: center);
-    @include size($w: 110px, $h: 120px);
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 110px, $height: 120px);
 
     border: $border;
     background: $colorBgSecondary;
@@ -110,8 +110,8 @@
   }
 
   &__gallery-icon {
-    @include font($fsz: 2rem);
-    @include size($p: 5px);
+    @include font($fontSize: 2rem);
+    @include size($padding: 5px);
 
     position: absolute;
     top: 50%;
@@ -138,9 +138,9 @@
   }
 
   &__full-image {
-    @include flex($jc: center, $ai: center);
-    @include size($w: 35px, $h: 35px);
-    @include font($fsz: 1.6rem);
+    @include flex($justifyContent: center, $alignItems: center);
+    @include size($width: 35px, $height: 35px);
+    @include font($fontSize: 1.6rem);
 
     position: absolute;
     right: 15px;

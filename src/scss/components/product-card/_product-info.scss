@@ -2,48 +2,48 @@
   flex: 1;
 
   &__title {
-    @include font($fsz: 3rem);
-    @include size($m: 30px 0 0);
+    @include font($fontSize: 3rem);
+    @include size($margin: 30px 0 0);
   }
 
   &__price {
-    @include flex($ai: center, $g: 10px);
-    @include size($m: 30px 0 0);
+    @include flex($alignItems: center, $gap: 10px);
+    @include size($margin: 30px 0 0);
   }
 
   &__actual-price {
-    @include font($fsz: 1.8rem);
+    @include font($fontSize: 1.8rem);
   }
 
   &__old-price-wrapper {
-    @include flex($ai: center, $g: 5px);
+    @include flex($alignItems: center, $gap: 5px);
   }
 
   &__old-price {
-    @include font($fsz: 1.8rem, $c: $colorParagraph);
+    @include font($fontSize: 1.8rem, $color: $colorParagraph);
 
     text-decoration: line-through;
   }
 
   &__discount {
-    @include font($fsz: 1.4rem, $c: $colorFontLight);
-    @include size($p: 5px 10px);
+    @include font($fontSize: 1.4rem, $color: $colorFontLight);
+    @include size($padding: 5px 10px);
 
     background: $colorFontPrimary;
   }
 
   &__availability-wrapper {
-    @include flex($ai: center, $g: 15px);
-    @include size($m: 30px 0 0);
+    @include flex($alignItems: center, $gap: 15px);
+    @include size($margin: 30px 0 0);
   }
 
   &__availability-title {
-    @include font($fsz: 1.6rem);
+    @include font($fontSize: 1.6rem);
   }
 
   &__availability {
-    @include flex($ai: center, $g: 5px);
-    @include font($fsz: 1.4rem);
+    @include flex($alignItems: center, $gap: 5px);
+    @include font($fontSize: 1.4rem);
 
     &[data-availability='in-stock'] {
       color: #198754;
@@ -55,23 +55,28 @@
   }
 
   &__availability-icon {
-    @include font($fsz: 1.6rem, $c: #198754);
+    @include font($fontSize: 1.6rem, $color: #198754);
   }
 
   &__brand-title {
-    @include font($fsz: 1.6rem);
-    @include size($m: 30px 0 0);
+    @include font($fontSize: 1.6rem);
+    @include size($margin: 30px 0 0);
   }
 
   &__brand {
+<<<<<<< HEAD
     text-transform: capitalize;
     @include font($fsz: 1.4rem, $fw: 300);
     @include size($m: 0 0 0 10px);
+=======
+    @include font($fontSize: 1.4rem, $fontWeight: 300);
+    @include size($margin: 0 0 0 10px);
+>>>>>>> 766428e (refactor: rename variables for better readability)
   }
 
   &__buttons-wrapper {
-    @include flex($g: 30px);
-    @include size($m: 30px 0 0);
+    @include flex($gap: 30px);
+    @include size($margin: 30px 0 0);
 
     @media screen and (max-width: $mobileSmall) {
       flex-direction: column;
@@ -79,53 +84,58 @@
   }
 
   &__quantity-wrapper {
-    @include flex($ai: center, $g: 15px);
-    @include size($m: 30px 0 0);
+    @include flex($alignItems: center, $gap: 15px);
+    @include size($margin: 30px 0 0);
   }
 
   &__quantity-title {
-    @include font($fsz: 1.6rem);
+    @include font($fontSize: 1.6rem);
   }
 
   &__cart-button,
   &__buy-button {
     @include button;
-    @include size($p: 15px 35px);
+    @include size($padding: 15px 35px);
 
     min-width: 200px;
   }
 
   &__id-title {
-    @include font($fsz: 1.6rem);
-    @include size($m: 30px 0 0);
+    @include font($fontSize: 1.6rem);
+    @include size($margin: 30px 0 0);
   }
 
   &__id {
-    @include font($fsz: 1.4rem, $fw: 300);
-    @include size($m: 0 0 0 10px);
+    @include font($fontSize: 1.4rem, $fontWeight: 300);
+    @include size($margin: 0 0 0 10px);
   }
 
   &__category-title {
-    @include font($fsz: 1.6rem);
-    @include size($m: 30px 0 0);
+    @include font($fontSize: 1.6rem);
+    @include size($margin: 30px 0 0);
   }
 
   &__category {
+<<<<<<< HEAD
     text-transform: capitalize;
     @include font($fsz: 1.4rem, $fw: 300);
     @include size($m: 0 0 0 10px);
+=======
+    @include font($fontSize: 1.4rem, $fontWeight: 300);
+    @include size($margin: 0 0 0 10px);
+>>>>>>> 766428e (refactor: rename variables for better readability)
   }
 
   &__description-wrapper {
-    @include flex($fd: column, $g: 15px);
-    @include size($m: 30px 0 0);
+    @include flex($flexDirection: column, $gap: 15px);
+    @include size($margin: 30px 0 0);
   }
 
   &__description-title {
-    @include font($fsz: 1.6rem);
+    @include font($fontSize: 1.6rem);
   }
 
   &__description {
-    @include font($fsz: 1.4rem, $fw: 300, $lh: 1.5, $c: $colorParagraph);
+    @include font($fontSize: 1.4rem, $fontWeight: 300, $lineHeight: 1.5, $color: $colorParagraph);
   }
 }
