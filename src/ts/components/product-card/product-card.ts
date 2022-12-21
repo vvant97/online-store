@@ -2,6 +2,7 @@ import { productData } from '../productData';
 import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
 import { createProductQuantity, disableProductButtons } from '../product-quantity/product-quantity';
+import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 
 const setProductId = (id: number) => {
   const idContainer = document.querySelector('.product-info__id') as HTMLSpanElement;
@@ -92,7 +93,8 @@ export const createProductCard = () => {
   } else {
     const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
     const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
-  
+    
+    createBreadcrumbs(productData[productId - 1].title);
     productInfoContainer.prepend(createRating(productId));
     productQuantity.append(createProductQuantity());
     createImageSlider(productId);
