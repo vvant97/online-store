@@ -1,8 +1,8 @@
-import { errorComponent } from '../404/404';
-import { hideFilter, showFilter } from '../filter/filter';
-import { createProductCard, productComponent } from '../product-card/product-card';
-import { productData } from '../productData';
-import { catalogComponent, renderCatalog } from '../renderCatalog/renderCatalog';
+import { errorComponent } from '../components/404/404';
+import { hideFilter, showFilter } from '../components/filter/filter';
+import { createProductCard, productComponent } from '../components/product-card/product-card';
+import { productData } from '../components/productData';
+import { catalogComponent, renderCatalog } from '../components/renderCatalog/renderCatalog';
 
 export function routing() {
   const content = document.querySelector('#app') as HTMLDivElement;
@@ -41,18 +41,6 @@ export function routing() {
           document.title = 'Cart';
           content.innerHTML = routes[pathname];
           break;
-        case '/rs':
-          window.open('https://rs.school/js/', '_blank');
-          window.location.pathname = '/';
-          break;
-        case '/vvant':
-          window.open('https://github.com/vvant97', '_blank');
-          window.location.pathname = '/';
-          break;
-        case '/elian':
-          window.open('https://github.com/elian-cheng', '_blank');
-          window.location.pathname = '/';
-          break;
         default:
           document.title = 'Error 404';
           content.innerHTML = routes['404'];
@@ -65,6 +53,7 @@ export function routing() {
 
   const allLinks = document.querySelectorAll('a');
   allLinks.forEach((link) => {
+    if (link.classList.contains('footer-link')) return;
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const href = link.getAttribute('href');
