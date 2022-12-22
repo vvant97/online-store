@@ -1,10 +1,8 @@
-import { productData } from "../productData";
-
 type Star = 'star' | 'star-fill' | 'star-half';
 
 interface StarInfo {
   amount: number;
-  type : Star;
+  type: Star;
 }
 
 const createRatingStars = ({ amount, type }: StarInfo) => {
@@ -20,8 +18,7 @@ const createRatingStars = ({ amount, type }: StarInfo) => {
   return stars;
 };
 
-export const createRating = (id: number) => {
-  const productRating = productData[id - 1].rating;
+export const createRating = (productRating: number) => {
   const maxRating = 5;
 
   if (productRating < 0 || productRating > maxRating) {

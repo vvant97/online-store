@@ -1,12 +1,3 @@
-import { productData } from '../productData';
-
-const isAvailableProduct = (): boolean => {
-  const productId = +location.href.split('?')[1] - 1;
-  const isAvailable = productData[productId].stock !== 0;
-
-  return isAvailable;
-};
-
 const handleQuantityEvents = (event: Event) => {
   const target = (<HTMLElement>event.target).closest('.product-quantity__control') as HTMLElement;
   const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
@@ -22,7 +13,7 @@ const handleQuantityEvents = (event: Event) => {
   }
 };
 
-export const createProductQuantity = () => {
+export const createProductQuantity = (stock: number) => {
   const container = document.createElement('div');
   const input = document.createElement('input');
   const controls = document.createElement('div');
@@ -30,7 +21,7 @@ export const createProductQuantity = () => {
   const minus = document.createElement('div');
   const plusIcon = document.createElement('i');
   const minusIcon = document.createElement('i');
-  const isAvailable = isAvailableProduct();
+  const isAvailable = stock !== 0 ? true : false;
 
   container.className = 'product-quantity';
   input.className = 'product-quantity__input';

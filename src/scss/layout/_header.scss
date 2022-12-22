@@ -4,8 +4,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  min-height: 40px;
-  padding-bottom: 80px;
+  height: 80px;
   border-bottom: 1px solid #e2e2e2;
 
   &__big-container {
@@ -25,6 +24,7 @@
   }
 
   &__logo {
+    display: block;
     margin-left: 100px;
     cursor: pointer;
     width: 10%;
