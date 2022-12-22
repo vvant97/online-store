@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { NetlifyPlugin } = require('netlify-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -36,13 +37,13 @@ module.exports = {
         test: /\.(c|sa|sc)ss$/i,
         use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
-      {
-        test: /\.(png|jpg|jpeg|gif|ico)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/img/[contenthash][ext]',
-        },
-      },
+      // {
+      //   test: /\.(png|jpg|jpeg|gif|ico)$/i,
+      //   type: 'asset/resource',
+      //   generator: {
+      //     filename: 'assets/img/[contenthash][ext]',
+      //   },
+      // },
       {
         test: /\.svg$/i,
         type: 'asset/resource',
@@ -73,6 +74,16 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `./src/assets/img`,
+          to: `assets/img`,
+          noErrorOnMissing: true,
+          force: true,
+        },
+      ],
     }),
     new EslintPlugin({ extensions: 'ts' }),
     new NetlifyPlugin({
