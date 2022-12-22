@@ -222,7 +222,7 @@ export const productData = [
   },
   {
     id: 13,
-    title: 'Xiaomi Redmi Watch 2 Lite Global',
+    title: 'Xiaomi Redmi Watch 2',
     description:
       'Get in shape, start right now. 100+ workout modes. Track your exercises like an expert. Switch freely between over 100 watch faces with multiple trend-setting combinations to suit your mood.',
     price: 70.65,
@@ -245,13 +245,160 @@ export const productData = [
     description:
       'The color design of Huawei MatePad Pro is inspired by nature. The midnight gray body is covered with a layer of fiberglass that reflects the light and reflects your unique style. Compact and lightweight, weighing only 460g, it is easy to carry everywhere with you. It feels like a simple sheet of paper in a backpack.The hidden antenna gives the tablet a sleek and finished look, while the thin, slightly rounded bezel makes the tablet comfortable to use.',
     price: 707.8,
-    discountPercentage: 4.23,
-    rating: 3.85,
-    stock: 12,
+    discountPercentage: 5.36,
+    rating: 4.25,
+    stock: 23,
     color: 'silver',
     brand: 'Huawei',
     category: 'tablets',
     thumbnail: '../../assets/img/14380352311.jpg',
     images: ['../../assets/img/14380352311-l.jpg', '../../assets/img/14380352312-l.jpg'],
+  },
+  {
+    id: 15,
+    title: 'MSI Pro AP241',
+    description: `With powerful processing power and an ergonomic 23.8 screen, the PRO AP241 All-in-One PC will help you work more productively and comfortably. Available in two color options, the slim design fits perfectly into your modern home or office environment.
+    To protect the user's eyes and improve comfort during long stays at the computer, the all-in-one has implemented special technologies that suppress screen flicker MSI Anti-Flicker and reduce the intensity of blue light MSI Less Blue Light. In addition, the screen is equipped with a matte finish MSI Anti-Glare, which eliminates light reflections.
+    To work even more efficiently with large amounts of data, a second monitor (up to 4K / 60 Hz) can be connected to the PRO AP241 all-in-one via HDMI 2.0. It will also be a good solution for video conferencing using MSI's FHD camera.`,
+    price: 1681.42,
+    discountPercentage: 0,
+    rating: 4.75,
+    stock: 3,
+    color: 'black',
+    brand: 'MSI',
+    category: 'monoblocks',
+    thumbnail: '../../assets/img/52026264101.jpg',
+    images: [
+      '../../assets/img/52026264101-l.jpg',
+      '../../assets/img/52026264102-l.jpg',
+      '../../assets/img/52026264103-l.jpg',
+      '../../assets/img/52026264104-l.jpg',
+    ],
+  },
+  {
+    id: 16,
+    title: 'Apple TV 4K',
+    description: `The new Apple TV 4K combines the best TV content with the gigantic potential of Apple devices and services. Now your living room will be truly transformed.
+    Picture and sound like in real life. Apple TV 4K with Dolby Vision will make all your entertainment unforgettable. And if your sound system supports Dolby Atmos1, Apple TV 4K will turn your home into a real theater and you can fully immerse yourself in surround sound.
+    Apple TV 4K can play video at twice the frame rate of HDR, so colors look more realistic and images are crisper. Even fast-moving events, such as during a sports broadcast, can be viewed in great detail. Nature on the screen looks incredibly realistic. And YouTube videos literally come to life.
+    Sometimes adjusting the picture on the TV turns into a long and complicated process. But not with Apple TV 4K. You should now be able to automatically calibrate the image using your iPhone. Just point your iPhone at your TV screen once, then sit back and watch movies and TV shows in a new amazing quality.`,
+    price: 396.3,
+    discountPercentage: 4.69,
+    rating: 3.27,
+    stock: 15,
+    color: 'black',
+    brand: 'Apple',
+    category: 'TV-boxes',
+    thumbnail: '../../assets/img/81802826001.jpg',
+    images: [
+      '../../assets/img/81802826001-l.jpg',
+      '../../assets/img/81802826002-l.jpg',
+      '../../assets/img/81802826005-l.jpg',
+      '../../assets/img/81802826004-l.jpg',
+    ],
+  },
+  {
+    id: 17,
+    title: 'Alienware AW2720HFA',
+    description: `Advantage in every moment of the fight. Victory in every fight. The incredible responsiveness and depth of gaming monitor immersion make the Alienware 27 the ideal choice for gamers.
+    The unrivaled IPS panel has a native refresh rate of up to 240Hz: 10x faster than a movie theater and 2x faster than conventional 120Hz gaming monitors.
+    Response time 1 ms. No tricks. Real 1ms response time and Overdrive technology deliver fast, responsive, distortion-free gaming.
+    AMD FreeSync technology keeps your graphics card and monitor in sync, so you get stunning full-size images without slowing down your gaming experience. This Alienware 27" monitor also supports NVIDIA G-SYNC technology.
+    The new high-speed IPS gaming sensor delivers a true 1ms response time without the use of anti-blur algorithms that affect brightness, adaptive sync, and game world display.
+    Saturated image. IPS (In-Planar Switching) technology guarantees high color saturation regardless of the viewing angle.
+    Color gamut up to 99% sRGB provides the widest color gamut for your gaming arsenal.`,
+    price: 733.38,
+    discountPercentage: 4.15,
+    rating: 4.89,
+    stock: 9,
+    color: 'white',
+    brand: 'Alienware',
+    category: 'monitors',
+    thumbnail: '../../assets/img/22069224421.jpg',
+    images: [
+      '../../assets/img/22069224421-l.jpg',
+      '../../assets/img/22069224422-l.jpg',
+      '../../assets/img/22069224423-l.jpg',
+      '../../assets/img/22069224424-l.jpg',
+    ],
+  },
+  {
+    id: 18,
+    title: 'Acer Aspire C27-1655',
+    description: `The latest Intel processors deliver incredible performance for the most demanding tasks and modern content editing. And with DDR4 RAM, you can multitask unlimited applications. The 27-inch FHD IPS screen delivers true-to-life colors and sharp images. View images with family and friends. Colors stay consistent even at 178° angles`,
+    price: 1797.18,
+    discountPercentage: 10.25,
+    rating: 3.79,
+    stock: 34,
+    color: 'silver',
+    brand: 'Acer',
+    category: 'monoblocks',
+    thumbnail: '../../assets/img/78686371951.jpg',
+    images: [
+      '../../assets/img/78686371951-l.jpg',
+      '../../assets/img/78686371952-l.jpg',
+      '../../assets/img/78686371953-l.jpg',
+    ],
+  },
+  {
+    id: 19,
+    title: 'Apple Macbook Pro Late 2021',
+    description: `We've built the most powerful MacBook Pro ever. And it's a monster. The super-fast M1 Pro and M1 Max are the first Apple chips designed specifically for professionals. They deliver phenomenal performance and provide amazingly long battery life. Add to that a stunning Liquid Retina XDR display, superior camera and sound, and more ports for professional work. Everything is possible with this laptop.`,
+    price: 2875,
+    discountPercentage: 10.5,
+    rating: 4.89,
+    stock: 14,
+    color: 'silver',
+    brand: 'Apple',
+    category: 'laptops',
+    thumbnail: '../../assets/img/58651378731.jpg',
+    images: [
+      '../../assets/img/58651378731-l.jpg',
+      '../../assets/img/58651378733-l.jpg',
+      '../../assets/img/58651378735-l.jpg',
+      '../../assets/img/58651378736-l.jpg',
+    ],
+  },
+  {
+    id: 20,
+    title: 'Apple iPhone 13 mini',
+    description: `IPhone 13 mini have been completely reimagined. The new models feature a sleek aluminum chassis with a durable flat bezel and are available in five stunning colours. The OLED display is energy efficient and has high contrast even in bright sunlight. A durable housing is reliably protected from water and dust.
+    The A15 Bionic chip is responsible for the excellent performance of games with complex graphics, as well as the operation of new camera features such as the Cinematic Effect mode and Photo Styles. And the new chip increases the battery life.`,
+    price: 1337.85,
+    discountPercentage: 0,
+    rating: 5,
+    stock: 25,
+    color: 'blue',
+    brand: 'Apple',
+    category: 'smartphones',
+    thumbnail: '../../assets/img/59631534211.jpg',
+    images: [
+      '../../assets/img/59631534211-l.jpg',
+      '../../assets/img/59631534212-l.jpg',
+      '../../assets/img/59631534213-l.jpg',
+      '../../assets/img/59631534215-l.jpg',
+    ],
+  },
+  {
+    id: 21,
+    title: 'Prestigio Q Pro',
+    description: `Equipped with an 8-inch HD screen, the tablet reproduces bright and vivid content. The IPS-matrix guarantees natural color reproduction and wide viewing angles, which allows you to look at the screen from any direction without distorting the picture. Made of durable textured plastic, the tablet provides a pleasant visual and tactile experience. The case can be easily gripped with one hand and be sure that it will not slip out. Plus, there is scratch protection.
+    The amount of built-in memory in the tablet was 16 GB, but this is far from the limit. In the existing slot, you can install a microSD memory card and expand the internal storage up to 128 GB. That's enough to store thousands of photos and videos!
+    Powered by a quad-core processor in tandem with 2GB of RAM, the tablet will be an excellent choice for solving a variety of tasks: from chatting in a messenger to playing videos.
+    With a 5,000 mAh battery and fast 4G connectivity, you can stay connected wherever you are. A capacious battery will ensure that the charge does not run out at the most inopportune moment, and support for 4G networks will allow you to make calls and access the Internet, even if there is no Wi-Fi nearby.`,
+    price: 86.81,
+    discountPercentage: 7.8,
+    rating: 3.2,
+    stock: 8,
+    color: 'blue',
+    brand: 'Prestigio',
+    category: 'tablets',
+    thumbnail: '../../assets/img/24956794611.jpg',
+    images: [
+      '../../assets/img/24956794612-l.jpg',
+      '../../assets/img/24956794613-l.jpg',
+      '../../assets/img/24956794614-l.jpg',
+      '../../assets/img/24956794615-l.jpg',
+    ],
   },
 ];
