@@ -3,6 +3,7 @@ import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
 import { createProductQuantity, disableProductButtons } from '../product-quantity/product-quantity';
 import { Product } from '../types';
+import { createBreadcrumbs, removeBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 
 const setProductPrice = (price: number, discountNumber: number) => {
   const discount = Math.round(discountNumber);
@@ -109,6 +110,8 @@ export const createProductCard = (id: number) => {
     const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
     const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 
+    createBreadcrumbs(product.title);
+    removeBreadcrumbs();
     productInfoContainer.prepend(createRating(product.rating));
     productQuantity.append(createProductQuantity(product.stock));
     createImageSlider(product.images);
