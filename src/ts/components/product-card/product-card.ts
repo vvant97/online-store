@@ -3,7 +3,7 @@ import { createImageSlider } from './image-slider';
 import { createRating } from '../rating/rating';
 import { createProductQuantity, disableProductButtons } from '../product-quantity/product-quantity';
 import { Product } from '../types';
-import { createBreadcrumbs, removeBreadcrumbs } from '../breadcrumbs/breadcrumbs';
+import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 
 const setProductPrice = (price: number, discountNumber: number) => {
   const discount = Math.round(discountNumber);
@@ -54,7 +54,8 @@ export const createProductCard = (id: number) => {
       </h2>
     `;
   } else {
-    productBody.innerHTML = `<div class="product-slider">
+    productBody.innerHTML = `
+    <div class="product-slider">
     <div class="product-slider__list-wrapper">
       <ul class="product-slider__list"></ul>
       <div class="product-slider__full-image">
@@ -110,10 +111,10 @@ export const createProductCard = (id: number) => {
     const productInfoContainer = document.querySelector('.product-info') as HTMLDivElement;
     const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 
-    createBreadcrumbs(product.title);
-    removeBreadcrumbs();
     productInfoContainer.prepend(createRating(product.rating));
     productQuantity.append(createProductQuantity(product.stock));
+    productBody.before(createBreadcrumbs(product.title));
+
     createImageSlider(product.images);
     setProductPrice(product.price, product.discountPercentage);
     setProductAvailability(product.stock);
