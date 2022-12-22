@@ -25,6 +25,9 @@ export function routing() {
       content.innerHTML = routes['/product'];
       const productId = +pathname.split('-')[1];
       createProductCard(productId);
+      window.addEventListener('popstate', () => {
+        loaderComponents('/');
+      });
     } else {
       switch (pathname) {
         case '/':
@@ -40,12 +43,15 @@ export function routing() {
           break;
         case '/rs':
           window.open('https://rs.school/js/', '_blank');
+          window.location.pathname = '/';
           break;
         case '/vvant':
           window.open('https://github.com/vvant97', '_blank');
+          window.location.pathname = '/';
           break;
         case '/elian':
           window.open('https://github.com/elian-cheng', '_blank');
+          window.location.pathname = '/';
           break;
         default:
           document.title = 'Error 404';
