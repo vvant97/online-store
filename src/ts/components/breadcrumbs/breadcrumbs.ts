@@ -1,5 +1,4 @@
-export const createBreadcrumbs = (directoryName: string) => {
-  const main = <HTMLDivElement>document.querySelector('.main');
+export const createBreadcrumbs = (title: string) => {
   const breadcrumbs = document.createElement('div');
   const template = `
     <div class="breadcrumbs__container">
@@ -8,7 +7,7 @@ export const createBreadcrumbs = (directoryName: string) => {
           <a class="breadcrumbs__link" href="/">Home</a>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link">${directoryName}</a>
+          <a class="breadcrumbs__link">${title}</a>
         </li>
       </ul>
     </div>
@@ -16,14 +15,5 @@ export const createBreadcrumbs = (directoryName: string) => {
 
   breadcrumbs.className = 'breadcrumbs';
   breadcrumbs.innerHTML = template;
-  main.prepend(breadcrumbs);
-};
-
-export const removeBreadcrumbs = () => {
-  const breadcrumbs = document.querySelector('.breadcrumbs') as HTMLDivElement;
-  const homeLink = breadcrumbs.querySelectorAll('.breadcrumbs__link')[0] as HTMLAnchorElement;
-
-  homeLink.addEventListener('click', () => {
-    breadcrumbs.remove();
-  });
+  return breadcrumbs;
 };
