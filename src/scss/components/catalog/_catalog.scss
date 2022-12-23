@@ -182,31 +182,31 @@
   }
 
   &__image {
+    margin: 10px 10px 0;
     position: relative;
-    padding: 0px 0px 90% 0px;
+    padding: 0px 0px 100% 0px;
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
     overflow: hidden;
     img {
-      width: 90%;
-      height: 90%;
+      width: 100%;
+      height: 100%;
       position: absolute;
       top: 0;
-      left: 5%;
+      left: 0;
       object-fit: contain;
     }
   }
 
   &__buy-button {
     position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%);
+    top: 50%;
+    left: 28%;
     opacity: 0;
     visibility: hidden;
     background-color: #fff;
-    padding: 1rem;
-    font-size: 18px;
+    padding: 1.5rem 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     box-shadow: 0 0 15px #00000026;
     border-radius: 0.4rem;
@@ -225,11 +225,30 @@
       font-size: 22px;
     }
     @media (max-width: $mobile) {
-      position: relative;
+      left: 5%;
+      top: 65%;
       width: 90%;
       opacity: 1;
       visibility: visible;
       background-color: $yellowColor;
+    }
+    @media (max-width: 700px) {
+      top: 63%;
+    }
+    @media (max-width: 627px) {
+      top: 69%;
+    }
+    @media (max-width: 525px) {
+      top: 65%;
+    }
+    @media (max-width: $mobileSmall) {
+      top: 63%;
+    }
+    @media (max-width: 410px) {
+      top: 74%;
+    }
+    @media (max-width: 331px) {
+      top: 70%;
     }
   }
 
@@ -238,6 +257,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    @media (max-width: $mobile) {
+      margin-top: 8rem;
+    }
   }
 
   &__product-name {
@@ -273,6 +295,7 @@
   }
 
   &__product {
+    position: relative;
     padding: 1.2rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     border-radius: 0.5rem;
@@ -285,9 +308,17 @@
     @media (max-width: $mobile) {
       flex: 0 0 48%;
     }
-    @media (max-width: $mobileSmall) {
+    @media (max-width: 550px) {
       &:not(:last-child) {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+      }
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        .buy-button {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }
@@ -321,16 +352,21 @@
   }
 
   &__buy-button {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    // transform: translate(-50%);
+    opacity: 0;
+    visibility: hidden;
     background-color: #fff;
-    padding: 1rem;
-    margin-bottom: 5px;
-    font-size: 18px;
+    padding: 1.5rem 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     box-shadow: 0 0 15px #00000026;
     border-radius: 0.4rem;
     transition: all 0.3s ease-out 0s;
     cursor: pointer;
-    width: 200px;
+    z-index: 3;
     @media (any-hover: hover) {
       &:hover {
         background-color: $yellowColor;
@@ -342,10 +378,75 @@
       color: $mainColor;
       font-size: 22px;
     }
+    @media (max-width: $tablet) {
+      left: 4%;
+    }
     @media (max-width: $mobile) {
-      width: 100%;
+      left: 5%;
+      top: 57%;
+      width: 90%;
+      opacity: 1;
+      visibility: visible;
       background-color: $yellowColor;
     }
+    @media (max-width: 730px) {
+      top: 55%;
+    }
+    @media (max-width: 697px) {
+      top: 53%;
+    }
+    @media (max-width: 650px) {
+      top: 49%;
+    }
+    @media (max-width: 591px) {
+      top: 45%;
+    }
+    @media (max-width: 550px) {
+      top: 68%;
+    }
+    @media (max-width: 490px) {
+      top: 65%;
+    }
+    @media (max-width: 460px) {
+      top: 62%;
+    }
+    @media (max-width: 410px) {
+      top: 58%;
+    }
+    @media (max-width: 375px) {
+      top: 55%;
+    }
+    @media (max-width: 351px) {
+      top: 50%;
+    }
+    @media (max-width: 321px) {
+      top: 48%;
+    }
+    // background-color: #fff;
+    // padding: 1rem;
+    // margin-bottom: 5px;
+    // font-size: 18px;
+    // font-weight: 700;
+    // box-shadow: 0 0 15px #00000026;
+    // border-radius: 0.4rem;
+    // transition: all 0.3s ease-out 0s;
+    // cursor: pointer;
+    // width: 200px;
+    // @media (any-hover: hover) {
+    //   &:hover {
+    //     background-color: $yellowColor;
+    //   }
+    // }
+    // i {
+    //   margin-left: 10px;
+    //   transition: all 0.3s ease 0s;
+    //   color: $mainColor;
+    //   font-size: 22px;
+    // }
+    // @media (max-width: $mobile) {
+    //   width: 100%;
+    //   background-color: $yellowColor;
+    // }
   }
 
   &__product-info {
@@ -354,13 +455,18 @@
     flex-direction: column;
     justify-content: center;
     gap: 15px;
+    @media (max-width: $mobile) {
+      margin-top: 8rem;
+    }
   }
 
   &__product-name {
     font-size: 1.8rem;
     font-weight: 600;
     text-transform: capitalize;
+    line-height: 2rem;
     @media (max-width: $mobile) {
+      margin-top: 7px;
       text-align: center;
     }
   }
