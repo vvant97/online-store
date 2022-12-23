@@ -71,14 +71,14 @@ export function createProductGridCard(product: Pick<Product, 'id' | 'title' | 'p
       <div class="product__image catalog-grid__image">
         <img src="${product.images[0]}" alt="${product.title}">
       </div>
-      <button class="product__buy-button buy-button catalog-grid__buy-button"><span
-          class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
       <div class="product__info catalog-grid__product-info">
-        <p class="product__name catalog-grid__product-name">${product.title}</p>
+      <p class="product__name catalog-grid__product-name">${product.title}</p>
         <p class="product__price catalog-grid__product-price">$${product.price}</p>
       </div>
     </div>
-  </a>
+    </a>
+    <button class="product__buy-button buy-button catalog-grid__buy-button"><span
+    class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;
 }
@@ -98,12 +98,12 @@ function createProductListCard(
         <div class="product__info catalog-list__product-info">
         <p class="product__name catalog-list__product-name">${product.title}</p>
         <p class="product__price catalog-list__product-price">$${product.price}</p>
-        <button class="product__buy-button buy-button catalog-list__buy-button"><span
-            class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
-        <p class="product__price catalog-list__product-description">${product.description}</p>
+        <p class="product__price catalog-list__product-description">${product.description.slice(0, 200) + '...'}</p>
         </div>
-      </div>
+        </div>
     </a>
+    <button class="product__buy-button buy-button catalog-list__buy-button"><span
+      class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;
 }
