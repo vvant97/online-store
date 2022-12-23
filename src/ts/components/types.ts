@@ -9,6 +9,5 @@ export type Product = {
   color?: string;
   brand: string;
   category: string;
-  thumbnail: string;
   images: string[];
 };
