@@ -38,13 +38,6 @@ module.exports = {
         use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.svg$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/svg/[contenthash][ext]',
-        },
-      },
-      {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
@@ -73,6 +66,12 @@ module.exports = {
         {
           from: `./src/assets/img`,
           to: `assets/img`,
+          noErrorOnMissing: true,
+          force: true,
+        },
+        {
+          from: `./src/assets/svg`,
+          to: `assets/svg`,
           noErrorOnMissing: true,
           force: true,
         },

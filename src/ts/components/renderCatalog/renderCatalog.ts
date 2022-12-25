@@ -61,9 +61,7 @@ export const catalogComponent = `
         </div>
 `;
 
-export function createProductGridCard(
-  product: Pick<Product, 'id' | 'title' | 'price' | 'discountPercentage' | 'images'>,
-): HTMLLIElement {
+export function createProductGridCard(product: Product): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-grid__product';
 
@@ -73,18 +71,35 @@ export function createProductGridCard(
       <div class="product__image catalog-grid__image">
         <img src="${product.images[0]}" alt="${product.title}">
       </div>
+      <div class="product__rating catalog-grid__product-rating">${product.rating.toFixed(2)}</div>
       <div class="product__info catalog-grid__product-info">
       <p class="product__name catalog-grid__product-name">${product.title}</p>
-      <div class="product__price catalog-grid__product-price">
-      <span class='product-info__actual-price actual-price'>$${
-        product.discountPercentage
-          ? (product.price - product.price * (Math.round(product.discountPercentage) / 100)).toFixed(2)
-          : product.price.toFixed(2)
-      }</span>
-      <span class='product-info__old-price old-price'>${
-        product.discountPercentage ? '$' + product.price.toFixed(2) : ''
-      }</span>
+      <div class="product__category-brand catalog-grid__product-category-brand">
+      <span class="product__brand catalog-grid__product-brand">${product.brand}</span>
+        <span class="product__category catalog-grid__product-category">${
+          product.category[0].toUpperCase() + product.category.slice(1)
+        }</span>
       </div>
+      <div class="product__price catalog-grid__product-price">
+        <span class="product-info__actual-price actual-price">$${
+          product.discountPercentage
+            ? (product.price - product.price * (Math.round(product.discountPercentage) / 100)).toFixed(2)
+            : product.price.toFixed(2)
+        }</span>
+        <span class="product-info__old-price old-price">${
+          product.discountPercentage ? '$' + product.price.toFixed(2) : ''
+        }</span>
+      </div>
+        <div class="product__color-stock catalog-grid__product-color-stock">
+          <p class="product__color-name catalog-grid__product-color-name">
+          Color:
+          <span class="product__color catalog-grid__product-color">${product.color}</span>
+          </p>
+          <p class="product__stock-name catalog-grid__product-stock-name">
+          In stock:
+          <span class="product__stock catalog-grid__product-stock">${product.stock}</span>
+          </p>
+        </div>
       </div>
     </div>
     </a>
@@ -94,9 +109,7 @@ export function createProductGridCard(
   return productItem;
 }
 
-function createProductListCard(
-  product: Pick<Product, 'id' | 'title' | 'price' | 'discountPercentage' | 'images' | 'description'>,
-): HTMLLIElement {
+function createProductListCard(product: Product): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-list__product';
 
@@ -106,8 +119,16 @@ function createProductListCard(
         <div class="product__image catalog-list__image">
           <img src="${product.images[0]}" alt="${product.title}">
         </div>
+        <div class="product__rating catalog-list__product-rating">${product.rating.toFixed(2)}</div>
         <div class="product__info catalog-list__product-info">
         <p class="product__name catalog-list__product-name">${product.title}</p>
+        <div class="product__category-brand catalog-list__product-category-brand">
+          <span class="product__brand catalog-list__product-brand">${product.brand}</span>
+          <span class="product__category catalog-list__product-category">${
+            product.category[0].toUpperCase() + product.category.slice(1)
+          }
+          </span>
+        </div>
         <div class="product__price catalog-list__product-price">
         <span class='product-info__actual-price actual-price'>$${
           product.discountPercentage
@@ -117,6 +138,16 @@ function createProductListCard(
         <span class='product-info__old-price old-price'>${
           product.discountPercentage ? '$' + product.price.toFixed(2) : ''
         }</span>
+        </div>
+        <div class="product__color-stock catalog-list__product-color-stock">
+          <p class="product__color-name catalog-list__product-color-name">
+          Color:
+          <span class='product__color catalog-list__product-color'>${product.color}</span>
+          </p>
+          <p class="product__stock-name catalog-list__product-stock-name">
+          In stock:
+          <span class='product__stock catalog-list__product-stock'>${product.stock}</span>
+          </p>
         </div>
         <p class="product__price catalog-list__product-description">${product.description.slice(0, 200) + '...'}</p>
         </div>
