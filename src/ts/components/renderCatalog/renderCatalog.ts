@@ -61,7 +61,9 @@ export const catalogComponent = `
         </div>
 `;
 
-export function createProductGridCard(product: Pick<Product, 'id' | 'title' | 'price' | 'images'>): HTMLLIElement {
+export function createProductGridCard(
+  product: Pick<Product, 'id' | 'title' | 'price' | 'discountPercentage' | 'images'>,
+): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-grid__product';
 
@@ -71,20 +73,29 @@ export function createProductGridCard(product: Pick<Product, 'id' | 'title' | 'p
       <div class="product__image catalog-grid__image">
         <img src="${product.images[0]}" alt="${product.title}">
       </div>
-      <button class="product__buy-button buy-button catalog-grid__buy-button"><span
-          class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
       <div class="product__info catalog-grid__product-info">
-        <p class="product__name catalog-grid__product-name">${product.title}</p>
-        <p class="product__price catalog-grid__product-price">$${product.price}</p>
+      <p class="product__name catalog-grid__product-name">${product.title}</p>
+      <div class="product__price catalog-grid__product-price">
+      <span class='product-info__actual-price actual-price'>$${
+        product.discountPercentage
+          ? (product.price - product.price * (Math.round(product.discountPercentage) / 100)).toFixed(2)
+          : product.price.toFixed(2)
+      }</span>
+      <span class='product-info__old-price old-price'>${
+        product.discountPercentage ? '$' + product.price.toFixed(2) : ''
+      }</span>
+      </div>
       </div>
     </div>
-  </a>
+    </a>
+    <button class="product__buy-button buy-button catalog-grid__buy-button"><span
+    class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;
 }
 
 function createProductListCard(
-  product: Pick<Product, 'id' | 'title' | 'price' | 'images' | 'description'>,
+  product: Pick<Product, 'id' | 'title' | 'price' | 'discountPercentage' | 'images' | 'description'>,
 ): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-list__product';
@@ -97,13 +108,22 @@ function createProductListCard(
         </div>
         <div class="product__info catalog-list__product-info">
         <p class="product__name catalog-list__product-name">${product.title}</p>
-        <p class="product__price catalog-list__product-price">$${product.price}</p>
-        <button class="product__buy-button buy-button catalog-list__buy-button"><span
-            class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
-        <p class="product__price catalog-list__product-description">${product.description}</p>
+        <div class="product__price catalog-list__product-price">
+        <span class='product-info__actual-price actual-price'>$${
+          product.discountPercentage
+            ? (product.price - product.price * (Math.round(product.discountPercentage) / 100)).toFixed(2)
+            : product.price.toFixed(2)
+        }</span>
+        <span class='product-info__old-price old-price'>${
+          product.discountPercentage ? '$' + product.price.toFixed(2) : ''
+        }</span>
         </div>
-      </div>
+        <p class="product__price catalog-list__product-description">${product.description.slice(0, 200) + '...'}</p>
+        </div>
+        </div>
     </a>
+    <button class="product__buy-button buy-button catalog-list__buy-button"><span
+      class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;
 }
