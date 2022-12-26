@@ -1,7 +1,5 @@
 import { errorComponent } from '../components/404/404';
-import { hideFilter, showFilter } from '../components/filter/filter';
-import { renderPriceFilter } from '../components/filter/filterPrice';
-import { renderStockFilter } from '../components/filter/filterStock';
+import { renderFilters } from '../components/filter/filter';
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
 import { catalogComponent, renderCatalog } from '../components/renderCatalog/renderCatalog';
@@ -36,10 +34,7 @@ export function routing() {
           document.title = 'Elyte';
           content.innerHTML = routes[pathname];
           renderCatalog(productData);
-          showFilter();
-          hideFilter();
-          renderPriceFilter(productData);
-          renderStockFilter(productData);
+          renderFilters(productData);
           break;
         case '/cart':
           document.title = 'Cart';
@@ -73,8 +68,3 @@ export function routing() {
     loaderComponents(window.location.pathname);
   });
 }
-
-// const category = [...new Set(productData.map((item) => item.category))];
-// console.log(category);
-// const brand = [...new Set(productData.map((item) => item.brand))];
-// console.log(brand);

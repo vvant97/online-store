@@ -30,12 +30,13 @@
     margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
-    column-gap: 1rem;
+    // column-gap: 0.5rem;
   }
 
   &__btn {
     @include button;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.4rem;
   }
 
   &__list {
@@ -78,6 +79,29 @@
       background: $colorTitleBefore;
     }
   }
+
+  &__categories,
+  &__brands {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 1rem;
+  }
+
+  &__category-item,
+  &__brand-item {
+    font-size: 1.6rem;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    input {
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+    label {
+      cursor: pointer;
+    }
+  }
 }
 
 .slider {
@@ -94,5 +118,56 @@
     border-radius: 1rem;
     border: 0.1rem solid $yellowColor;
     background-color: lighten($yellowColor, 25%);
+  }
+}
+
+.color {
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 1rem;
+  margin: 0 0.5rem;
+  border: 0.15rem solid $mainColor;
+
+  &_white {
+    background-color: white;
+  }
+
+  &_silver {
+    background-color: silver;
+  }
+
+  &_red {
+    background-color: red;
+  }
+
+  &_green {
+    background-color: green;
+  }
+
+  &_blue {
+    background-color: blue;
+  }
+
+  &_yellow {
+    background-color: yellow;
+  }
+
+  &_black {
+    background-color: black;
+  }
+
+  &_active,
+  &_active-black {
+    background-position: center center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+  }
+
+  &_active {
+    background-image: url(../assets/svg/check.svg);
+  }
+
+  &_active-black {
+    background-image: url(../assets/svg/check-white.svg);
   }
 }

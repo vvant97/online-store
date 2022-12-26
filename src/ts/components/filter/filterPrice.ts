@@ -3,8 +3,8 @@ import * as noUiSlider from 'nouislider';
 
 export function renderPriceFilter(data: Product[]) {
   const priceData = data.map((item) => item.discountPrice);
-  const maxPrice = Math.round(priceData.reduce((a, b) => Math.max(a, b)));
-  const minPrice = Math.round(priceData.reduce((a, b) => Math.min(a, b)));
+  const maxPrice = priceData.reduce((a, b) => Math.max(a, b));
+  const minPrice = priceData.reduce((a, b) => Math.min(a, b));
 
   const priceSlider = document.createElement('div') as noUiSlider.target;
   priceSlider.className = 'filter__price price-slider slider';
@@ -12,8 +12,8 @@ export function renderPriceFilter(data: Product[]) {
   priceInputsWrapper.className = 'slider__inputs-wrapper';
 
   priceInputsWrapper.innerHTML = `
-    <div class="slider__input min-price-value">${minPrice}</div>
-    <div class="slider__input max-price-value">${maxPrice}</div>
+    <div class="slider__input min-price-value">$${minPrice.toFixed(2)}</div>
+    <div class="slider__input max-price-value">$${maxPrice.toFixed(2)}</div>
   `;
 
   noUiSlider.create(priceSlider, {

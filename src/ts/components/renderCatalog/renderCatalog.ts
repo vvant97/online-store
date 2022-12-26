@@ -38,6 +38,31 @@ export const catalogComponent = `
           <div class="products__body"></div>
 
       </section>
+
+      <div class="filter">
+          <i class="filter__close bi bi-x-lg"></i>
+          <div class="filter__actions">
+            <button class="filter__reset-button filter__btn">Reset Filters</button>
+            <button class="filter__copy-button filter__btn">Copy Link</button>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__item filter__category-wrapper">
+              <p class="filter__title">Category</p>
+            </li>
+            <li class="filter__item filter__brand-wrapper">
+              <p class="filter__title">Brand</p>
+            </li>
+            <li class="filter__item filter__color-wrapper">
+              <p class="filter__title">Color</p>
+            </li>
+            <li class="filter__item filter__price-wrapper">
+              <p class="filter__title">Price</p>
+            </li>
+            <li class="filter__item filter__stock-wrapper">
+              <p class="filter__title">Stock</p>
+            </li>
+          </ul>
+        </div>
 `;
 
 export function createProductGridCard(product: Product): HTMLLIElement {
