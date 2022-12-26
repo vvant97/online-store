@@ -1,4 +1,4 @@
-import Storage from './storage';
+import Storage from './Storage';
 import { ProductItem } from '../components/types';
 
 class ProductsStorage extends Storage {

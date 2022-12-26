@@ -1,4 +1,4 @@
-import Storage from './storage';
+import Storage from './Storage';
 
 class CartState extends Storage {
   readonly _selector: string;
