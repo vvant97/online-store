@@ -1,4 +1,10 @@
 import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
+import { Product } from '../types';
+import { renderBrandFilter } from './filterBrand';
+import { renderCategoryFilter } from './filterCategory';
+import { renderColorFilter } from './filterColor';
+import { renderPriceFilter } from './filterPrice';
+import { renderStockFilter } from './filterStock';
 
 export const showFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
@@ -24,3 +30,13 @@ export const hideFilter = () => {
     }
   });
 };
+
+export function renderFilters(data: Array<Product>) {
+  showFilter();
+  hideFilter();
+  renderCategoryFilter(data);
+  renderBrandFilter(data);
+  renderColorFilter(data);
+  renderPriceFilter(data);
+  renderStockFilter(data);
+}

@@ -205,7 +205,7 @@
     opacity: 0;
     visibility: hidden;
     background-color: $colorBg;
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem 1.2rem;
     font-size: 2rem;
     font-weight: 700;
     box-shadow: 0 0 15px #00000026;
@@ -214,6 +214,7 @@
     transition: all 0.3s ease-out 0s;
     cursor: pointer;
     z-index: 3;
+    min-width: 150px;
     @media (any-hover: hover) {
       &:hover {
         background-color: $yellowColor;
@@ -227,29 +228,35 @@
     }
     @media (max-width: $mobile) {
       left: 5%;
-      top: 65%;
+      top: 57%;
       width: 90%;
       opacity: 1;
       visibility: visible;
       background-color: $yellowColor;
     }
     @media (max-width: 700px) {
-      top: 63%;
+      top: 55%;
     }
-    @media (max-width: 627px) {
-      top: 69%;
+    @media (max-width: 655px) {
+      top: 50%;
+    }
+    @media (max-width: 610px) {
+      top: 59%;
     }
     @media (max-width: 525px) {
-      top: 65%;
+      top: 57%;
     }
     @media (max-width: $mobileSmall) {
-      top: 63%;
+      top: 55%;
+    }
+    @media (max-width: 433px) {
+      top: 50%;
     }
     @media (max-width: 410px) {
-      top: 74%;
+      top: 67%;
     }
-    @media (max-width: 331px) {
-      top: 70%;
+    @media (max-width: 361px) {
+      top: 62%;
     }
   }
 
@@ -264,7 +271,7 @@
   }
 
   &__product-name {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 600;
     text-transform: capitalize;
     margin: 7px 0 7px 0;
@@ -277,6 +284,28 @@
     line-height: 1.3rem;
     text-align: center;
     text-transform: capitalize;
+    margin-bottom: 1.5rem;
+  }
+
+  &__product-category-brand {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 2rem;
+  }
+
+  &__product-category {
+    margin-left: 0.5rem;
+  }
+
+  &__product-color-stock {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    span {
+      color: $colorBorderSecondary;
+    }
   }
 }
 
@@ -355,11 +384,11 @@
   &__buy-button {
     position: absolute;
     top: 40%;
-    left: 5%;
+    left: 4%;
     opacity: 0;
     visibility: hidden;
     background-color: $colorBg;
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem 1.2rem;
     font-size: 2rem;
     font-weight: 700;
     box-shadow: 0 0 15px #00000026;
@@ -367,6 +396,7 @@
     transition: all 0.3s ease-out 0s;
     cursor: pointer;
     z-index: 3;
+    min-width: 150px;
     @media (any-hover: hover) {
       &:hover {
         background-color: $yellowColor;
@@ -379,48 +409,48 @@
       font-size: 22px;
     }
     @media (max-width: $tablet) {
-      left: 4%;
+      left: 3%;
     }
     @media (max-width: $mobile) {
       left: 5%;
-      top: 57%;
+      top: 52%;
       width: 90%;
       opacity: 1;
       visibility: visible;
       background-color: $yellowColor;
     }
-    @media (max-width: 730px) {
-      top: 55%;
+    @media (max-width: 720px) {
+      top: 50%;
     }
-    @media (max-width: 697px) {
-      top: 53%;
+    @media (max-width: 682px) {
+      top: 47%;
     }
-    @media (max-width: 650px) {
-      top: 49%;
-    }
-    @media (max-width: 591px) {
+    @media (max-width: 615px) {
       top: 45%;
     }
+    @media (max-width: 586px) {
+      top: 42%;
+    }
     @media (max-width: 550px) {
-      top: 68%;
+      top: 63%;
     }
-    @media (max-width: 490px) {
-      top: 65%;
+    @media (max-width: 496px) {
+      top: 60%;
     }
-    @media (max-width: 460px) {
-      top: 62%;
+    @media (max-width: 462px) {
+      top: 57%;
     }
-    @media (max-width: 410px) {
-      top: 58%;
+    @media (max-width: 411px) {
+      top: 54%;
     }
-    @media (max-width: 375px) {
-      top: 55%;
+    @media (max-width: 385px) {
+      top: 51%;
     }
     @media (max-width: 351px) {
       top: 50%;
     }
-    @media (max-width: 321px) {
-      top: 48%;
+    @media (max-width: 331px) {
+      top: 47%;
     }
   }
 
@@ -459,8 +489,48 @@
     line-height: 1.8rem;
     margin-bottom: 5px;
   }
+
+  &__product-category-brand {
+    font-size: 1.6rem;
+    @media (max-width: $mobile) {
+      text-align: center;
+    }
+  }
+
+  &__product-category {
+    margin-left: 0.5rem;
+  }
+
+  &__product-color-stock {
+    display: flex;
+    column-gap: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    @media (max-width: $mobile) {
+      justify-content: center;
+    }
+    span {
+      color: $colorBorderSecondary;
+    }
+  }
 }
 
 .old-price {
   margin-left: 1.2rem;
+}
+
+.product {
+  &__rating {
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    top: -4px;
+    left: -8px;
+    background: url(../assets/svg/bookmark-fill.svg) no-repeat center;
+    background-size: cover;
+    font-size: 1.4rem;
+    line-height: 400%;
+    padding-left: 1.2rem;
+    font-weight: 700;
+  }
 }

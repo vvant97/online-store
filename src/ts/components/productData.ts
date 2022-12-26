@@ -7,6 +7,7 @@ export const productData = [
              The Dolby Audio™-enabled speaker system and narrow bezel FHD display are purpose-built to bring your favorite videos to life, immersed in rich colors and surround sound.
              Wherever you go, the IdeaPad L3 is your go-to laptop with up to 11 hours of battery life. And if you do need to recharge, Rapid Charge technology allows you to replenish up to 80% of the charge in less than an hour, and you can immediately return to your activities.`,
     price: 930.85,
+    discountPrice: 809.84,
     discountPercentage: 12.96,
     rating: 4.75,
     stock: 72,
@@ -28,6 +29,7 @@ export const productData = [
     Part of the internal filling will be taken from last year's top "eleventh" series. The productivity of the 6-core processor of the new generation A13 Bionic will allow the gadget to execute commands and tasks faster by 20%. Its production is based on the 7nm process technology with the 3rd generation Neural Engine system.
     The product with 64 GB of internal memory will be equipped with 3 GB of RAM and a graphics coprocessor of its own brand design. The IPhone 9 runs on the proprietary operating system iOS 13.`,
     price: 256,
+    discountPrice: 240.64,
     discountPercentage: 5.7,
     rating: 4.69,
     stock: 94,
@@ -48,6 +50,7 @@ export const productData = [
       The usual Touch ID fingerprint recognition system has been replaced by a powerful and secure Face ID authentication system - recognizing a user by his face. Powered by machine learning technology, the A11 Bionic recognizes you even in a new look. So experiment with haircuts, wear glasses, change hats. And let your friends wonder if it's you - the IPhone X will never make a mistake.
       The 6-core A11 Bionic processor delivers unparalleled speed for IPhone X. Productivity increased by 25% and energy efficiency by 70%. The new iPhone has become even faster and copes with everyday activities with minimal energy consumption.`,
     price: 381,
+    discountPrice: 331.47,
     discountPercentage: 12.5,
     rating: 4.87,
     stock: 34,
@@ -67,6 +70,7 @@ export const productData = [
     description:
       'Iiyama ProLite is a stylish edge-to-edge monitor ideal for multi-monitor setups in both the office and home. IPS panel technology provides accurate and stable color reproduction with wide viewing angles, while 4K resolution allows you to display 4 times more information than a FullHD monitor. In addition, the ProLite XUB2893UHSU is equipped with HDMI and DisplayPort digital inputs, and high contrast and brightness values mean that the monitor will provide excellent performance for photography and web design. The height-adjustable stand makes it easy to adjust the screen to your preference.',
     price: 697.6,
+    discountPrice: 537.15,
     discountPercentage: 23,
     rating: 4.09,
     stock: 28,
@@ -88,6 +92,7 @@ export const productData = [
     A large capacity 5000 mAh battery combined with support for high-speed 18-watt charging will allow you to focus on your business instead of searching for an outlet. In addition, the phone has an advanced power saving mode, which helps to extend the time of its operation, so that you can stay connected no matter what.
     Thanks to the efficient Qualcomm Snapdragon processor, you can calmly communicate via video call, watch movies and do many other things. No annoying waiting or hangs. What's more, the use of fast LPDDR4x RAM and UFS2.1 type storage further reduces the lag time when launching applications and opening files.`,
     price: 201,
+    discountPrice: 201,
     discountPercentage: 0,
     rating: 4.3,
     stock: 123,
@@ -108,6 +113,7 @@ export const productData = [
       A professional laptop that does not take up much space in your bag. The elegant diamond-cut and sandblasted metal body is about 14.6mm thick and weighs just 1.33kg. Carry MateBook X Rgo with you always and everywhere.
       Huawei MateBook X Pro is an improved Intel Core i7 processor of the 10th generation, a discrete NVIDIA GeForce MX250 video card, 16 GB of RAM and 1 TB of SSD storage. The power of the laptop is enough to perform all the tasks you need. Thanks to the powerful hardware, Huawei MateBook X Pro supports multitasking, fast image processing and smooth frame changes in games. The updated high-speed Wi-Fi module and the Bluetooth 5.0 standard guarantee a smooth connection.`,
     price: 1075,
+    discountPrice: 956.75,
     discountPercentage: 10.58,
     rating: 4.09,
     stock: 32,
@@ -128,6 +134,7 @@ export const productData = [
     The notebook is based on the next generation of Apple M2 chips. This powerful 8-core processor is even faster and more energy efficient than the previous M1. Together with a lightning-fast 10-core GPU, it enables faster processing of photos and videos, creates stunning graphics and works with a large number of 4K and 8K ProRes video streams. And also increases game performance. Thus, this portable professional laptop will allow you to work, create and have fun on a completely different level.
     Focus on what's important to you, and MacBook Pro M2 will make sure you have enough time to do it all. Its battery can provide up to 20 hours of autonomous operation, which allows you to work freely without being tied to one place.`,
     price: 1375,
+    discountPrice: 1223.75,
     discountPercentage: 11.02,
     rating: 4.57,
     stock: 83,
@@ -150,6 +157,7 @@ export const productData = [
     Connect Samsung Galaxy Book Pro and Samsung Galaxy Buds together. Open the headphone case next to your laptop and the connection is complete. Very simple!
     Connect your home to the network and control all your smart products with SmartThings. Now you can find your Samsung Galaxy book with SmartThings Find.`,
     price: 899,
+    discountPrice: 863.04,
     discountPercentage: 4.15,
     rating: 4.25,
     stock: 50,
@@ -169,6 +177,7 @@ export const productData = [
     description: `Meet the new model of the legendary smartphone! The iPhone 14 will be able to please you with an ultra-durable body made of aerospace-grade aluminum and a reliable protected display created by Corning: Ceramic Shield technology. Also, iPhone 14 and iPhone 14 Plus are perfectly resistant to splashes of water and dust thanks to the IP68 standard. The bright and rich Super Retina XDR display will not leave any user indifferent. Improved autonomy allows you to actively use the new iPhone throughout the day. Updated cameras and photo processing algorithms will give you the opportunity to create even better photos even in low light conditions. APPLE iPhone 14 is equipped with a super-fast A15 Bionic processor, which has 5 graphic cores.
       High resolution makes it possible to display the maximum number of details, making the picture more alive and natural. And the special True Tone function will control the brightness and harmful blue radiation from the screen, thanks to which you will be able to better see the image on the display at noon, and when viewing content in the evening and at night (in poor lighting conditions), your eyes will not tire quickly. The diagonal of the iPhone 14 is 6.1 inches.`,
     price: 1087.5,
+    discountPrice: 1000.5,
     discountPercentage: 7.8,
     rating: 5,
     stock: 51,
@@ -190,6 +199,7 @@ export const productData = [
     The A14 Bionic chip provides power and performance for any activity. Edit 4K videos in iMovie, plan a world trip with friends, or play graphics-intensive games. With an all-day battery, you can do everything without missing a second.
     Express yourself, draw and brainstorm on a flexible creative platform. The stunning 10.9-inch Liquid Retina display creates an incredible canvas. So you can draw, take notes, mark up documents and more with Apple Pencil (sold separately).`,
     price: 847,
+    discountPrice: 745.36,
     discountPercentage: 11.83,
     rating: 4.54,
     stock: 96,
@@ -207,6 +217,7 @@ export const productData = [
     title: 'HP Victus 16-e0151ur',
     description: `The HP Victus 16 gaming laptop is equipped with a luscious 16.1-inch screen, a powerful AMD Ryzen 5 5600H (Zen 3) 3.3 GHz processor, NVIDIA GeForce® RTX 3050 professional graphics for laptops, and an excellent cooling system. The HP Victus 16 model is interesting for users who often play with a laptop and work with video editors. HP Victus 16 gaming laptops are popular with customers due to the large selection of configurations, the highest quality of goods and an excellent price.`,
     price: 1099,
+    discountPrice: 1033.06,
     discountPercentage: 6.18,
     rating: 4.43,
     stock: 89,
@@ -226,6 +237,7 @@ export const productData = [
     description:
       'The Realme 9 Pro+ smartphone has 3 main cameras: 50 + 8 + 4 megapixels that allow you to shoot 4K video, take excellent portraits with bokeh effect, panoramic shots and photos of distant objects, slow motion at 960 fps. The 16 MP front camera makes it possible to take great selfies. The Super AMOLED display with a resolution of 2400x1080 will amaze you with bright, rich and deep blacks. A capacious 4500 mAh battery is enough for a long battery life. The supplied 60W power adapter will help you quickly replenish the charge. An in-display fingerprint scanner and software face unlock protect your data if your device is lost. An NFC module is provided for contactless payment.',
     price: 368,
+    discountPrice: 368.0,
     discountPercentage: 0,
     rating: 4.58,
     stock: 5,
@@ -245,6 +257,7 @@ export const productData = [
     description:
       'Get in shape, start right now. 100+ workout modes. Track your exercises like an expert. Switch freely between over 100 watch faces with multiple trend-setting combinations to suit your mood.',
     price: 70.65,
+    discountPrice: 67.82,
     discountPercentage: 4.23,
     rating: 3.85,
     stock: 12,
@@ -263,6 +276,7 @@ export const productData = [
     description:
       'The color design of Huawei MatePad Pro is inspired by nature. The midnight gray body is covered with a layer of fiberglass that reflects the light and reflects your unique style. Compact and lightweight, weighing only 460g, it is easy to carry everywhere with you. It feels like a simple sheet of paper in a backpack.The hidden antenna gives the tablet a sleek and finished look, while the thin, slightly rounded bezel makes the tablet comfortable to use.',
     price: 707.8,
+    discountPrice: 672.41,
     discountPercentage: 5.36,
     rating: 4.25,
     stock: 23,
@@ -278,6 +292,7 @@ export const productData = [
     To protect the user's eyes and improve comfort during long stays at the computer, the all-in-one has implemented special technologies that suppress screen flicker MSI Anti-Flicker and reduce the intensity of blue light MSI Less Blue Light. In addition, the screen is equipped with a matte finish MSI Anti-Glare, which eliminates light reflections.
     To work even more efficiently with large amounts of data, a second monitor (up to 4K / 60 Hz) can be connected to the PRO AP241 all-in-one via HDMI 2.0. It will also be a good solution for video conferencing using MSI's FHD camera.`,
     price: 1681.42,
+    discountPrice: 1681.42,
     discountPercentage: 0,
     rating: 4.75,
     stock: 3,
@@ -299,6 +314,7 @@ export const productData = [
     Apple TV 4K can play video at twice the frame rate of HDR, so colors look more realistic and images are crisper. Even fast-moving events, such as during a sports broadcast, can be viewed in great detail. Nature on the screen looks incredibly realistic. And YouTube videos literally come to life.
     Sometimes adjusting the picture on the TV turns into a long and complicated process. But not with Apple TV 4K. You should now be able to automatically calibrate the image using your iPhone. Just point your iPhone at your TV screen once, then sit back and watch movies and TV shows in a new amazing quality.`,
     price: 396.3,
+    discountPrice: 376.49,
     discountPercentage: 4.69,
     rating: 3.27,
     stock: 15,
@@ -323,6 +339,7 @@ export const productData = [
     Saturated image. IPS (In-Planar Switching) technology guarantees high color saturation regardless of the viewing angle.
     Color gamut up to 99% sRGB provides the widest color gamut for your gaming arsenal.`,
     price: 733.38,
+    discountPrice: 704.04,
     discountPercentage: 4.15,
     rating: 4.89,
     stock: 9,
@@ -341,6 +358,7 @@ export const productData = [
     title: 'Acer Aspire C27-1655',
     description: `The latest Intel processors deliver incredible performance for the most demanding tasks and modern content editing. And with DDR4 RAM, you can multitask unlimited applications. The 27-inch FHD IPS screen delivers true-to-life colors and sharp images. View images with family and friends. Colors stay consistent even at 178° angles`,
     price: 1797.18,
+    discountPrice: 1617.46,
     discountPercentage: 10.25,
     rating: 3.79,
     stock: 34,
@@ -358,6 +376,7 @@ export const productData = [
     title: 'Apple Macbook Pro Late 2021',
     description: `We've built the most powerful MacBook Pro ever. And it's a monster. The super-fast M1 Pro and M1 Max are the first Apple chips designed specifically for professionals. They deliver phenomenal performance and provide amazingly long battery life. Add to that a stunning Liquid Retina XDR display, superior camera and sound, and more ports for professional work. Everything is possible with this laptop.`,
     price: 2875,
+    discountPrice: 2558.75,
     discountPercentage: 10.5,
     rating: 4.89,
     stock: 14,
@@ -377,6 +396,7 @@ export const productData = [
     description: `IPhone 13 mini have been completely reimagined. The new models feature a sleek aluminum chassis with a durable flat bezel and are available in five stunning colours. The OLED display is energy efficient and has high contrast even in bright sunlight. A durable housing is reliably protected from water and dust.
     The A15 Bionic chip is responsible for the excellent performance of games with complex graphics, as well as the operation of new camera features such as the Cinematic Effect mode and Photo Styles. And the new chip increases the battery life.`,
     price: 1337.85,
+    discountPrice: 1337.85,
     discountPercentage: 0,
     rating: 5,
     stock: 25,
@@ -398,6 +418,7 @@ export const productData = [
     Powered by a quad-core processor in tandem with 2GB of RAM, the tablet will be an excellent choice for solving a variety of tasks: from chatting in a messenger to playing videos.
     With a 5,000 mAh battery and fast 4G connectivity, you can stay connected wherever you are. A capacious battery will ensure that the charge does not run out at the most inopportune moment, and support for 4G networks will allow you to make calls and access the Internet, even if there is no Wi-Fi nearby.`,
     price: 102.81,
+    discountPrice: 94.59,
     discountPercentage: 7.8,
     rating: 3.2,
     stock: 8,
@@ -416,6 +437,7 @@ export const productData = [
     title: 'Samsung Galaxy Tab S8+',
     description: `The Samsung Galaxy tablet leaves a lasting impression. Robust reinforced aluminum construction. Elements as part of a whole: from the magnetic S Pen holder to the camera. Enjoy your favorite movies and games on the big bright screen. Bigger screen size and thinner bezels so you can see more. The fastest processor ever installed in the Galaxy Tab series (4 nm). Console-level games run fast, smooth, and flawlessly - just the way they should be. Battery for the whole day. Seamless multitasking, uninterrupted immersion, long video playback with a powerful battery. Immerse yourself in your favorite games and movies with the most realistic cinematic sound possible thanks to four speakers. Enjoy deep, bass-rich sound with the Tab S8 series.`,
     price: 1125,
+    discountPrice: 922.5,
     discountPercentage: 18.45,
     rating: 4.6,
     stock: 22,
@@ -433,6 +455,7 @@ export const productData = [
     title: 'Amazon Kindle 10',
     description: `Ultra-thin case included! Introducing the Amazon Kindle 10 2020 in white. Perhaps this is the simplest and most affordable reader from Amazon. The Kindle 10 2020 e-reader has 8GB of pre-installed memory and a built-in screen backlight that you can adjust yourself. This Kindle 10 2020 model already comes with an ultra-thin UltraSlim case with a magnet and automatic screen off when closed. The Kindle 10 features a next-generation glare-free display, which means it's as close to real paper as possible. This reader is supplied as a Special Offers version (advertised version). Advertising in the form of a screensaver absolutely does not interfere with reading books and does not appear on the pages in the device. Moreover, it can be turned off completely free of charge if it bothers you a lot.`,
     price: 133.7,
+    discountPrice: 121.67,
     discountPercentage: 8.5,
     rating: 4.3,
     stock: 2,
@@ -451,6 +474,7 @@ export const productData = [
     title: 'HP OMEN 27C',
     description: `What do you prioritize when choosing a gaming monitor? Excellent graphics and high pixel response? Excellent image quality due to high resolution and large screen size? Smart ergonomics? Comfortable viewing angles? It's all important, the optimal gaming machine is made up of a combination of these qualities And the HP OMEN 27c [35D67AA#ABB] 27" Monitor has them all. The 1000R curvature follows the natural shape of your eye, so your eyes make fewer small movements and less fatigue. With a resolution of 2560x1440, you get a juicy three-dimensional and bright picture. , with 178°/178° viewing angles, can be repositioned in front of the HP OMEN 27c [35D67AA#ABB] without compromising image quality.Device pixel time is as low as 1ms.For maximum convenience, the monitor is equipped with a 2-port USB hub. In addition, you can adjust the tilt and height of the monitor.`,
     price: 1051,
+    discountPrice: 1051,
     discountPercentage: 0,
     rating: 4.3,
     stock: 27,
@@ -472,6 +496,7 @@ export const productData = [
     The case of Xiaomi RedmiBook 15" Pro is made of aircraft-grade aluminum alloy. It has gone through 17 grinding processes to achieve a flawless surface texture. The thickness of the laptop is 16.4 mm and its weight does not exceed 1.79 kg.
     High performance is provided by the built-in 11th generation Intel Core processor. The chipset frequency can reach 4.5GHz. Thanks to the optional GeForce MX450 discrete graphics card, the laptop can be used for video editing, gaming and graphics applications.`,
     price: 925,
+    discountPrice: 777.0,
     discountPercentage: 15.6,
     rating: 4.64,
     stock: 45,
@@ -491,6 +516,7 @@ export const productData = [
     description: `The Poco X series now uses an AMOLED display and supports DCI-P3 color gamut. Expanded color space for richer picture and cinematic effect. The front camera aperture is 2.96 mm, which expands the field of view. The high-performance Snapdragon processor with 5G offers superior power efficiency and maximum download speeds of 2.5Gbps. POCO X4 Pro 5G is equipped with a large LiquidCool copper heatpipe and multiple layers of graphite sheets for fast heat dissipation and continuous cooling, allowing the device to run at peak performance for longer.
     67W Turbo Charging is capable of incredible things! Thanks to advanced MMT technology, the 5000 mAh battery can be charged up to 100% in 41 minutes!`,
     price: 362.32,
+    discountPrice: 336.96,
     discountPercentage: 6.67,
     rating: 3.84,
     stock: 16,
@@ -509,6 +535,7 @@ export const productData = [
     title: 'Onyx Boox Max Lumi',
     description: `Onyx Boox Max Lumi 2 is the top of the manufacturer's range with a huge 13.3-inch backlit E Ink Mobius Carta screen and dual touch controls. This model is more than just a reader - it is a serious tool for working with textual information. MAX Lumi 2 is perfect for those users who have to read a lot of educational or technical literature, while making notes and drawings in the text. A large, easy-to-read dual-touch e-paper display, combined with a powerful processor and 6 GB of RAM, makes PDF and DjVu files a pleasure to work with. 128 GB of internal memory will allow you to store any necessary books and documents on the reader without any restrictions. The model is based on the Android 11 operating system, which allows you to install and use third-party applications and significantly expands the functionality of the reader. The built-in Wi-Fi module allows you to use various network services, and Bluetooth support allows you to connect external devices. The body of the device is made of light and durable aluminum-magnesium alloy, the screen of the reader is covered with Asahi protective glass.`,
     price: 837.5,
+    discountPrice: 837.5,
     discountPercentage: 0,
     rating: 4.9,
     stock: 36,
@@ -531,6 +558,7 @@ export const productData = [
     For healthy sleep The Galaxy Watch4 has a special tracker that determines the quality of your sleep.
     The Galaxy Watch4 runs on the Samsung-compatible Wear OS platform. This operating system provides fast and stable synchronization with Samsung Galaxy devices, as well as the ability to run your favorite applications right from your wrist.`,
     price: 254.7,
+    discountPrice: 198.67,
     discountPercentage: 22,
     rating: 4.25,
     stock: 36,
@@ -550,6 +578,7 @@ export const productData = [
     description: `The e-book is ideal for those who like to read while traveling. Its compact size won't take up much space in your purse or backpack, and the modern E-ink HD Pearl screen will provide maximum comfort even during long reading.
     Support for popular formats will allow you not to think about converting files.`,
     price: 70.65,
+    discountPrice: 70.65,
     discountPercentage: 0,
     rating: 3.9,
     stock: 6,
@@ -571,6 +600,7 @@ export const productData = [
     The watch case adopts 316L austenitic stainless steel, which has unique characteristics of corrosion resistance and scratch resistance, making Xiaomi Watch S1 the most durable Xiaomi watch. Each case is individually polished by traditional watchmakers to give it a precise and streamlined shape. 
     The built-in dual-band GNSS chip supports five major satellite positioning systems: GPS, BeiDou, GLONASS, Galileo and QZSS, as well as advanced optimization algorithms for faster and more accurate positioning, providing you with professional statistics. Supports 117 workout modes including 19 professional workout modes including basketball, tennis, swimming, high intensity interval training and more. Whatever sport you are into, Xiaomi Watch S1 will help you.`,
     price: 257.55,
+    discountPrice: 213.77,
     discountPercentage: 17,
     rating: 4.75,
     stock: 15,
@@ -589,6 +619,7 @@ export const productData = [
     title: 'PocketBook 617',
     description: `PocketBook 617 is a unique budget model. Yes, it is controlled by buttons and lacks a touch screen. But it has a number of options that came from top-class readers. This is a backlight with adjustable color temperature. This is support for Wi-Fi and the PocketBook Cloud book-sharing service. This is a powerful dual-core processor. In a word, PocketBook 617 is a solution for economical lovers of the classics, who, nevertheless, want to get an exclusively modern device.`,
     price: 147.24,
+    discountPrice: 139.88,
     discountPercentage: 5,
     rating: 4.22,
     stock: 48,
@@ -610,9 +641,10 @@ export const productData = [
     The main screen with a diagonal of 6.9 inches and an aspect ratio of 21:9 provides an immersive effect. Experience the smoothness of the interface with a refresh rate of up to 120 Hz. The P3 color gamut reproduces more than 1 billion colors for true-to-life hues. Nano-optical film reduces screen flicker and glare. And thanks to the 1440Hz high-frequency PWM dimming control, the smartphone is comfortable to use even in low-light conditions.
     The innovative Ultra Spectrum Image technology, incorporating Huawei XD Optics image processing algorithms and True-Chroma Image Engine technology, creates bright and high-quality photos with a high level of detail.`,
     price: 864,
+    discountPrice: 794.88,
     discountPercentage: 8,
     rating: 3.52,
-    stock: 0,
+    stock: 1,
     color: 'white',
     brand: 'Huawei',
     category: 'smartphones',
@@ -628,6 +660,7 @@ export const productData = [
     title: 'LG 29WL50S',
     description: `The LG 29WL50S-B [29WL50S-B.ARUZ] monitor is a versatile monitor that is suitable for applications or multimedia content and games. It has a 29-inch IPS panel with a resolution of 2560x1080 pixels, providing high image quality. The HDR10 standard contributes to the achievement of deep shades in the reproduction of the color palette. Anti-reflective coating and eye protection technologies are implemented to enhance comfort. The LG 29WL50S-B [29WL50S-B.ARUZ] monitor is equipped with an HDMI connector and a headphone output. The design of the stand provides the ability to adjust the position by adjusting the angle of inclination forward / backward.`,
     price: 451.52,
+    discountPrice: 370.25,
     discountPercentage: 18,
     rating: 4.35,
     stock: 29,
@@ -647,6 +680,7 @@ export const productData = [
     description: `Samsung Galaxy S21 - designed to be the center of events and attention. Capture stunning 8K photos and videos, and capture stunningly clear 33MP photos directly from your video footage. The revolutionary 64MP AI camera analyzes every frame to automatically make it perfect. The fastest processor and powerful battery with a charge for the whole day will allow you to feel free in any situation.
     Feel the events on the screen as if you were living in their epicenter. Experience the full benefits of Dynamic AMOLED 2X technology on a super-smooth 120Hz 6.2-inch screen with stunning color reproduction and clarity even in bright sunlight. Content-optimised refresh rates deliver the ultimate experience, while reducing the harmful effects of blue light reduces eye strain and allows you to enjoy your viewing for as long as you like.`,
     price: 935.27,
+    discountPrice: 879.15,
     discountPercentage: 6.2,
     rating: 4.88,
     stock: 10,
@@ -664,9 +698,10 @@ export const productData = [
     title: 'BenQ BL2783',
     description: `BenQ BL2783 will take care of users who spend hours on end exploring the Web, watching movies or working in applications. The monitor blends seamlessly into both office and home environments with its classic design and offers you a range of useful features.`,
     price: 395.45,
+    discountPrice: 383.59,
     discountPercentage: 3.2,
     rating: 4.15,
-    stock: 0,
+    stock: 2,
     color: 'black',
     brand: 'BenQ',
     category: 'monitors',
@@ -682,6 +717,7 @@ export const productData = [
     title: 'Asus TUF Gaming A17',
     description: `If computer games are your element, stop the choice on the Asus TUF Gaming A17 laptop. The presented model meets the highest quality standards. The hardware configuration is based on one of the most modern AMD Ryzen 7 processors and GeForce RTX 3050 graphics card - in any game you will feel at your best. Of particular praise is the textured finish at the base of the case, which pairs perfectly with the ribs and the textured finish at the wrists. Before starting mass production of the presented model, it passed a series of strict quality tests.`,
     price: 1698.9,
+    discountPrice: 1410.09,
     discountPercentage: 17.3,
     rating: 4.95,
     stock: 15,
@@ -700,6 +736,7 @@ export const productData = [
     title: 'Mecool KM6 Classic',
     description: `A new compact set-top box from Mecool - KM6 Classic, which has all the necessary functions for a comfortable pastime in front of TV. It is equipped with the latest Amlogic S905X4 processor with four Cortex A55 cores and has a sufficiently powerful quad-core Mali-G31 MP2 graphics controller, which allows you to transfer high-quality video stream to the screen in cutting-edge 4K format at a maximum frame rate of 60fps. This model has 2 GB DDR4 multi-threaded RAM and 16 GB eMMC flash memory, which significantly speeds up the work of the set-top box (fast writing, reading and processing information, fast applications). To expand the permanent memory, there is a slot for memory cards microSD up to 64GB. Mecool KM6 Classic runs on Google-certified Android TV 10.0 operating system, which ensures fast and stable performance. The system is pre-installed with a full set of applications required by the user, and there is also access to the Google Play application library. The presence of a remote control with a built-in microphone will make it easier to control the set-top box using voice commands. The remote control itself is compact and has an ergonomic shape, so it fits perfectly in your hand. The remote control is connected to the set-top box using Bluetooth technology.`,
     price: 67.54,
+    discountPrice: 67.54,
     discountPercentage: 0,
     rating: 3.74,
     stock: 52,
@@ -717,6 +754,7 @@ export const productData = [
     title: 'Harper ABX-230',
     description: `The compact multifunctional media player Harper ABX-230 runs on the Android 9.0 platform, which makes it possible to connect your TV to popular online cinemas, listen to music and download any applications from PlayMarket. The TV box plays 4K UHD video at 60 frames per second, creating a "presence effect". A 1.2GHz ARM Cortex-A53 processor, Mali-450 MP graphics accelerator and 2GB RAM provide the performance you need. 8 GB of internal memory is provided for storing files. The set-top box is equipped with a 2.4 GHz Wi-Fi wireless module, and is also compatible with new and old generation TVs due to the presence of two video outputs: HDMI and AV. It is easy to connect and does not require additional configuration.`,
     price: 39.59,
+    discountPrice: 37.61,
     discountPercentage: 5,
     rating: 3.94,
     stock: 5,
@@ -735,6 +773,7 @@ export const productData = [
     title: 'Ritmix RBK-616',
     description: `Ritmix RBK-616 will be an ideal find for those who prefer an active lifestyle. Due to its light weight and size, the reader does not take up much space, which allows you to take it with you anywhere. The model has an E-ink Carta screen that does not visually differ from ordinary paper, does not glare in the sun and consumes very little energy. The practical arrangement of the function keys allows you to fully control the device even with one hand. 4 GB of internal memory + a slot for a memory card up to 32 GB - this is a whole library that is always at hand!`,
     price: 90.62,
+    discountPrice: 87.9,
     discountPercentage: 3,
     rating: 3.6,
     stock: 35,
@@ -748,6 +787,7 @@ export const productData = [
     title: 'Apple Watch Series 7',
     description: `Apple Watch Series 7 GPS is a smart watch from one of the most popular and well-known brands in the world of technology. Compared to its predecessor, they received a larger display, increased shock resistance, even faster charging and expanded health monitoring functions. The Apple Watch Series 7 GPS is available in several color options and has a wide variety of straps to choose from. The watch is equipped with a rectangular OLED display and Always-On mode. They are able to monitor pulse, blood oxygen saturation, activity during jogging and training. The aluminum body of the device is protected against dust, moisture and minor shocks according to the IP6X/WR50 standard. Additionally, the Apple Watch Series 7 GPS has built-in NFC and GPS.`,
     price: 417,
+    discountPrice: 371.13,
     discountPercentage: 11,
     rating: 4.7,
     stock: 55,
@@ -762,6 +802,7 @@ export const productData = [
     description: `Notebook HP ProBook 450 G8 will be a reliable and loyal assistant, accompanying its owner in the process of every outdoor event. A 2-core Intel Core i3 1115G4 processor and 8 GB of RAM are responsible for the prompt solution of any of the tasks. The safety of your data is guaranteed by the built-in fingerprint, completely eliminating the risk of unauthorized access.
     The standard 15.6-inch screen with a refresh rate of 60 Hz will surprise you with incredibly detailed and rich images in Full-HD resolution. The Wi-Fi 6 module will provide you with worldwide access to the World Wide Web without a single delay. And the powerful battery of the HP ProBook 450 G8 laptop will not disappoint you with a sudden low level of charge for several hours. The cover of the device instantly unfolds 180 degrees, thereby allowing you to demonstrate the necessary graphics or drawings.`,
     price: 1019.25,
+    discountPrice: 866.36,
     discountPercentage: 15,
     rating: 4.35,
     stock: 12,
@@ -779,6 +820,7 @@ export const productData = [
     title: 'Aspor Z6B',
     description: `Smart watches only work with a SIM card that supports the 2G communication standard! Be sure to watch the connection video! Children's smart watch Z6 in a fashionable design. Z6 smart watch with GPS tracker function, SOS button and camera, SIM card support will suit both boys and girls. Location determination may be inaccurate. Accuracy depends on the quality of 2G coverage and distance from cell towers. Using the children's watch, the child will be able to call pre-set numbers, exchange voice messages with parents and, if necessary, give an alarm to adults. And parents will be able at any time without the knowledge of the child to listen to what their child is doing at the moment. The watch has the main functions, watch tracking, a phone book with 10 numbers, three numbers for emergency messages, turning off via a smartphone in remote mode - the child will not be able to turn off the watch himself. Setracker2 App! They do not work with Tele2! The phone must support Google Apps!`,
     price: 14.5,
+    discountPrice: 14.5,
     discountPercentage: 0,
     rating: 3.28,
     stock: 3,
@@ -796,6 +838,7 @@ export const productData = [
     title: 'Dell Inspiron 24',
     description: `A sleek 23.8" all-in-one designed for streaming and surfing the web. With InfinityEdge display, pop-up webcam and Dell Cinema technology. This position may not be available in the selected business segment. Bright image. The 23.8" FHD InfinityEdge display with 8mm bezels looks amazing from almost any angle. Modern and comfortable design. Enjoy stylish design and work in comfort with a stable and compact stand, directional acoustic bar and under-display keyboard compartment. Pleasant sound. A forward-firing acoustic panel with speakers professionally tuned with Waves MaxxAudio Pro technology not only adds style to the unit, but also enhances the sound quality. Stylish workspace. The elegant silver model is available with a choice of two bases: bow or A-shaped. The arc stand is an easel stand with forward facing speakers with a silver mesh finish for better sound quality. In the A-stand model, the display rests on two triangular legs. The A-stand is offered with forward-firing mesh-covered speakers.`,
     price: 1839.2,
+    discountPrice: 1434.58,
     discountPercentage: 22,
     rating: 4.58,
     stock: 3,
@@ -814,6 +857,7 @@ export const productData = [
     title: 'Apple iMac Retina 4K',
     description: `A desktop that immerses you in content. Literally. This idea is at the heart of the modern iMac - and today it is more relevant than ever. Brand-new processors, innovative graphics technologies, advanced storage, and impressive bandwidth connectors are all part of the new iMac. And its Retina display is able to bring any picture to life, because it has no equal among iMacs in terms of brightness and color quality. Working on iMac is now even more interesting and exciting.`,
     price: 2552.67,
+    discountPrice: 2144.24,
     discountPercentage: 16,
     rating: 4.72,
     stock: 31,
@@ -835,6 +879,7 @@ export const productData = [
     The built-in wireless 2-band Wi-Fi module complies with the 802.11 ac standard, the connection speed can reach 867 Mbps and the gigabit Ethernet port allows you to connect to a high-speed Internet connection by wire. To connect external wireless devices, there is a built-in Bluetooth 4.2 module with LE technology.
     The set-top box can easily handle both 4K 60 fps streaming from YouTube and processing modern 3D games from Google Play at a high level of detail. This is a great device for home use and easy to take with you on a trip or business trip.`,
     price: 116.1,
+    discountPrice: 110.29,
     discountPercentage: 5,
     rating: 3.69,
     stock: 1,
@@ -856,6 +901,7 @@ export const productData = [
     AMOLED display with over 1 billion colors. The Xiaomi 11T Pro's 6.67-inch screen is excellent in terms of brightness, contrast, color calibration and resolution. The frame rate reaches 120 Hz. Supports HDR10+, Dolby Vision and memes.
     The smartphone's dual speakers were developed by Harman/Kardon. They deliver high quality 360° surround sound with Dolby Atmos technology.`,
     price: 764.43,
+    discountPrice: 695.63,
     discountPercentage: 8.5,
     rating: 4.55,
     stock: 34,
@@ -874,6 +920,7 @@ export const productData = [
     title: 'Apple Watch Series 6',
     description: `Apple Watch Series 6 lets you measure your blood oxygen levels with a stunning new sensor and dedicated app. View your fitness metrics on an improved, always-on Retina display that's now 2.5x brighter outdoors, in idle mode, with your watch hand down. Set up a set of pre-sleep activities and track your sleep patterns. Answer calls and messages right from your wrist. It's a powerful device that makes it much easier to live a healthier, more active and connected life.`,
     price: 317,
+    discountPrice: 291.64,
     discountPercentage: 7.5,
     rating: 4.43,
     stock: 85,
@@ -893,6 +940,7 @@ export const productData = [
     description: `Push the boundaries of what's possible with this Philips B Line frameless monitor with a 16:10 aspect ratio. This eco-friendly monitor of the next level has many useful functions.
     The Philips monitor is a simple solution for laptops with a docking station and connection via a single cable. A single USB cable with dual mesh and Type-C and Type-A connectors provides video playback and Ethernet, DisplayLink and charging functions. The Windows Hello webcam guarantees increased security.`,
     price: 393,
+    discountPrice: 365.49,
     discountPercentage: 6.5,
     rating: 3.9,
     stock: 24,
@@ -914,6 +962,7 @@ export const productData = [
     Meets all modern requirements. A screen with almost imperceptible frames, a refined thin body and leather inserts - this monoblock is the very embodiment of elegance. Conveniently located ports on the side and back of the device provide unhindered access and allow you to get rid of unnecessary wires.
     Easily stream and view videos with a retractable camera with privacy technology that safely retracts when not in use. A powerful and reliable processor will help you cope with the most difficult tasks.`,
     price: 772.5,
+    discountPrice: 718.42,
     discountPercentage: 6.7,
     rating: 4.56,
     stock: 45,
@@ -935,6 +984,7 @@ export const productData = [
     In order to quickly process information and quickly perform user tasks, the TV set-top box has a powerful Amlogic Cortex-A53 Quad-Core 64-bit processor and Mali-450 graphics.
     As for the connection interface, it is, as always, universal. The Mi Box S TV set-top box is one of the first of its kind, which supports the DOLBY + DTS format and provides high sound quality.`,
     price: 64,
+    discountPrice: 57.6,
     discountPercentage: 9.5,
     rating: 4.38,
     stock: 77,
