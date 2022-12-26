@@ -108,8 +108,9 @@ export function createProductGridCard(product: Product): HTMLLIElement {
       </div>
     </div>
     </a>
-    <button class="product__buy-button buy-button catalog-grid__buy-button add-to-cart" data-button-id="${product.id}"><span
-    class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
+    <button class="product__buy-button buy-button catalog-grid__buy-button add-to-cart" data-button-id="${
+      product.id
+    }"></button>
 `;
   return productItem;
 }
@@ -159,8 +160,9 @@ function createProductListCard(product: Product): HTMLLIElement {
         </div>
         </div>
     </a>
-    <button class="product__buy-button buy-button catalog-list__buy-button add-to-cart" data-button-id="${product.id}"><span
-      class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
+    <button class="product__buy-button buy-button catalog-list__buy-button add-to-cart" data-button-id="${
+      product.id
+    }"></button>
 `;
   return productItem;
 }
