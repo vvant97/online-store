@@ -21,8 +21,7 @@
   position: relative;
   z-index: 1;
 }
-/* Wrapper for all connect elements.
- */
+
 .noUi-connects {
   overflow: hidden;
   z-index: 0;
@@ -42,15 +41,12 @@
   transform-origin: 0 0;
   transform-style: flat;
 }
-/* Offset direction
- */
+
 .noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
   left: 0;
   right: auto;
 }
-/* Give origins 0 height/width so they don't interfere with clicking the
- * connect elements.
- */
+
 .noUi-vertical .noUi-origin {
   top: -100%;
   width: 0;
@@ -75,8 +71,7 @@
 .noUi-state-drag * {
   cursor: inherit !important;
 }
-/* Slider size and handle placement;
- */
+
 .noUi-horizontal {
   height: 18px;
 }
@@ -99,9 +94,7 @@
   left: -17px;
   right: auto;
 }
-/* Styling;
- * Giving the connect element a border radius causes issues with using transform: scale
- */
+
 .noUi-target {
   background: #fafafa;
   border-radius: 4px;
@@ -114,8 +107,7 @@
 .noUi-connect {
   background: #3fb8af;
 }
-/* Handles and cursors;
- */
+
 .noUi-draggable {
   cursor: ew-resize;
 }
@@ -132,8 +124,7 @@
 .noUi-active {
   box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #ddd, 0 3px 6px -3px #bbb;
 }
-/* Handle stripes;
- */
+
 .noUi-handle:before,
 .noUi-handle:after {
   content: '';
@@ -158,8 +149,7 @@
 .noUi-vertical .noUi-handle:after {
   top: 17px;
 }
-/* Disabled state;
- */
+
 [disabled] .noUi-connect {
   background: #b8b8b8;
 }
@@ -168,9 +158,7 @@
 [disabled] .noUi-handle {
   cursor: not-allowed;
 }
-/* Base;
- *
- */
+
 .noUi-pips,
 .noUi-pips * {
   -moz-box-sizing: border-box;
@@ -180,9 +168,7 @@
   position: absolute;
   color: #999;
 }
-/* Values;
- *
- */
+
 .noUi-value {
   position: absolute;
   white-space: nowrap;
@@ -192,9 +178,7 @@
   color: #ccc;
   font-size: 10px;
 }
-/* Markings;
- *
- */
+
 .noUi-marker {
   position: absolute;
   background: #ccc;
@@ -234,9 +218,7 @@
 .noUi-marker-horizontal.noUi-marker-large {
   height: 15px;
 }
-/* Vertical layout;
- *
- */
+
 .noUi-pips-vertical {
   padding: 0 10px;
   height: 100%;
