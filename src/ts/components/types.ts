@@ -19,4 +19,5 @@ export interface ProductItem {
   price: number;
   discount: number;
   quantity: number;
+  priceByOne: number;
 }

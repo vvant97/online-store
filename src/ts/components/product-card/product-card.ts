@@ -119,7 +119,7 @@ export const createProductCard = (id: number) => {
     const productQuantity = document.querySelector('.product-info__quantity-wrapper') as HTMLDivElement;
 
     productInfoContainer.prepend(createRating(product.rating));
-    productQuantity.append(createProductQuantity(product.stock));
+    productQuantity.append(createProductQuantity(product.stock, product.id));
     productBody.before(createBreadcrumbs(product.title));
 
     createImageSlider(product.images);

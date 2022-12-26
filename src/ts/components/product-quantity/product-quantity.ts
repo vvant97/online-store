@@ -1,19 +1,28 @@
+import { productsStorage, updateProductInfo } from '../cart/cart';
+import { productData } from '../productData';
+
 const handleQuantityEvents = (event: Event) => {
   const target = (<HTMLElement>event.target).closest('.product-quantity__control') as HTMLElement;
   const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
+  const productId = +(<string>(<HTMLSpanElement>document.querySelector('.product-info__id')).textContent);
+  const stock = <number>productData.find((product) => product.id === productId)?.stock;
 
   if (target.classList.contains('product-quantity__plus')) {
-    quantity.value = `${+quantity.value + 1}`;
+    if (+quantity.value >= stock) {
+      quantity.value = `${stock}`;
+    } else {
+      quantity.value = `${+quantity.value + 1}`;
+    }
   } else {
     if (+quantity.value > 1) {
       quantity.value = `${+quantity.value - 1}`;
     } else {
-      throw new Error('The number must be at least 1');
+      quantity.value = `1`;
     }
   }
 };
 
-export const createProductQuantity = (stock: number) => {
+export const createProductQuantity = (stock: number, id: number) => {
   const container = document.createElement('div');
   const input = document.createElement('input');
   const controls = document.createElement('div');
@@ -26,8 +35,7 @@ export const createProductQuantity = (stock: number) => {
   container.className = 'product-quantity';
   input.className = 'product-quantity__input';
   input.type = 'number';
-  input.min = '1';
-  input.value = '1';
+  input.value = productsStorage.loadSome(id) ? productsStorage.loadSome(id).quantity.toString() : '1';
   controls.className = 'product-quantity__controls';
   plus.className = 'product-quantity__plus product-quantity__control';
   minus.className = 'product-quantity__minus product-quantity__control';
@@ -41,10 +49,22 @@ export const createProductQuantity = (stock: number) => {
 
   if (!isAvailable) {
     input.disabled = true;
-    input.min = '0';
     input.value = '0';
   } else {
     controls.addEventListener('click', handleQuantityEvents);
+    input.addEventListener('change', (event: Event) => {
+      const productId = +(<string>(<HTMLSpanElement>document.querySelector('.product-info__id')).textContent);
+      const stock = <number>productData.find((product) => product.id === productId)?.stock;
+      const target = <HTMLInputElement>event.currentTarget;
+
+      if (+target.value >= stock) {
+        target.value = `${stock}`;
+      } else if (+target.value < 1) {
+        target.value = `1`;
+      }
+
+      updateProductInfo();
+    });
   }
 
   return container;
