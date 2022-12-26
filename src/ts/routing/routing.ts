@@ -1,5 +1,5 @@
 import { errorComponent } from '../components/404/404';
-import { hideFilter, showFilter } from '../components/filter/filter';
+import { renderFilters } from '../components/filter/filter';
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
 import { catalogComponent, renderCatalog } from '../components/renderCatalog/renderCatalog';
@@ -34,8 +34,7 @@ export function routing() {
           document.title = 'Elyte';
           content.innerHTML = routes[pathname];
           renderCatalog(productData);
-          showFilter();
-          hideFilter();
+          renderFilters(productData);
           break;
         case '/cart':
           document.title = 'Cart';
