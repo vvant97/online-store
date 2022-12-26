@@ -46,16 +46,16 @@
     @include font($fontSize: 1.4rem);
 
     &[data-availability='in-stock'] {
-      color: #198754;
+      color: $colorSuccess;
     }
 
     &[data-availability='out-of-stock'] {
-      color: #871919;
+      color: $colorRemove;
     }
   }
 
   &__availability-icon {
-    @include font($fontSize: 1.6rem, $color: #198754);
+    @include font($fontSize: 1.6rem, $color: $colorSuccess);
   }
 
   &__brand-title {
@@ -93,6 +93,50 @@
     @include size($padding: 15px 35px);
 
     min-width: 200px;
+  }
+
+  &__cart-button {
+    &[data-is-in-cart="true"] {
+      border: 2px solid $colorSuccess;
+      color: $colorSuccess;
+  
+      &:hover {
+        border: 2px solid $colorFontPrimary;
+        color: $colorFontLight;
+      }
+  
+      &:after {
+        @include font($fontSize: 1.6rem, $color: $colorSuccess);
+        @include size($margin: 0 0 0 10px);
+  
+        content: "\F23A";
+        position: relative;
+        top: 1px;
+        font-family: "bootstrap-icons";
+        transition: $transition;
+      }
+  
+      &:hover:after {
+        color: $colorFontLight;
+      }
+    }
+  
+    &[data-is-in-cart="false"] {
+      &:after {
+        @include font($fontSize: 1.6rem);
+        @include size($margin: 0 0 0 10px);
+  
+        content: "\f242";
+        position: relative;
+        top: 1px;
+        font-family: "bootstrap-icons";
+        transition: $transition;
+      }
+  
+      &:hover:after {
+        color: $colorFontLight;
+      }
+    }
   }
 
   &__id-title {

@@ -13,7 +13,6 @@
 
     position: relative;
     border: $border;
-    background: $colorBgSecondary;
     overflow: hidden;
 
     @media screen and (max-width: $desktop) {
@@ -73,7 +72,6 @@
     @include size($width: 110px, $height: 120px);
 
     border: $border;
-    background: $colorBgSecondary;
     cursor: pointer;
 
     &:hover {

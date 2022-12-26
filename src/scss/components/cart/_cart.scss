@@ -43,8 +43,8 @@
   }
 
   &__main {
-    flex: 1 0 auto;
-    padding: 10px 15px;
+    flex: 1;
+    overflow: scroll;
     border-top: 1px solid $colorBorder;
   }
 
@@ -142,5 +142,54 @@
 
   &__button {
     @include button;
+  }
+
+  &__item {
+    @include flex($gap: 15px);
+    @include size($padding: 15px);
+
+    border-top: $border;
+
+    &:nth-of-type(1) {
+      border-top: none;
+    }
+  }
+
+  &__product-image {
+    @include size($width: 65px, $height: 77px);
+
+    border: $border;
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__product-wrapper {
+    flex: 1;
+  }
+
+  &__product-title {
+    @include size($margin: 5px 0 0);
+    @include font($fontSize: 1.4rem);
+  }
+
+  &__product-info {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($margin: 10px 0 0);
+  }
+
+  &__product-quantity {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+  }
+
+  &__product-price {
+    @include size($margin: 5px 0 0);
+    @include font($fontSize: 1.4rem);
+  }
+
+  &__product-delete {
+    @include font($fontSize: 1.6rem, $color: $colorRemove);
+    
+    cursor: pointer;
   }
 }
