@@ -5,6 +5,13 @@ import { createProductQuantity, disableProductButtons } from '../product-quantit
 import { Product } from '../types';
 import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 
+export const getDiscountPrice = (price: number, discountNumber: number): number => {
+  const discount = Math.round(discountNumber);
+  const newPrice = (price - (price * (discount / 100))).toFixed(2);
+
+  return +newPrice;
+};
+
 const setProductPrice = (price: number, discountNumber: number) => {
   const discount = Math.round(discountNumber);
   const actualPriceContainer = document.querySelector('.product-info__actual-price') as HTMLParagraphElement;
@@ -12,8 +19,8 @@ const setProductPrice = (price: number, discountNumber: number) => {
   const discountContainer = document.querySelector('.product-info__discount') as HTMLSpanElement;
 
   if (discount) {
-    const newPrice = price - price * (discount / 100);
-    actualPriceContainer.textContent = `$${newPrice.toFixed(2)}`;
+    const newPrice = getDiscountPrice(price, discountNumber);
+    actualPriceContainer.textContent = `${newPrice}`;
     oldPriceContainer.textContent = `$${price.toFixed(2)}`;
     discountContainer.textContent = `-${discount}%`;
   } else {
@@ -90,7 +97,7 @@ export const createProductCard = (id: number) => {
       <p class="product-info__quantity-title">Quantity:</p>
     </div>
     <div class="product-info__buttons-wrapper">
-      <button class="product-info__cart-button product-info__cart-button_rounded">Add to cart</button>
+      <button class="product-info__cart-button product-info__cart-button_rounded add-to-cart" data-button-id="${product.id}" data-is-in-cart="false">Add to cart</button>
       <button class="product-info__buy-button">Buy now</button>
     </div>
     <p class="product-info__id-title">

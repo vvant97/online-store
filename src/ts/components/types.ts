@@ -12,3 +12,12 @@ export type Product = {
   category: string;
   images: string[];
 };
+
+export interface ProductItem {
+  image: string,
+  title: string;
+  id: number;
+  price: number;
+  discount: number;
+  quantity: number;
+}

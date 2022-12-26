@@ -68,6 +68,7 @@ export const catalogComponent = `
 export function createProductGridCard(product: Product): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-grid__product';
+  productItem.dataset.productId = `${product.id}`;
 
   productItem.innerHTML = `
     <a class="products__link" href="/product-${product.id}">
@@ -107,7 +108,7 @@ export function createProductGridCard(product: Product): HTMLLIElement {
       </div>
     </div>
     </a>
-    <button class="product__buy-button buy-button catalog-grid__buy-button"><span
+    <button class="product__buy-button buy-button catalog-grid__buy-button add-to-cart" data-button-id="${product.id}"><span
     class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;
@@ -116,6 +117,7 @@ export function createProductGridCard(product: Product): HTMLLIElement {
 function createProductListCard(product: Product): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-list__product';
+  productItem.dataset.productId = `${product.id}`;
 
   productItem.innerHTML = `
     <a class="products__link" href="/product-${product.id}">
@@ -157,7 +159,7 @@ function createProductListCard(product: Product): HTMLLIElement {
         </div>
         </div>
     </a>
-    <button class="product__buy-button buy-button catalog-list__buy-button"><span
+    <button class="product__buy-button buy-button catalog-list__buy-button add-to-cart" data-button-id="${product.id}"><span
       class="buy-button__text">Add</span><i class="bi bi-cart2"></i></button>
 `;
   return productItem;

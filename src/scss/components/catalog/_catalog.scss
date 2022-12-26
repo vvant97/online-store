@@ -201,7 +201,7 @@
   &__buy-button {
     position: absolute;
     top: 50%;
-    left: 28%;
+    left: 50%;
     opacity: 0;
     visibility: hidden;
     background-color: $colorBg;
@@ -210,6 +210,7 @@
     font-weight: 700;
     box-shadow: 0 0 15px #00000026;
     border-radius: 0.4rem;
+    transform: translateX(-50%);
     transition: all 0.3s ease-out 0s;
     cursor: pointer;
     z-index: 3;
