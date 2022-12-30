@@ -1,0 +1,114 @@
+%productInfo {
+  @include font($fontSize: 1.4rem);
+}
+
+%productInfoSpan {
+  font-weight: 300;
+}
+
+.product-cart {
+  @include flex($gap: 30px);
+  @include size($padding: 100px 0 50px 0);
+
+  &__info {
+    @include size($padding: 30px);
+
+    flex: 0 0 65%;
+    box-shadow: $shadow;
+  }
+
+  &__checkout {
+    @include size($padding: 30px);
+
+    align-self: flex-start;
+    flex: 1;
+    background: $colorBgSecondary;
+    box-shadow: $shadow;
+  }
+
+  &__title-area {
+    @include size($padding: 12px 0);
+
+    border-top: $border;
+    border-bottom: $border;
+  }
+
+  &__title {
+    @include font($fontSize: 1.8rem);
+  }
+
+  &__product-list {
+    @include flex($flexDirection: column);
+  }
+
+  &__product-item {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($padding: 30px 0);
+
+    border-top: $border;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      padding: 30px 0 0;
+    }
+  }
+
+  &__product-item-info {
+    @include flex($alignItems: center, $gap: 15px);
+  }
+
+  &__product-item-image {
+    @include size($width: 100px, $height: 120px);
+
+    border: $border;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &__product-item-about {
+    @include flex($flexDirection: column, $gap: 8px);
+  }
+
+  &__product-item-id,
+  &__product-item-title,
+  &__product-item-price,
+  &__product-item-brand,
+  &__product-item-category {
+    @extend %productInfo;
+  }
+
+  &__product-item-id span,
+  &__product-item-title span,
+  &__product-item-price span,
+  &__product-item-brand span,
+  &__product-item-category span {
+    @extend %productInfoSpan;
+
+    padding-left: 5px;
+  }
+
+  &__product-item-old-price {
+    text-decoration: line-through;
+  }
+
+  &__product-item-price &__product-item-discount {
+    @include font($fontSize: 1.4rem, $color: $colorFontLight);
+    @include size($padding: 3px 8px);
+    
+    background: $colorFontPrimary;
+  }
+
+  &__product-item-title {
+    &:visited {
+      color: $colorFontPrimary;
+    }
+
+    &:hover {
+      color: $colorParagraph;
+    }
+  }
+}

@@ -159,7 +159,7 @@
     @include size($width: 65px, $height: 77px);
 
     border: $border;
-    background-size: 85%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }

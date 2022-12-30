@@ -20,7 +20,7 @@ const setProductPrice = (price: number, discountNumber: number) => {
 
   if (discount) {
     const newPrice = getDiscountPrice(price, discountNumber);
-    actualPriceContainer.textContent = `${newPrice}`;
+    actualPriceContainer.textContent = `$${newPrice}`;
     oldPriceContainer.textContent = `$${price.toFixed(2)}`;
     discountContainer.textContent = `-${discount}%`;
   } else {

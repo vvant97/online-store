@@ -21,4 +21,9 @@ export interface ProductItem {
   discount: number;
   quantity: number;
   priceByOne: number;
+  brand: string;
+  category: string;
+  rating: number;
+  oldPrice: number;
+  discountPercent: number;
 }

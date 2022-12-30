@@ -4,6 +4,7 @@ import { Product, ProductItem } from '../types';
 import { getDiscountPrice } from '../product-card/product-card';
 import ProductsStorage from '../../storage/ProductsStorage';
 import CartState from '../../storage/CartState';
+import { renderCartPage } from '../cart-page/cart-page';
 
 export const productsStorage = new ProductsStorage('cartProducts');
 const cartState = new CartState('cartAsideItems', '.cart__list');
@@ -67,6 +68,11 @@ const addToCart = (id: number) => {
   const quantity = getProductQuantity();
   const price = ((discount || product.price) * quantity).toFixed(2);
   const productsList = document.querySelector('.cart__list') as HTMLUListElement;
+  const brand = product.brand;
+  const category = product.category;
+  const rating = product.rating;
+  const oldPrice = product.price;
+  const discountPercent = Math.floor(product.discountPercentage);
 
   const template = `
     <li class="cart__item" data-product-id="${id}">
@@ -92,6 +98,11 @@ const addToCart = (id: number) => {
     discount,
     quantity,
     priceByOne: discount || product.price,
+    brand,
+    category,
+    rating,
+    oldPrice,
+    discountPercent,
   };
 
   productsStorage.save(productItemData);
@@ -197,4 +208,12 @@ export const initCart = () => {
   checkAddToCartAvailability();
   watchCart();
   updateCart();
+
+  document.addEventListener('click', (event: Event) => {
+    const target = (<HTMLAnchorElement>event.target).classList.contains('go-to-cart');
+
+    if (target) {
+      renderCartPage();
+    }
+  });
 };
