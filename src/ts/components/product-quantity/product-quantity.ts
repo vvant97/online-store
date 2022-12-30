@@ -20,6 +20,8 @@ const handleQuantityEvents = (event: Event) => {
       quantity.value = `1`;
     }
   }
+
+  updateProductInfo();
 };
 
 export const createProductQuantity = (stock: number, id: number) => {
