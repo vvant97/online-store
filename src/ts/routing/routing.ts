@@ -2,7 +2,7 @@ import { errorComponent } from '../components/404/404';
 import { renderFilters } from '../components/filter/filter';
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
-import { catalogComponent, renderCatalog } from '../components/renderCatalog/renderCatalog';
+import { catalogComponent, controlCatalogView } from '../components/renderCatalog/renderCatalog';
 
 export function routing() {
   const content = document.querySelector('#app') as HTMLDivElement;
@@ -19,30 +19,31 @@ export function routing() {
   };
 
   const loaderComponents = (pathname: string) => {
-    window.history.pushState({}, pathname, window.location.origin + pathname);
+    window.history.pushState({}, pathname, window.location.origin + pathname + window.location.search);
+
     if (pathname.slice(1, 8) == 'product') {
       document.title = 'Product';
       content.innerHTML = routes['/product'];
       const productId = +pathname.split('-')[1];
       createProductCard(productId);
-      window.addEventListener('popstate', () => {
-        loaderComponents('/');
-      });
+      window.history.replaceState({}, pathname, window.location.origin + pathname);
     } else {
       switch (pathname) {
         case '/':
           document.title = 'Elyte';
           content.innerHTML = routes[pathname];
-          renderCatalog(productData);
+          controlCatalogView(productData);
           renderFilters(productData);
           break;
         case '/cart':
           document.title = 'Cart';
           content.innerHTML = routes[pathname];
+          window.history.replaceState({}, pathname, window.location.origin + pathname);
           break;
         default:
           document.title = 'Error 404';
           content.innerHTML = routes['404'];
+          window.history.replaceState({}, pathname, window.location.origin + pathname);
       }
     }
   };
