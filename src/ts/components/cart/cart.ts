@@ -5,7 +5,7 @@ import { getDiscountPrice } from '../product-card/product-card';
 import ProductsStorage from '../../storage/ProductsStorage';
 import CartState from '../../storage/CartState';
 
-const productsStorage = new ProductsStorage('cartProducts');
+export const productsStorage = new ProductsStorage('cartProducts');
 const cartState = new CartState('cartAsideItems', '.cart__list');
 
 const showCart = () => {
@@ -36,7 +36,7 @@ const hideCart = () => {
 const getProductQuantity = (): number => {
   const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
 
-  return (quantity) ? +quantity.value : 1;
+  return quantity ? +quantity.value : 1;
 };
 
 const setProductsAmount = (...selectors: string[]) => {
@@ -67,7 +67,7 @@ const addToCart = (id: number) => {
   const quantity = getProductQuantity();
   const price = ((discount || product.price) * quantity).toFixed(2);
   const productsList = document.querySelector('.cart__list') as HTMLUListElement;
-  
+
   const template = `
     <li class="cart__item" data-product-id="${id}">
       <div class="cart__product-image" style="background-image: url('${product.images[0]}')"></div>
@@ -91,6 +91,7 @@ const addToCart = (id: number) => {
     price: +price,
     discount,
     quantity,
+    priceByOne: discount || product.price,
   };
 
   productsStorage.save(productItemData);
@@ -107,8 +108,8 @@ const checkAddToCartAvailability = () => {
   });
 
   products.forEach((product) => {
-    const cartButton = document.querySelector(`.add-to-cart[data-button-id="${product.id}"]`) as HTMLButtonElement;    
-    
+    const cartButton = document.querySelector(`.add-to-cart[data-button-id="${product.id}"]`) as HTMLButtonElement;
+
     if (cartButton) {
       cartButton.dataset.isInCart = 'true';
       cartButton.textContent = 'In cart';
@@ -123,7 +124,7 @@ const watchCart = () => {
     if (target.closest('.add-to-cart')) {
       const cartButton = target.closest('.add-to-cart') as HTMLButtonElement;
       const isInCart = cartButton.dataset.isInCart === 'true';
-      const productId = +<string>cartButton.dataset.buttonId;
+      const productId = +(<string>cartButton.dataset.buttonId);
 
       if (isInCart) {
         const cartItem = document.querySelector(`.cart__item[data-product-id="${productId}"]`) as HTMLLIElement;
@@ -141,7 +142,7 @@ const watchCart = () => {
 
     if (target.closest('.cart__product-delete')) {
       const cartItem = target.closest('.cart__item') as HTMLLIElement;
-      const productId = +<string>cartItem.dataset.productId;
+      const productId = +(<string>cartItem.dataset.productId);
 
       cartItem.remove();
       productsStorage.removeSome(productId);
@@ -154,6 +155,39 @@ const watchCart = () => {
   });
 };
 
+export const updateProductInfo = () => {
+  const productId = +(<string>(<HTMLSpanElement>document.querySelector('.product-info__id')).textContent);
+  const productToReplace = productsStorage.loadSome(productId);
+
+  if (!productToReplace) {
+    return;
+  }
+
+  const quantity = getProductQuantity();
+  const price = +(productToReplace.priceByOne * quantity).toFixed(2);
+  const cartAsideItem = document.querySelector(`.cart__item[data-product-id="${productId}"]`) as HTMLLIElement;
+  const cartAsideProductQuantity = cartAsideItem.querySelector('.cart__product-quantity') as HTMLParagraphElement;
+  const cartAsideProductPrice = cartAsideItem.querySelector('.cart__product-price') as HTMLParagraphElement;
+
+  productsStorage.removeSome(productId);
+  productToReplace.quantity = quantity;
+  productToReplace.price = price;
+  cartAsideProductQuantity.textContent = `${quantity}  x`;
+  cartAsideProductPrice.textContent = `$${price}`;
+  productsStorage.save(productToReplace);
+  setTotalPrice('.header__total-amount', '.cart__total');
+  setProductsAmount('.cart__amount', '.header__cart-quantity');
+  cartState.save();
+};
+
+export const updateCart = () => {
+  const quantityControls = document.querySelector('.product-quantity__controls') as HTMLDivElement;
+
+  if (quantityControls) {
+    quantityControls.addEventListener('click', updateProductInfo);
+  }
+};
+
 export const initCart = () => {
   showCart();
   hideCart();
@@ -162,4 +196,5 @@ export const initCart = () => {
   cartState.setState();
   checkAddToCartAvailability();
   watchCart();
+  updateCart();
 };
