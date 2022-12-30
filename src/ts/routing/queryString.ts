@@ -4,9 +4,8 @@ import { Product } from '../components/types';
 export function encodeQueryString(key: string, values: Array<string>) {
   const params = new URLSearchParams(location.search);
   let queryString = '';
-  if (values.length === 0 && !params.get('view')) {
-    window.history.pushState({}, location.pathname, `${location.pathname}`);
-  } else if (values.length === 0 && params.get('view')) {
+
+  if (values.length === 0) {
     params.delete(key);
     window.history.pushState({}, location.pathname, `${location.pathname}?${params}`);
   } else if (values.length === 1) {
@@ -17,6 +16,10 @@ export function encodeQueryString(key: string, values: Array<string>) {
     queryString = `${values.join('\u2195')}`;
     params.set(key, queryString);
     window.history.pushState({}, location.pathname, `${location.pathname}?${params}`);
+  }
+
+  if (!params.toString().length) {
+    window.history.pushState({}, location.pathname, `${location.pathname}`);
   }
 }
 
@@ -48,7 +51,7 @@ function checkView(filteredProducts: Product[]) {
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
 
-  if ((params.has('view') && params.has('category')) || params.has('brand') || params.has('color')) {
+  if (params.has('view') && (params.has('category') || params.has('brand') || params.has('color'))) {
     const catalogView = params.get('view');
     if (catalogView === 'list') {
       gridViewButton.classList.remove('view-mode-active');
