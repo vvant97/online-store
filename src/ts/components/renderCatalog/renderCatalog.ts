@@ -1,3 +1,4 @@
+import { decodeQueryString, encodeQueryString } from '../../routing/queryString';
 import { Product } from '../types';
 
 export const catalogComponent = `
@@ -110,7 +111,7 @@ export function createProductGridCard(product: Product): HTMLLIElement {
     </a>
     <button class="product__buy-button buy-button catalog-grid__buy-button add-to-cart" data-button-id="${
       product.id
-    }"></button>
+    }">Add to cart</button>
 `;
   return productItem;
 }
@@ -162,50 +163,58 @@ function createProductListCard(product: Product): HTMLLIElement {
     </a>
     <button class="product__buy-button buy-button catalog-list__buy-button add-to-cart" data-button-id="${
       product.id
-    }"></button>
+    }">Add to cart</button>
 `;
   return productItem;
 }
 
-export function renderCatalog(dataList: Product[] | null) {
+export function renderCatalog(dataList: Product[]) {
   const catalogContainer = document.querySelector('.products__body') as HTMLDivElement;
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
-  gridViewButton.addEventListener('click', () => {
-    if (listViewButton.classList.contains('view-mode-active')) {
-      listViewButton.classList.remove('view-mode-active');
-      gridViewButton.classList.add('view-mode-active');
-      renderCatalog(dataList);
-    }
-  });
-  listViewButton.addEventListener('click', () => {
-    if (gridViewButton.classList.contains('view-mode-active')) {
-      gridViewButton.classList.remove('view-mode-active');
-      listViewButton.classList.add('view-mode-active');
-      renderCatalog(dataList);
-    }
-  });
+  catalogContainer.innerHTML = '';
 
-  if (gridViewButton.classList.contains('view-mode-active') && dataList) {
+  if (gridViewButton.classList.contains('view-mode-active') && dataList.length) {
     const catalogGridUl = document.createElement('ul');
     catalogGridUl.className = 'products__catalog catalog-grid';
-    catalogContainer.textContent = '';
     const productList = [...dataList];
     const listCards = productList.map(createProductGridCard);
     catalogGridUl.append(...listCards);
     catalogContainer.append(catalogGridUl);
-  } else if (listViewButton.classList.contains('view-mode-active') && dataList) {
+  } else if (listViewButton.classList.contains('view-mode-active') && dataList.length) {
     const catalogListUl = document.createElement('ul');
     catalogListUl.className = 'products__catalog catalog-list';
-    catalogContainer.textContent = '';
     const productList = [...dataList];
     const listCards = productList.map(createProductListCard);
     catalogListUl.append(...listCards);
     catalogContainer.append(catalogListUl);
   } else {
-    catalogContainer.textContent = '';
     const message = document.createElement('p') as HTMLParagraphElement;
     message.innerText = "Sorry, there're no products found";
     catalogContainer.append(message);
   }
+}
+
+export function controlCatalogView(dataList: Product[]) {
+  const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
+  const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
+  decodeQueryString(dataList);
+
+  gridViewButton.addEventListener('click', () => {
+    if (listViewButton.classList.contains('view-mode-active')) {
+      listViewButton.classList.remove('view-mode-active');
+      gridViewButton.classList.add('view-mode-active');
+      encodeQueryString('view', ['grid']);
+      decodeQueryString(dataList);
+    }
+  });
+
+  listViewButton.addEventListener('click', () => {
+    if (gridViewButton.classList.contains('view-mode-active')) {
+      gridViewButton.classList.remove('view-mode-active');
+      listViewButton.classList.add('view-mode-active');
+      encodeQueryString('view', ['list']);
+      decodeQueryString(dataList);
+    }
+  });
 }

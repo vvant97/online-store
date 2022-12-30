@@ -1,3 +1,4 @@
+import { decodeQueryString, encodeQueryString } from '../../routing/queryString';
 import { Product } from '../types';
 
 export function renderCategoryFilter(data: Product[]) {
@@ -17,4 +18,29 @@ export function renderCategoryFilter(data: Product[]) {
   categoryContainer.append(...categoryItems);
   const categoryFilterContainer = document.querySelector('.filter__category-wrapper') as HTMLDivElement;
   categoryFilterContainer.append(categoryContainer);
+  filterCategoryItems(data);
+}
+
+function filterCategoryItems(data: Product[]) {
+  const categoryFilterInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll<HTMLInputElement>('.category');
+
+  const params = new URLSearchParams(location.search);
+  let filteredCategory: Array<string> = [];
+  if (params.toString() && params.has('category')) filteredCategory = params.get('category')?.split('\u2195') || [];
+
+  [...categoryFilterInputs].forEach((input) => {
+    if (filteredCategory.some((item) => item === input.value)) {
+      input.checked = true;
+      decodeQueryString(data);
+    }
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        filteredCategory.push(input.value);
+      } else {
+        filteredCategory = filteredCategory.filter((item) => item !== input.value);
+      }
+      encodeQueryString('category', filteredCategory);
+      decodeQueryString(data);
+    });
+  });
 }
