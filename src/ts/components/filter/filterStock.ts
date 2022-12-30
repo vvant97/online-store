@@ -1,5 +1,6 @@
 import { Product } from '../types';
 import * as noUiSlider from 'nouislider';
+import { decodeQueryString, encodeQueryString } from '../../routing/queryString';
 
 export function renderStockFilter(data: Product[]) {
   const stockData = data.map((item) => item.stock);
@@ -16,16 +17,40 @@ export function renderStockFilter(data: Product[]) {
     <div class="slider__input max-stock-value">${maxStock}</div>
   `;
 
-  noUiSlider.create(stockSlider, {
-    start: [minStock, maxStock],
-    step: 1,
-    connect: true,
-    range: {
-      min: [minStock],
-      max: [maxStock],
-    },
-  });
+  noUiSlider
+    .create(stockSlider, {
+      start: [minStock, maxStock],
+      step: 1,
+      connect: true,
+      range: {
+        min: [minStock],
+        max: [maxStock],
+      },
+    })
+    .on('change', (values: (string | number)[]): void => {
+      const stockRange = values.map((el: string | number): string => el.toString().replace(/\.00$/, ''));
+      encodeQueryString('stock', stockRange);
+      decodeQueryString(data);
+    });
 
   const stockFilterContainer = document.querySelector('.filter__stock-wrapper') as HTMLLIElement;
   stockFilterContainer.append(stockSlider, stockInputsWrapper);
+
+  if (stockSlider.noUiSlider) {
+    const minStockInput = document.querySelector('.min-stock-value') as HTMLDivElement;
+    const maxStockInput = document.querySelector('.max-stock-value') as HTMLDivElement;
+    const inputs = [minStockInput, maxStockInput];
+
+    stockSlider.noUiSlider.on('update', (values: (string | number)[], handle: number): void => {
+      const stockRange = values.map((el: string | number): string => el.toString().replace(/\.00$/, ''));
+      inputs[handle].innerHTML = stockRange[handle];
+    });
+
+    const params = new URLSearchParams(location.search);
+
+    if (params.toString() && params.has('stock')) {
+      const filteredStock = params.get('stock')?.split('\u2195') || [];
+      stockSlider.noUiSlider.set(filteredStock);
+    }
+  }
 }

@@ -29,7 +29,14 @@ export function decodeQueryString(data: Product[]) {
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
   if (!params.toString()) {
     renderCatalog(data);
-  } else if (params.has('view') && !params.has('category') && !params.has('brand') && !params.has('color')) {
+  } else if (
+    params.has('view') &&
+    !params.has('category') &&
+    !params.has('brand') &&
+    !params.has('color') &&
+    !params.has('price') &&
+    !params.has('stock')
+  ) {
     const catalogView = params.get('view');
     if (catalogView === 'list') {
       gridViewButton.classList.remove('view-mode-active');
@@ -51,7 +58,10 @@ function checkView(filteredProducts: Product[]) {
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
 
-  if (params.has('view') && (params.has('category') || params.has('brand') || params.has('color'))) {
+  if (
+    params.has('view') &&
+    (params.has('category') || params.has('brand') || params.has('color') || params.has('price') || params.has('stock'))
+  ) {
     const catalogView = params.get('view');
     if (catalogView === 'list') {
       gridViewButton.classList.remove('view-mode-active');
@@ -67,31 +77,29 @@ function checkView(filteredProducts: Product[]) {
 
 function checkParams(data: Product[]) {
   const params = new URLSearchParams(location.search);
-  let filtered: Array<Product> = [];
+  let filtered = data.slice();
   if (!params.toString()) return;
   const filteredCategory = params.get('category')?.split('\u2195') || [];
-  const filteredCategoryProducts = data.filter((item) => filteredCategory.includes(item.category));
   const filteredBrand = params.get('brand')?.split('\u2195') || [];
-  const filteredBrandProducts = data.filter((item) => filteredBrand.includes(item.brand.toLowerCase()));
   const filteredColor = params.get('color')?.split('\u2195') || [];
-  const filteredColorProducts = data.filter((item) => filteredColor.includes(item.color));
+  const [minPrice, maxPrice] = params.get('price')?.split('\u2195') || [];
+  const [minStock, maxStock] = params.get('stock')?.split('\u2195') || [];
 
-  if (params.has('category') && !params.has('brand') && !params.has('color')) {
-    filtered = filteredCategoryProducts;
-  } else if (params.has('brand') && !params.has('category') && !params.has('color')) {
-    filtered = filteredBrandProducts;
-  } else if (params.has('color') && !params.has('category') && !params.has('brand')) {
-    filtered = filteredColorProducts;
-  } else if (params.has('category') && params.has('brand') && params.has('color')) {
-    filtered = filteredCategoryProducts.filter(
-      (item) => filteredBrandProducts.includes(item) && filteredColorProducts.includes(item),
-    );
-  } else if (params.has('category') && (params.has('brand') || params.has('color'))) {
-    filtered = filteredCategoryProducts.filter(
-      (item) => filteredBrandProducts.includes(item) || filteredColorProducts.includes(item),
-    );
-  } else if (!params.has('category') && params.has('brand') && params.has('color')) {
-    filtered = filteredBrandProducts.filter((item) => filteredColorProducts.includes(item));
+  if (filteredCategory.length) {
+    filtered = filtered.filter((item) => filteredCategory.includes(item.category));
   }
+  if (filteredBrand.length) {
+    filtered = filtered.filter((item) => filteredBrand.includes(item.brand.toLowerCase()));
+  }
+  if (filteredColor.length) {
+    filtered = filtered.filter((item) => filteredColor.includes(item.color));
+  }
+  if (minPrice && maxPrice) {
+    filtered = filtered.filter((item) => item.discountPrice >= +minPrice && item.discountPrice <= +maxPrice);
+  }
+  if (minStock && maxStock) {
+    filtered = filtered.filter((item) => item.stock >= +minStock && item.stock <= +maxStock);
+  }
+
   return filtered;
 }

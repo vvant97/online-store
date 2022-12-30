@@ -191,6 +191,7 @@ export function renderCatalog(dataList: Product[]) {
   } else {
     const message = document.createElement('p') as HTMLParagraphElement;
     message.innerText = "Sorry, there're no products found";
+    message.className = 'products__not-found';
     catalogContainer.append(message);
   }
 }
