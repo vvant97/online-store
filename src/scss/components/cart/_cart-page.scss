@@ -42,7 +42,7 @@
   }
 
   &__product-item {
-    @include flex($justifyContent: space-between, $alignItems: center);
+    @include flex($alignItems: center);
     @include size($padding: 30px 0);
 
     border-top: $border;
@@ -58,6 +58,14 @@
 
   &__product-item-info {
     @include flex($alignItems: center, $gap: 15px);
+
+    flex: 0 0 50%;
+  }
+  
+  &__product-item__qty{
+    @include flex($justifyContent: center);
+
+    flex: 0 0 30%;
   }
 
   &__product-item-image {
@@ -120,5 +128,8 @@
 
   &__product-item__price {
     @include font($fontSize: 1.4rem);
+
+    flex: 1;
+    text-align: right;
   }
 }

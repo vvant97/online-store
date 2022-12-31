@@ -41,7 +41,7 @@ export const createCartProductItemTemplate = (options: ProductItem) => {
       </div>
     </div>
     <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}"></div>
-    <p class="product-cart__product-item__price">$${options.price.toFixed(2)}</p>
+    <p class="product-cart__product-item__price product-cart__product-item__price-${options.id}">$${options.price.toFixed(2)}</p>
   `;
 
   return template;

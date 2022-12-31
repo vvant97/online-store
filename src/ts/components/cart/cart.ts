@@ -181,6 +181,12 @@ const updateProductInfo = (id: number) => {
   const cartAsideProductQuantity = cartAsideItem.querySelector('.cart__product-quantity') as HTMLParagraphElement;
   const cartAsideProductPrice = cartAsideItem.querySelector('.cart__product-price') as HTMLParagraphElement;
 
+  if (window.location.pathname.includes('cart')) {
+    const cartPageProductFullPriceContainer = document.querySelector(`.product-cart__product-item__price-${id}`) as HTMLParagraphElement;
+
+    cartPageProductFullPriceContainer.textContent = `$${price.toFixed(2)}`;
+  }
+
   productsStorage.removeSome(id);
   productToReplace.quantity = quantity;
   productToReplace.price = price;
@@ -195,6 +201,17 @@ const updateProductInfo = (id: number) => {
 export const updateCart = () => {
   document.addEventListener('click', (event: Event) => {
     const target = (<HTMLDivElement>event.target).closest('.product-quantity__controls');
+
+    if (target) {
+      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const productId = +product.id;
+
+      updateProductInfo(productId);
+    }
+  });
+
+  document.addEventListener('change', (event: Event) => {
+    const target = (<HTMLDivElement>event.target).closest('.product-quantity__input');
 
     if (target) {
       const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
