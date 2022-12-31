@@ -34,9 +34,9 @@ const hideCart = () => {
   });
 };
 
-const getProductQuantity = (): number => {
-  const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
-
+const getProductQuantity = (id: number): number => {
+  const quantity = document.querySelector(`.product-quantity__input-${id}`) as HTMLInputElement;
+  
   return quantity ? +quantity.value : 1;
 };
 
@@ -65,7 +65,7 @@ const setTotalPrice = (...selectors: string[]) => {
 const addToCart = (id: number) => {
   const product = productData.find((product) => product.id === id) as Product;
   const discount = getDiscountPrice(product.price, product.discountPercentage);
-  const quantity = getProductQuantity();
+  const quantity = getProductQuantity(id);
   const price = ((discount || product.price) * quantity).toFixed(2);
   const productsList = document.querySelector('.cart__list') as HTMLUListElement;
   const brand = product.brand;
@@ -73,6 +73,7 @@ const addToCart = (id: number) => {
   const rating = product.rating;
   const oldPrice = product.price;
   const discountPercent = Math.floor(product.discountPercentage);
+  const stock = product.stock;
 
   const template = `
     <li class="cart__item" data-product-id="${id}">
@@ -103,6 +104,7 @@ const addToCart = (id: number) => {
     rating,
     oldPrice,
     discountPercent,
+    stock,
   };
 
   productsStorage.save(productItemData);
@@ -166,25 +168,24 @@ const watchCart = () => {
   });
 };
 
-export const updateProductInfo = () => {
-  const productId = +(<string>(<HTMLSpanElement>document.querySelector('.product-info__id')).textContent);
-  const productToReplace = productsStorage.loadSome(productId);
+export const updateProductInfo = (id: number) => {
+  const productToReplace = productsStorage.loadSome(id);
 
   if (!productToReplace) {
     return;
   }
 
-  const quantity = getProductQuantity();
-  const price = +(productToReplace.priceByOne * quantity).toFixed(2);
-  const cartAsideItem = document.querySelector(`.cart__item[data-product-id="${productId}"]`) as HTMLLIElement;
+  const quantity = getProductQuantity(id);
+  const price = productToReplace.priceByOne * quantity;
+  const cartAsideItem = document.querySelector(`.cart__item[data-product-id="${id}"]`) as HTMLLIElement;
   const cartAsideProductQuantity = cartAsideItem.querySelector('.cart__product-quantity') as HTMLParagraphElement;
   const cartAsideProductPrice = cartAsideItem.querySelector('.cart__product-price') as HTMLParagraphElement;
 
-  productsStorage.removeSome(productId);
+  productsStorage.removeSome(id);
   productToReplace.quantity = quantity;
   productToReplace.price = price;
   cartAsideProductQuantity.textContent = `${quantity}  x`;
-  cartAsideProductPrice.textContent = `$${price}`;
+  cartAsideProductPrice.textContent = `$${price.toFixed(2)}`;
   productsStorage.save(productToReplace);
   setTotalPrice('.header__total-amount', '.cart__total');
   setProductsAmount('.cart__amount', '.header__cart-quantity');
@@ -192,11 +193,16 @@ export const updateProductInfo = () => {
 };
 
 export const updateCart = () => {
-  const quantityControls = document.querySelector('.product-quantity__controls') as HTMLDivElement;
+  document.addEventListener('click', (event: Event) => {
+    const target = (<HTMLDivElement>event.target).closest('.product-quantity__controls');
 
-  if (quantityControls) {
-    quantityControls.addEventListener('click', updateProductInfo);
-  }
+    if (target) {
+      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const productId = +product.id;
+
+      updateProductInfo(productId);
+    }
+  });
 };
 
 export const initCart = () => {

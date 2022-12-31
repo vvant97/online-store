@@ -74,7 +74,7 @@ export const createProductCard = (id: number) => {
       <i class="product-slider__gallery-icon product-slider__gallery-icon-next bi bi-caret-right"></i>
     </ul>
   </div>
-  <div class="product-info">
+  <div class="product-info product-pick" id="${product.id}">
     <div class="product-info__rating"></div>
     <h2 class="product-info__title">${product.title}</h2>
     <div class="product-info__price">

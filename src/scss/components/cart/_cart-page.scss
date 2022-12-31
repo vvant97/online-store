@@ -1,5 +1,5 @@
 %productInfo {
-  @include font($fontSize: 1.4rem);
+  @include font($fontSize: 1.2rem);
 }
 
 %productInfoSpan {
@@ -96,13 +96,15 @@
   }
 
   &__product-item-price &__product-item-discount {
-    @include font($fontSize: 1.4rem, $color: $colorFontLight);
-    @include size($padding: 3px 8px);
+    @include font($fontSize: 1.2rem, $color: $colorFontLight);
+    @include size($padding: 3px 6px);
     
     background: $colorFontPrimary;
   }
 
   &__product-item-title {
+    transition: 0.3s all;
+
     &:visited {
       color: $colorFontPrimary;
     }
@@ -110,5 +112,13 @@
     &:hover {
       color: $colorParagraph;
     }
+  }
+
+  &__product-item-rating .rating__star {
+    font-size: 1.2rem;
+  }
+
+  &__product-item__price {
+    @include font($fontSize: 1.4rem);
   }
 }

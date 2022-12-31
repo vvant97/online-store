@@ -19,11 +19,11 @@ export const createCartLayoutTemplate = () => {
 export const createCartProductItemTemplate = (options: ProductItem) => {
   const discountPercent = options.discountPercent;
 
-  let priceTemplate = `$${options.price}`;
+  let priceTemplate = `$${options.priceByOne.toFixed(2)}`;
 
   if (discountPercent) {
     priceTemplate += `
-      <span class="product-cart__product-item-old-price">$${options.oldPrice}</span>
+      <span class="product-cart__product-item-old-price">$${options.oldPrice.toFixed(2)}</span>
       <span class="product-cart__product-item-discount">-${options.discountPercent}%</span>
     `;
   }
@@ -40,8 +40,8 @@ export const createCartProductItemTemplate = (options: ProductItem) => {
         <p class="product-cart__product-item-category">Category: <span>${options.category}</span></p>
       </div>
     </div>
-    <div class="product-cart__product-item__qty"></div>
-    <p class="product-cart__product-item__price">$178.00</p>
+    <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}"></div>
+    <p class="product-cart__product-item__price">$${options.price.toFixed(2)}</p>
   `;
 
   return template;

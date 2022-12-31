@@ -26,4 +26,5 @@ export interface ProductItem {
   rating: number;
   oldPrice: number;
   discountPercent: number;
+  stock: number;
 }
