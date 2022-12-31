@@ -79,7 +79,7 @@ const addToCart = (id: number) => {
     <li class="cart__item" data-product-id="${id}">
       <div class="cart__product-image" style="background-image: url('${product.images[0]}')"></div>
       <div class="cart__product-wrapper">
-        <div class="cart__product-title">${product.title}</div>
+        <a class="cart__product-title" href="/product-${product.id}">${product.title}</a>
         <div class="cart__product-info">
           <div class="cart__product-price-wrapper">
             <p class="cart__product-quantity">${quantity}  x</p>
