@@ -13,7 +13,7 @@
   &__info {
     @include size($padding: 30px);
 
-    flex: 0 0 70%;
+    flex: 1 0 70%;
     box-shadow: $shadow;
   }
 
@@ -61,8 +61,8 @@
 
     flex: 0 0 50%;
   }
-  
-  &__product-item__qty{
+
+  &__product-item__qty {
     @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 15px);
 
     flex: 0 0 30%;
@@ -84,7 +84,7 @@
   }
 
   &__product-item-about {
-    @include flex($flexDirection: column, $gap: 8px);
+    @include flex($flexDirection: column, $gap: 11px);
   }
 
   &__product-item-id,
@@ -96,13 +96,17 @@
   }
 
   &__product-item-id span,
-  &__product-item-title span,
   &__product-item-price span,
   &__product-item-brand span,
   &__product-item-category span {
     @extend %productInfoSpan;
 
     padding-left: 5px;
+  }
+
+  &__product-item-title,
+  &__product-item-price {
+    font-size: 1.4rem;
   }
 
   &__product-item-old-price {
@@ -112,7 +116,7 @@
   &__product-item-price &__product-item-discount {
     @include font($fontSize: 1.2rem, $color: $colorFontLight);
     @include size($padding: 3px 6px);
-    
+
     background: $colorFontPrimary;
   }
 
@@ -137,9 +141,22 @@
   }
 
   &__product-item__price {
-    @include font($fontSize: 1.4rem);
+    @include font($fontSize: 1.6rem);
 
     flex: 1;
     text-align: right;
+  }
+
+  &__empty {
+    @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 10px);
+    @include size($padding: 50px 0 35px);
+  }
+
+  &__empty-title {
+    @include font($fontSize: 2rem);
+  }
+
+  &__empty-icon {
+    @include font($fontSize: 3rem);
   }
 }

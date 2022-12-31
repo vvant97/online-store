@@ -1,6 +1,6 @@
 import { ProductItem } from '../types';
 import { createRating } from '../rating/rating';
-import { createCartProductItemTemplate, createCartLayoutTemplate } from './cart-templates';
+import { createCartProductItemTemplate, createCartLayoutTemplate, createEmptyCartPageTemplate } from './cart-templates';
 import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
@@ -70,15 +70,40 @@ const handleRemoveButtonsEvent = () => {
   });
 };
 
-export const renderCartPage = () => {
-  const mainContainer = document.querySelector('.main__app') as HTMLDivElement;
-  const breadcrumbs = createBreadcrumbs('Your Shopping Cart');
-  const products = createCartProductItems(productsStorage.load());
+const setCartToEmpty = () => {
+  const products = createCartProductItems(productsStorage.load()).length;
 
-  mainContainer.innerHTML = createCartLayoutTemplate();
-  mainContainer.prepend(breadcrumbs);
-  appendProducts(products);
-  setAllProductsRating();
-  appendProductsQuantity();
-  handleRemoveButtonsEvent();
+  if (!products) {
+    const productsContainer = document.querySelector('.product-cart__info') as HTMLDivElement;
+    const checkoutContainer = document.querySelector('.product-cart__checkout') as HTMLDivElement;
+
+    productsContainer.innerHTML = createEmptyCartPageTemplate();
+    checkoutContainer.remove();
+  }
+};
+
+const watchCartIsEmpty = () => {
+  setCartToEmpty();
+
+  document.addEventListener('click', () => {
+    if (location.pathname.includes('cart')) {
+      setCartToEmpty();
+    }
+  });
+};
+
+export const renderCartPage = () => {
+  if (location.pathname.includes('cart')) {
+    const products = createCartProductItems(productsStorage.load());
+    const mainContainer = document.querySelector('.main__app') as HTMLDivElement;
+    const breadcrumbs = createBreadcrumbs('Your Shopping Cart');
+
+    mainContainer.innerHTML = createCartLayoutTemplate();
+    mainContainer.prepend(breadcrumbs);
+    appendProducts(products);
+    setAllProductsRating();
+    appendProductsQuantity();
+    handleRemoveButtonsEvent();
+    watchCartIsEmpty();
+  }
 };

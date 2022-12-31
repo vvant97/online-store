@@ -48,3 +48,14 @@ export const createCartProductItemTemplate = (options: ProductItem) => {
 
   return template;
 };
+
+export const createEmptyCartPageTemplate = () => {
+  const template = `
+    <div class="product-cart__empty">
+      <h2 class="product-cart__empty-title">Your cart is empty</h2>
+      <i class="product-cart__empty-icon bi bi-inbox-fill"></i>
+    </div>
+  `;
+
+  return template;
+};
