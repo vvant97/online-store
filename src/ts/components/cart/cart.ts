@@ -36,7 +36,7 @@ const hideCart = () => {
 
 const getProductQuantity = (id: number): number => {
   const quantity = document.querySelector(`.product-quantity__input-${id}`) as HTMLInputElement;
-  
+
   return quantity ? +quantity.value : 1;
 };
 
@@ -168,7 +168,7 @@ const watchCart = () => {
   });
 };
 
-export const updateProductInfo = (id: number) => {
+const updateProductInfo = (id: number) => {
   const productToReplace = productsStorage.loadSome(id);
 
   if (!productToReplace) {

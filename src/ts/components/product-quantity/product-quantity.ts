@@ -1,4 +1,4 @@
-import { productsStorage, updateProductInfo } from '../cart/cart';
+import { productsStorage, updateCart } from '../cart/cart';
 import { productData } from '../productData';
 
 const handleQuantityEvents = (event: Event) => {
@@ -22,7 +22,7 @@ const handleQuantityEvents = (event: Event) => {
     }
   }
 
-  updateProductInfo(productId);
+  updateCart();
 };
 
 export const createProductQuantity = (stock: number, id: number) => {
@@ -65,7 +65,7 @@ export const createProductQuantity = (stock: number, id: number) => {
         target.value = `1`;
       }
 
-      updateProductInfo(id);
+      updateCart();
     });
   }
 
