@@ -36,14 +36,17 @@ export const createCartProductItemTemplate = (options: ProductItem) => {
         <a class="product-cart__product-item-title" href="/product-${options.id}">${options.title}</a>
         <p class="product-cart__product-item-price">${priceTemplate}</p>
         <p class="product-cart__product-item-id">SKU: <span>${options.id}</span></p>
+        <p class="product-cart__product-item-stock">Stock: <span>(${options.stock})</span></p>
         <p class="product-cart__product-item-brand">Brand: <span>${options.brand}</span></p>
         <p class="product-cart__product-item-category">Category: <span>${options.category}</span></p>
       </div>
     </div>
-    <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}">
-      <button class="product-cart__product-item-remove">Remove</button>
+    <div class="product-cart__product-item-controls">
+      <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}">
+        <button class="product-cart__product-item-remove">Remove</button>
+      </div>
+      <p class="product-cart__product-item__price product-cart__product-item__price-${options.id}">$${options.price.toFixed(2)}</p>
     </div>
-    <p class="product-cart__product-item__price product-cart__product-item__price-${options.id}">$${options.price.toFixed(2)}</p>
   `;
 
   return template;

@@ -10,10 +10,22 @@
   @include flex($gap: 30px);
   @include size($padding: 100px 0 50px 0);
 
+  @media screen and (max-width: $tablet) {
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+    width: auto;
+    margin: auto;
+  }
+
   &__info {
     @include size($padding: 30px);
 
-    flex: 1 0 70%;
+    flex: 0 0 70%;
     box-shadow: $shadow;
   }
 
@@ -24,6 +36,10 @@
     flex: 1;
     background: $colorBgSecondary;
     box-shadow: $shadow;
+
+    @media screen and (max-width: $tablet) {
+      align-self: initial;
+    }
   }
 
   &__title-area {
@@ -54,18 +70,44 @@
     &:last-child {
       padding: 30px 0 0;
     }
+
+    @media screen and (max-width: $tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
   }
 
   &__product-item-info {
-    @include flex($alignItems: center, $gap: 15px);
+    @include flex($gap: 15px);
 
-    flex: 0 0 50%;
+    flex: 0 0 60%;
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      flex-direction: column;
+    }
+  }
+
+  &__product-item-controls {
+    @include flex($justifyContent: space-between, $alignItems: center, $gap: 15px);
+
+    flex: 1;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
   }
 
   &__product-item__qty {
     @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 15px);
 
-    flex: 0 0 30%;
+    @media screen and (max-width: $tablet) {
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      flex-direction: column;
+    }
   }
 
   &__product-item-remove {
@@ -81,6 +123,11 @@
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: $mobileSmall) {
+      width: 70px;
+      height: 90px;
+    }
   }
 
   &__product-item-about {
@@ -91,17 +138,23 @@
   &__product-item-title,
   &__product-item-price,
   &__product-item-brand,
-  &__product-item-category {
+  &__product-item-category,
+  &__product-item-stock {
     @extend %productInfo;
   }
 
   &__product-item-id span,
   &__product-item-price span,
   &__product-item-brand span,
-  &__product-item-category span {
+  &__product-item-category span,
+  &__product-item-stock span  {
     @extend %productInfoSpan;
 
     padding-left: 5px;
+  }
+
+  &__product-item-stock span {
+    color: $colorSuccess;
   }
 
   &__product-item-title,
@@ -143,7 +196,6 @@
   &__product-item__price {
     @include font($fontSize: 1.6rem);
 
-    flex: 1;
     text-align: right;
   }
 

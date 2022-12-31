@@ -78,6 +78,7 @@ const setCartToEmpty = () => {
     const checkoutContainer = document.querySelector('.product-cart__checkout') as HTMLDivElement;
 
     productsContainer.innerHTML = createEmptyCartPageTemplate();
+    productsContainer.style.flex = '1';
     checkoutContainer.remove();
   }
 };
