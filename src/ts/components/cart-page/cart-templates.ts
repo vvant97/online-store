@@ -40,7 +40,9 @@ export const createCartProductItemTemplate = (options: ProductItem) => {
         <p class="product-cart__product-item-category">Category: <span>${options.category}</span></p>
       </div>
     </div>
-    <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}"></div>
+    <div class="product-cart__product-item__qty product-cart__product-item__qty-${options.id}">
+      <button class="product-cart__product-item-remove">Remove</button>
+    </div>
     <p class="product-cart__product-item__price product-cart__product-item__price-${options.id}">$${options.price.toFixed(2)}</p>
   `;
 

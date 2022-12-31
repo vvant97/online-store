@@ -13,7 +13,7 @@
   &__info {
     @include size($padding: 30px);
 
-    flex: 0 0 65%;
+    flex: 0 0 70%;
     box-shadow: $shadow;
   }
 
@@ -63,9 +63,15 @@
   }
   
   &__product-item__qty{
-    @include flex($justifyContent: center);
+    @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 15px);
 
     flex: 0 0 30%;
+  }
+
+  &__product-item-remove {
+    @include font($fontSize: 1.4rem, $color: $colorRemove);
+
+    text-decoration: underline;
   }
 
   &__product-item-image {
@@ -123,6 +129,10 @@
   }
 
   &__product-item-rating .rating__star {
+    font-size: 1.2rem;
+  }
+
+  &__product-item-rating .rating__average {
     font-size: 1.2rem;
   }
 

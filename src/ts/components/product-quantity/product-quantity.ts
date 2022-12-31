@@ -1,4 +1,4 @@
-import { productsStorage, updateCart } from '../cart/cart';
+import { productsStorage, updateCart, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { productData } from '../productData';
 
 const handleQuantityEvents = (event: Event) => {
@@ -18,6 +18,30 @@ const handleQuantityEvents = (event: Event) => {
     if (+quantity.value > 1) {
       quantity.value = `${+quantity.value - 1}`;
     } else {
+      if (location.pathname.includes('cart')) {
+        const cartProducts = [...document.querySelectorAll('.product-cart__product-item')] as HTMLLIElement[];
+        const cartProductToDelete = cartProducts.find((product) => +<string>product.id === productId) as HTMLLIElement;
+
+        if (cartProductToDelete) {
+          cartProductToDelete.remove();
+          productsStorage.removeSome(productId);
+          setTotalPrice('.header__total-amount', '.cart__total');
+          setProductsAmount('.cart__amount', '.header__cart-quantity');
+          cartState.save();
+        }
+      }
+      
+      const cartAsideProducts = [...document.querySelectorAll('.cart__item')] as HTMLLIElement[];
+      const cartAsideProductToDelete = cartAsideProducts.find((product) => +<string>product.dataset.productId === productId) as HTMLLIElement;
+
+      if (cartAsideProductToDelete) {
+        cartAsideProductToDelete.remove();
+        productsStorage.removeSome(productId);
+        setTotalPrice('.header__total-amount', '.cart__total');
+        setProductsAmount('.cart__amount', '.header__cart-quantity');
+        cartState.save();
+      }
+      
       quantity.value = `1`;
     }
   }

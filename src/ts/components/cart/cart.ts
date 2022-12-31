@@ -7,7 +7,7 @@ import CartState from '../../storage/CartState';
 import { renderCartPage } from '../cart-page/cart-page';
 
 export const productsStorage = new ProductsStorage('cartProducts');
-const cartState = new CartState('cartAsideItems', '.cart__list');
+export const cartState = new CartState('cartAsideItems', '.cart__list');
 
 const showCart = () => {
   const cart = document.querySelector('.cart') as HTMLDivElement;
@@ -40,7 +40,7 @@ const getProductQuantity = (id: number): number => {
   return quantity ? +quantity.value : 1;
 };
 
-const setProductsAmount = (...selectors: string[]) => {
+export const setProductsAmount = (...selectors: string[]) => {
   const products = productsStorage.load();
   const amount = products.reduce((acc, product) => acc + product.quantity, 0);
 
@@ -51,7 +51,7 @@ const setProductsAmount = (...selectors: string[]) => {
   });
 };
 
-const setTotalPrice = (...selectors: string[]) => {
+export const setTotalPrice = (...selectors: string[]) => {
   const products = productsStorage.load();
   const price = products.reduce((acc, val) => acc + val.price, 0);
 
@@ -130,6 +130,20 @@ const checkAddToCartAvailability = () => {
   });
 };
 
+const openCartAside = () => {
+  const cart = document.querySelector('.cart') as HTMLDivElement;
+
+  cart.classList.add('active');
+  showOverlay();
+};
+
+const closeCartAside = () => {
+  const cart = document.querySelector('.cart') as HTMLDivElement;
+
+  cart.classList.remove('active');
+  hideOverlay();
+};
+
 const watchCart = () => {
   document.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
@@ -151,13 +165,22 @@ const watchCart = () => {
       setTotalPrice('.header__total-amount', '.cart__total');
       setProductsAmount('.cart__amount', '.header__cart-quantity');
       cartState.save();
+
+      openCartAside();
     }
 
     if (target.closest('.cart__product-delete')) {
-      const cartItem = target.closest('.cart__item') as HTMLLIElement;
-      const productId = +(<string>cartItem.dataset.productId);
+      const cartAsideItem = target.closest('.cart__item') as HTMLLIElement;
+      const productId = +(<string>cartAsideItem.dataset.productId);
 
-      cartItem.remove();
+      if (window.location.pathname.includes('cart')) {
+        const cartItems = document.querySelectorAll('.product-cart__product-item');
+        const cartItemToRemove = [...cartItems].find((item) => +item.id === productId) as HTMLLIElement;
+
+        cartItemToRemove.remove();
+      }
+     
+      cartAsideItem.remove();
       productsStorage.removeSome(productId);
       setTotalPrice('.header__total-amount', '.cart__total');
       setProductsAmount('.cart__amount', '.header__cart-quantity');
@@ -237,6 +260,7 @@ export const initCart = () => {
 
     if (target) {
       renderCartPage();
+      closeCartAside();
     }
   });
 };

@@ -2,7 +2,7 @@ import { ProductItem } from '../types';
 import { createRating } from '../rating/rating';
 import { createCartProductItemTemplate, createCartLayoutTemplate } from './cart-templates';
 import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
-import { productsStorage } from '../cart/cart';
+import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
 
 const createCartProductItems = (productsInCart: ProductItem[]) => {
@@ -35,7 +35,7 @@ const appendProductsQuantity = () => {
     const quantity = createProductQuantity(stock, id);
     const quantityContainer = document.querySelector(`.product-cart__product-item__qty-${id}`) as HTMLDivElement;
 
-    quantityContainer.append(quantity);
+    quantityContainer.prepend(quantity);
   });
 };
 
@@ -50,6 +50,26 @@ const setAllProductsRating = () => {
   });
 };
 
+const handleRemoveButtonsEvent = () => {
+  const removeButtons = document.querySelectorAll('.product-cart__product-item-remove');
+
+  [...removeButtons].forEach((button) => {
+    button.addEventListener('click', (event: Event) => {
+      const cartProductToDelete = (<HTMLButtonElement>event.target).closest('.product-cart__product-item') as HTMLLIElement;
+      const productId = +cartProductToDelete.id;
+      const cartAsideProducts = [...document.querySelectorAll('.cart__item')] as HTMLLIElement[];
+      const cartAsideProductToDelete = cartAsideProducts.find((product) => +<string>product.dataset.productId === productId) as HTMLLIElement;
+
+      cartProductToDelete.remove();
+      cartAsideProductToDelete.remove();
+      productsStorage.removeSome(productId);
+      setTotalPrice('.header__total-amount', '.cart__total');
+      setProductsAmount('.cart__amount', '.header__cart-quantity');
+      cartState.save();
+    });
+  });
+};
+
 export const renderCartPage = () => {
   const mainContainer = document.querySelector('.main__app') as HTMLDivElement;
   const breadcrumbs = createBreadcrumbs('Your Shopping Cart');
@@ -60,4 +80,5 @@ export const renderCartPage = () => {
   appendProducts(products);
   setAllProductsRating();
   appendProductsQuantity();
+  handleRemoveButtonsEvent();
 };
