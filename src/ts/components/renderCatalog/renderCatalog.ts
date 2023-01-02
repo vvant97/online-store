@@ -172,6 +172,9 @@ export function renderCatalog(dataList: Product[]) {
   const catalogContainer = document.querySelector('.products__body') as HTMLDivElement;
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
+  const totalProductsCount = document.querySelector('.found-products__count') as HTMLSpanElement;
+  totalProductsCount.innerText = `${dataList.length}`;
+
   catalogContainer.innerHTML = '';
 
   if (gridViewButton.classList.contains('view-mode-active') && dataList.length) {

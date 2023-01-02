@@ -7,7 +7,7 @@ export function renderCategoryFilter(data: Product[]) {
   categoryContainer.className = 'filter__categories';
   const createCategoryItem = (categoryName: string): HTMLDivElement => {
     const categoryItem = document.createElement('div');
-    categoryItem.className = 'filter__category-item category-item';
+    categoryItem.className = 'filter__category-item category-item filter-input';
     categoryItem.innerHTML = `
     <input type="checkbox" id="${categoryName}" name="category" value="${categoryName}" class="category">
     <label for="${categoryName}">${categoryName[0].toUpperCase() + categoryName.slice(1)}</label>
