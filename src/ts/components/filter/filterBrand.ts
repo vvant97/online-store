@@ -22,7 +22,7 @@ export function renderBrandFilter(data: Product[]) {
   filterBrandItems(data);
 }
 
-function filterBrandItems(data: Product[]) {
+export function filterBrandItems(data: Product[]) {
   const brandFilterInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll<HTMLInputElement>('.brand');
 
   const params = new URLSearchParams(location.search);

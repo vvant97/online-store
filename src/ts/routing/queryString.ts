@@ -75,7 +75,7 @@ function checkView(filteredProducts: Product[]) {
   }
 }
 
-function checkParams(data: Product[]) {
+export function checkParams(data: Product[]) {
   const params = new URLSearchParams(location.search);
   let filtered = data.slice();
   if (!params.toString()) return;

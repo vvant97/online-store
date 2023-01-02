@@ -1,4 +1,3 @@
-import { decodeQueryString } from '../../routing/queryString';
 import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
 import { Product } from '../types';
 import { renderBrandFilter } from './filterBrand';
@@ -7,6 +6,7 @@ import { renderColorFilter } from './filterColor';
 import { renderPriceFilter } from './filterPrice';
 import { renderStockFilter } from './filterStock';
 import * as noUiSlider from 'nouislider';
+import { renderCatalog } from '../renderCatalog/renderCatalog';
 
 export const showFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
@@ -41,10 +41,9 @@ export function renderFilters(data: Array<Product>) {
   renderColorFilter(data);
   renderPriceFilter(data);
   renderStockFilter(data);
-  renderFilterButtons(data);
 }
 
-function renderFilterButtons(data: Array<Product>) {
+export function renderFilterButtons(data: Array<Product>) {
   const copyLinkButton = document.querySelector('.filter__copy-button') as HTMLButtonElement;
   const resetFiltersButton = document.querySelector('.filter__reset-button') as HTMLButtonElement;
 
@@ -59,24 +58,24 @@ function renderFilterButtons(data: Array<Product>) {
   });
 
   resetFiltersButton.addEventListener('click', () => {
-    window.history.replaceState({}, location.pathname, `${location.pathname}`);
-    const inputFilters: HTMLInputElement[] = [...document.querySelectorAll<HTMLInputElement>('.filter-input input')];
-    inputFilters.forEach((input) => (input.checked = false));
+    window.history.pushState({}, location.pathname, `${location.pathname}`);
+    const categoryContainer = document.querySelector('.filter__categories') as HTMLDivElement;
+    categoryContainer.remove();
+    renderCategoryFilter(data);
 
-    const colorFilterButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll<HTMLButtonElement>('.color');
-    [...colorFilterButtons].forEach((button) => {
-      if (button.classList.contains('color_active-black')) {
-        button.classList.remove('color_active-black');
-      } else {
-        button.classList.remove('color_active');
-      }
-    });
+    const brandContainer = document.querySelector('.filter__brands') as HTMLDivElement;
+    brandContainer.remove();
+    renderBrandFilter(data);
+
+    const colorContainer = document.querySelector('.filter__colors') as HTMLDivElement;
+    colorContainer.remove();
+    renderColorFilter(data);
 
     const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
     const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
     priceSlider.noUiSlider?.reset();
     stockSlider.noUiSlider?.reset();
 
-    decodeQueryString(data);
+    renderCatalog(data);
   });
 }

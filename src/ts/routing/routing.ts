@@ -1,5 +1,5 @@
 import { errorComponent } from '../components/404/404';
-import { renderFilters } from '../components/filter/filter';
+import { renderFilterButtons, renderFilters } from '../components/filter/filter';
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
 import { catalogComponent, controlCatalogView } from '../components/renderCatalog/renderCatalog';
@@ -34,6 +34,7 @@ export function routing() {
           content.innerHTML = routes[pathname];
           controlCatalogView(productData);
           renderFilters(productData);
+          renderFilterButtons(productData);
           break;
         case '/cart':
           document.title = 'Cart';
