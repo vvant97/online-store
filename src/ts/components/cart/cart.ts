@@ -184,6 +184,12 @@ const watchCart = () => {
       productsStorage.removeSome(productId);
       setTotalPrice('.header__total-amount', '.cart__total');
       setProductsAmount('.cart__amount', '.header__cart-quantity');
+
+      if (location.pathname.includes('cart')) {
+        setTotalPrice('.product-cart__checkout-total');
+        setProductsAmount('.product-cart__checkout-amount');
+      }
+
       cartState.save();
     }
 
@@ -218,6 +224,12 @@ const updateProductInfo = (id: number) => {
   productsStorage.save(productToReplace);
   setTotalPrice('.header__total-amount', '.cart__total');
   setProductsAmount('.cart__amount', '.header__cart-quantity');
+
+  if (location.pathname.includes('cart')) {
+    setTotalPrice('.product-cart__checkout-total');
+    setProductsAmount('.product-cart__checkout-amount');
+  }
+
   cartState.save();
 };
 

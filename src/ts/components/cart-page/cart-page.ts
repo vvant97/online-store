@@ -63,8 +63,8 @@ const handleRemoveButtonsEvent = () => {
       cartProductToDelete.remove();
       cartAsideProductToDelete.remove();
       productsStorage.removeSome(productId);
-      setTotalPrice('.header__total-amount', '.cart__total');
-      setProductsAmount('.cart__amount', '.header__cart-quantity');
+      setTotalPrice('.header__total-amount', '.cart__total', '.product-cart__checkout-total');
+      setProductsAmount('.cart__amount', '.header__cart-quantity', '.product-cart__checkout-amount');
       cartState.save();
     });
   });
@@ -101,10 +101,14 @@ export const renderCartPage = () => {
 
     mainContainer.innerHTML = createCartLayoutTemplate();
     mainContainer.prepend(breadcrumbs);
+
     appendProducts(products);
     setAllProductsRating();
     appendProductsQuantity();
     handleRemoveButtonsEvent();
     watchCartIsEmpty();
+
+    setTotalPrice('.product-cart__checkout-total');
+    setProductsAmount('.product-cart__checkout-amount');
   }
 };

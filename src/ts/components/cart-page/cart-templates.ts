@@ -9,7 +9,18 @@ export const createCartLayoutTemplate = () => {
         </div>
         <ul class="product-cart__product-list"></ul>
       </div>
-      <div class="product-cart__checkout"></div>
+      <div class="product-cart__checkout">
+        <div class="product-cart__checkout-title-area">
+          <p class="product-cart__checkout-items">
+            <span class="product-cart__checkout-title">Items</span>
+            <span class="product-cart__checkout-amount"></span>
+          </p>
+          <p class="product-cart__checkout-price">
+            <span class="product-cart__checkout-title">Total</span>
+            <span class="product-cart__checkout-total"></span>
+          </p>
+        </div>
+      </div>
     </div>
   `;
 

@@ -211,4 +211,26 @@
   &__empty-icon {
     @include font($fontSize: 3rem);
   }
+
+  &__checkout-title-area {
+    @include flex($flexDirection: column, $gap: 15px);
+    @include size($padding: 17px 0);
+
+    border-top: $border;
+    border-bottom: $border;
+  }
+
+  &__checkout-items,
+  &__checkout-price {
+    @include flex($justifyContent: space-between);
+  }
+
+  &__checkout-title {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+  }
+
+  &__checkout-amount,
+  &__checkout-total {
+    @include font($fontSize: 1.4rem, $fontWeight: 700);
+  }
 }

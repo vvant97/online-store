@@ -25,8 +25,8 @@ const handleQuantityEvents = (event: Event) => {
         if (cartProductToDelete) {
           cartProductToDelete.remove();
           productsStorage.removeSome(productId);
-          setTotalPrice('.header__total-amount', '.cart__total');
-          setProductsAmount('.cart__amount', '.header__cart-quantity');
+          setTotalPrice('.header__total-amount', '.cart__total', '.product-cart__checkout-total');
+          setProductsAmount('.cart__amount', '.header__cart-quantity', '.product-cart__checkout-amount');
           cartState.save();
         }
       }
