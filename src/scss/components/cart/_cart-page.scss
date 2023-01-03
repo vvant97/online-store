@@ -37,7 +37,7 @@
   }
 
   &__checkout {
-    @include flex($flexDirection: column, $gap: 30px);
+    @include flex($flexDirection: column, $gap: 25px);
     @include size($padding: 30px);
 
     position: sticky;

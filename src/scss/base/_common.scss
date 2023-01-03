@@ -141,3 +141,7 @@ input[type='number']::-webkit-outer-spin-button {
   color: $colorFontPrimary;
   background: $colorFontSecondary;
 }
+
+.payment-icons {
+  @include flex($justifyContent: center, $gap: 3px);
+}
