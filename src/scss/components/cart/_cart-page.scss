@@ -30,6 +30,10 @@
     align-self: flex-start;
     flex: 0 0 70%;
     box-shadow: $shadow;
+
+    @media screen and (max-width: $tablet) {
+      align-self: initial;
+    }
   }
 
   &__checkout {
