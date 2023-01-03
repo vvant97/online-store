@@ -5,6 +5,7 @@ import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
 import { watchPromocode } from '../promocode/promocode';
+import { watchCheckoutOpenEvents, watchCheckoutCloseEvents } from './checkout';
 
 const createCartProductItems = (productsInCart: ProductItem[]) => {
   const products: HTMLLIElement[] = productsInCart.map((product) => {
@@ -117,5 +118,7 @@ export const renderCartPage = () => {
     setProductsAmount('.product-cart__checkout-amount');
 
     watchCartIsEmpty();
+    watchCheckoutOpenEvents('.product-cart__checkout-open');
+    watchCheckoutCloseEvents();
   }
 };
