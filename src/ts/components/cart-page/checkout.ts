@@ -50,7 +50,7 @@ export const watchCheckoutCloseEvents = () => {
     const target = event.target as HTMLElement;
     const overlay = document.querySelector('.bg-overlay') as HTMLElement;
     const checkoutForm = document.querySelector('.order') as HTMLFormElement;
-    const checkoutFormCloseButton = checkoutForm.querySelector('.order__close') as HTMLElement;
+    const checkoutFormCloseButton = document.querySelector('.order__close') as HTMLElement;
 
     if (target === overlay || target === checkoutFormCloseButton) {
       checkoutForm.remove();

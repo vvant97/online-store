@@ -123,10 +123,8 @@ export const watchPromocode = () => {
       reaccountTotalCheckoutPrice();
     }
 
-    try {
+    if (target.closest('.product-quantity__control') || target.closest('.product-cart__product-item-remove')) {
       reaccountTotalCheckoutPrice();
-    } catch (error) {
-      return;
     }
   });
 };
