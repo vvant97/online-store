@@ -4,6 +4,7 @@ import { createCartProductItemTemplate, createCartLayoutTemplate, createEmptyCar
 import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
+import { watchPromocode } from '../promocode/promocode';
 
 const createCartProductItems = (productsInCart: ProductItem[]) => {
   const products: HTMLLIElement[] = productsInCart.map((product) => {
@@ -88,7 +89,11 @@ const watchCartIsEmpty = () => {
 
   document.addEventListener('click', () => {
     if (location.pathname.includes('cart')) {
-      setCartToEmpty();
+      try {
+        setCartToEmpty();
+      } catch (error) {
+        return;
+      }
     }
   });
 };
@@ -106,9 +111,11 @@ export const renderCartPage = () => {
     setAllProductsRating();
     appendProductsQuantity();
     handleRemoveButtonsEvent();
-    watchCartIsEmpty();
+    watchPromocode();
 
     setTotalPrice('.product-cart__checkout-total');
     setProductsAmount('.product-cart__checkout-amount');
+
+    watchCartIsEmpty();
   }
 };

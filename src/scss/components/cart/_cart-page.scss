@@ -8,7 +8,9 @@
 
 .product-cart {
   @include flex($gap: 30px);
-  @include size($padding: 100px 0 50px 0);
+  @include size($padding: 100px 0 55px 0);
+
+  position: relative;
 
   @media screen and (max-width: $tablet) {
     flex-direction: column;
@@ -25,13 +27,17 @@
   &__info {
     @include size($padding: 30px);
 
+    align-self: flex-start;
     flex: 0 0 70%;
     box-shadow: $shadow;
   }
 
   &__checkout {
+    @include flex($flexDirection: column, $gap: 30px);
     @include size($padding: 30px);
 
+    position: sticky;
+    top: 0;
     align-self: flex-start;
     flex: 1;
     background: $colorBgSecondary;
@@ -194,7 +200,7 @@
   }
 
   &__product-item__price {
-    @include font($fontSize: 1.6rem);
+    @include font($fontSize: 1.4rem);
 
     text-align: right;
   }
@@ -232,5 +238,90 @@
   &__checkout-amount,
   &__checkout-total {
     @include font($fontSize: 1.4rem, $fontWeight: 700);
+  }
+
+  &__checkout-total {
+    &.old {
+      font-weight: 300;
+      text-decoration: line-through;
+      color: $colorParagraph;
+    }
+  }
+
+  &__checkout-open {
+    @include button;
+
+    border: 2px solid $colorFontSecondary;
+    background: $colorFontSecondary;
+    color: $colorFontPrimary;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &__checkout-promo {
+    position: relative;
+  }
+
+  &__checkout-promo-input {
+    @include size($width: 100%, $padding: 15px);
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+
+    background-color: $colorBg;
+    border: $border;
+    border-bottom: none;
+  }
+
+  &__checkout-promo-list {
+    @include flex($flexDirection: column);
+    @include size($width: 100%);
+
+    position: absolute;
+    top: 49px;
+    left: 0;
+    overflow: scroll;
+    border: $border;
+    border-top: none;
+    background: $colorBg;
+  }
+
+  &__checkout-promo-item {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($padding: 15px);
+    @include font($fontSize: 1.2rem, $color: $colorParagraph);
+
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+      background: $colorBgSecondary;
+    }
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  &__checkout-promo-active-code {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include font($fontSize: 1.2rem, $color: $colorParagraph);
+
+    margin-top: 12px;
+
+    &:nth-of-type(1) {
+      margin-top: 15px;
+    }
+  }
+
+  &__checkout-promo-remove {
+    color: $colorRemove;
+    cursor: pointer;
+  }
+
+  &__checkout-new-price {
+    @include font($fontSize: 1.4rem, $fontWeight: 700);
+
+    text-align: right;
   }
 }

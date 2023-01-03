@@ -20,6 +20,15 @@ export const createCartLayoutTemplate = () => {
             <span class="product-cart__checkout-total"></span>
           </p>
         </div>
+        <div class="product-cart__checkout-promo">
+          <input class="product-cart__checkout-promo-input" type="text" placeholder="Discount code (S10, M20, L30)">
+          <ul class="product-cart__checkout-promo-list">
+            <li class="product-cart__checkout-promo-item" data-code="S10"><span>S10 -10%</span> <i class="bi bi-plus-lg"></i></li>
+            <li class="product-cart__checkout-promo-item" data-code="M20"><span>M20 -20%</span> <i class="bi bi-plus-lg"></i></li>
+            <li class="product-cart__checkout-promo-item" data-code="L30"><span>L30 -30%</span> <i class="bi bi-plus-lg"></i></li>
+          </ul>
+        </div>
+        <button class="product-cart__checkout-open">Checkout</button>
       </div>
     </div>
   `;
