@@ -10,11 +10,11 @@ export function renderPriceFilter(data: Product[]) {
   const priceSlider = document.createElement('div') as noUiSlider.target;
   priceSlider.className = 'filter__price price-slider slider';
   const priceInputsWrapper = document.createElement('div');
-  priceInputsWrapper.className = 'slider__inputs-wrapper';
+  priceInputsWrapper.className = 'slider__inputs-wrapper price-inputs-wrapper';
 
   priceInputsWrapper.innerHTML = `
-    <div class="slider__input min-price-value">$${minPrice.toFixed(2)}</div>
-    <div class="slider__input max-price-value">$${maxPrice.toFixed(2)}</div>
+    <div class="slider__input min-price-value">$${minPrice}</div>
+    <div class="slider__input max-price-value">$${maxPrice}</div>
   `;
 
   noUiSlider
@@ -37,6 +37,7 @@ export function renderPriceFilter(data: Product[]) {
   priceFilterContainer.append(priceSlider, priceInputsWrapper);
 
   if (priceSlider.noUiSlider) {
+    decodeQueryString(data);
     const minPriceInput = document.querySelector('.min-price-value') as HTMLDivElement;
     const maxPriceInput = document.querySelector('.max-price-value') as HTMLDivElement;
     const inputs = [minPriceInput, maxPriceInput];

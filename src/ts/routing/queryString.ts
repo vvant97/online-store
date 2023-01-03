@@ -1,3 +1,4 @@
+import { updateFilters, updateFiltersCount } from '../components/filter/filter';
 import { renderCatalog } from '../components/renderCatalog/renderCatalog';
 import { Product } from '../components/types';
 
@@ -29,6 +30,7 @@ export function decodeQueryString(data: Product[]) {
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
   if (!params.toString()) {
     renderCatalog(data);
+    updateFiltersCount();
   } else if (
     params.has('view') &&
     !params.has('category') &&
@@ -37,6 +39,7 @@ export function decodeQueryString(data: Product[]) {
     !params.has('price') &&
     !params.has('stock')
   ) {
+    updateFiltersCount();
     const catalogView = params.get('view');
     if (catalogView === 'list') {
       gridViewButton.classList.remove('view-mode-active');
@@ -50,6 +53,7 @@ export function decodeQueryString(data: Product[]) {
   } else {
     const filtered = checkParams(data) || [];
     checkView(filtered);
+    updateFilters(filtered);
   }
 }
 

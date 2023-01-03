@@ -11,6 +11,11 @@ export function renderCategoryFilter(data: Product[]) {
     categoryItem.innerHTML = `
     <input type="checkbox" id="${categoryName}" name="category" value="${categoryName}" class="category">
     <label for="${categoryName}">${categoryName[0].toUpperCase() + categoryName.slice(1)}</label>
+    <div class="filter__category-quantity">(<span class="category-item__found">${
+      data.filter((item) => categoryName === item.category).length
+    }</span> | <span class="category-item__total">${
+      data.filter((item) => categoryName === item.category).length
+    }</span>)</div>
     `;
     return categoryItem;
   };

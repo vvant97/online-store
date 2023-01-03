@@ -10,7 +10,7 @@ export function renderStockFilter(data: Product[]) {
   const stockSlider = document.createElement('div') as noUiSlider.target;
   stockSlider.className = 'filter__stock stock-slider slider';
   const stockInputsWrapper = document.createElement('div');
-  stockInputsWrapper.className = 'slider__inputs-wrapper';
+  stockInputsWrapper.className = 'slider__inputs-wrapper stock-inputs-wrapper';
 
   stockInputsWrapper.innerHTML = `
     <div class="slider__input min-stock-value">${minStock}</div>

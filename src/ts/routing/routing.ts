@@ -3,6 +3,7 @@ import { renderFilterButtons, renderFilters } from '../components/filter/filter'
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
 import { catalogComponent, controlCatalogView } from '../components/renderCatalog/renderCatalog';
+import { decodeQueryString } from './queryString';
 
 export function routing() {
   const content = document.querySelector('#app') as HTMLDivElement;
@@ -35,6 +36,7 @@ export function routing() {
           controlCatalogView(productData);
           renderFilters(productData);
           renderFilterButtons(productData);
+          decodeQueryString(productData);
           break;
         case '/cart':
           document.title = 'Cart';

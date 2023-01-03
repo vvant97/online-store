@@ -13,7 +13,7 @@ export const productData = [
     stock: 72,
     color: 'silver',
     brand: 'Lenovo',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/71742465351-l.jpg',
       '../../assets/img/71742465352-l.jpg',
@@ -25,7 +25,7 @@ export const productData = [
     id: 2,
     title: 'IPhone 9',
     description: `The design of IPhone 9 64GB will repeat the "eighth" version, but the classic body will be thicker to accommodate a larger battery. The round Home button will return, where Touch ID (fingerprint scanner) is located. Most likely, the rear panel of the device will be matte, it will house a mid-range single camera.
-    IPhone 9 will appeal to connoisseurs of flagship devices with moderate dimensions and small monitors.
+    IPhone 9 will appeal to connoisseurs of flagship devices with moderate dimensions and small monitor.
     Part of the internal filling will be taken from last year's top "eleventh" series. The productivity of the 6-core processor of the new generation A13 Bionic will allow the gadget to execute commands and tasks faster by 20%. Its production is based on the 7nm process technology with the 3rd generation Neural Engine system.
     The product with 64 GB of internal memory will be equipped with 3 GB of RAM and a graphics coprocessor of its own brand design. The IPhone 9 runs on the proprietary operating system iOS 13.`,
     price: 256,
@@ -35,7 +35,7 @@ export const productData = [
     stock: 94,
     color: 'white',
     brand: 'Apple',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/71742465251-l.jpg',
       '../../assets/img/71742465252-l.jpg',
@@ -56,7 +56,7 @@ export const productData = [
     stock: 34,
     color: 'silver',
     brand: 'Apple',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/78520465551-l.jpg',
       '../../assets/img/78520465552-l.jpg',
@@ -76,7 +76,7 @@ export const productData = [
     stock: 28,
     color: 'black',
     brand: 'Iiyama',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/96712477511-l.jpg',
       '../../assets/img/96712477512-l.jpg',
@@ -92,13 +92,13 @@ export const productData = [
     A large capacity 5000 mAh battery combined with support for high-speed 18-watt charging will allow you to focus on your business instead of searching for an outlet. In addition, the phone has an advanced power saving mode, which helps to extend the time of its operation, so that you can stay connected no matter what.
     Thanks to the efficient Qualcomm Snapdragon processor, you can calmly communicate via video call, watch movies and do many other things. No annoying waiting or hangs. What's more, the use of fast LPDDR4x RAM and UFS2.1 type storage further reduces the lag time when launching applications and opening files.`,
     price: 201,
-    discountPrice: 201,
+    discountPrice: 201.0,
     discountPercentage: 0,
     rating: 4.3,
     stock: 123,
     color: 'blue',
     brand: 'Oppo',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/96865477511-l.jpg',
       '../../assets/img/96865477512-l.jpg',
@@ -119,7 +119,7 @@ export const productData = [
     stock: 32,
     color: 'green',
     brand: 'Huawei',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/97875477511-l.jpg',
       '../../assets/img/97875477512-l.jpg',
@@ -140,7 +140,7 @@ export const productData = [
     stock: 83,
     color: 'silver',
     brand: 'Apple',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/97875233511-l.jpg',
       '../../assets/img/97875233512-l.jpg',
@@ -163,7 +163,7 @@ export const productData = [
     stock: 50,
     color: 'white',
     brand: 'Samsung',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/12345233511-l.jpg',
       '../../assets/img/12345233512-l.jpg',
@@ -183,7 +183,7 @@ export const productData = [
     stock: 51,
     color: 'red',
     brand: 'Apple',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/23455233511-l.jpg',
       '../../assets/img/23455233512-l.jpg',
@@ -205,7 +205,7 @@ export const productData = [
     stock: 96,
     color: 'yellow',
     brand: 'Apple',
-    category: 'tablets',
+    category: 'tablet',
     images: [
       '../../assets/img/34565233511-l.jpg',
       '../../assets/img/34565233512-l.jpg',
@@ -215,7 +215,7 @@ export const productData = [
   {
     id: 11,
     title: 'HP Victus 16-e0151ur',
-    description: `The HP Victus 16 gaming laptop is equipped with a luscious 16.1-inch screen, a powerful AMD Ryzen 5 5600H (Zen 3) 3.3 GHz processor, NVIDIA GeForce® RTX 3050 professional graphics for laptops, and an excellent cooling system. The HP Victus 16 model is interesting for users who often play with a laptop and work with video editors. HP Victus 16 gaming laptops are popular with customers due to the large selection of configurations, the highest quality of goods and an excellent price.`,
+    description: `The HP Victus 16 gaming laptop is equipped with a luscious 16.1-inch screen, a powerful AMD Ryzen 5 5600H (Zen 3) 3.3 GHz processor, NVIDIA GeForce® RTX 3050 professional graphics for laptop, and an excellent cooling system. The HP Victus 16 model is interesting for users who often play with a laptop and work with video editors. HP Victus 16 gaming laptop are popular with customers due to the large selection of configurations, the highest quality of goods and an excellent price.`,
     price: 1099,
     discountPrice: 1033.06,
     discountPercentage: 6.18,
@@ -223,7 +223,7 @@ export const productData = [
     stock: 89,
     color: 'black',
     brand: 'HP',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/11037535671-l.jpg',
       '../../assets/img/11037535672-l.jpg',
@@ -243,7 +243,7 @@ export const productData = [
     stock: 5,
     color: 'black',
     brand: 'Realme',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/71114058551-l.jpg',
       '../../assets/img/71114058553-l.jpg',
@@ -263,7 +263,7 @@ export const productData = [
     stock: 12,
     color: 'white',
     brand: 'Xiaomi',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: [
       '../../assets/img/48367418351-l.jpg',
       '../../assets/img/48367418352-l.jpg',
@@ -282,7 +282,7 @@ export const productData = [
     stock: 23,
     color: 'silver',
     brand: 'Huawei',
-    category: 'tablets',
+    category: 'tablet',
     images: ['../../assets/img/14380352311-l.jpg', '../../assets/img/14380352312-l.jpg'],
   },
   {
@@ -298,7 +298,7 @@ export const productData = [
     stock: 3,
     color: 'black',
     brand: 'MSI',
-    category: 'monoblocks',
+    category: 'monoblock',
     images: [
       '../../assets/img/52026264101-l.jpg',
       '../../assets/img/52026264102-l.jpg',
@@ -320,7 +320,7 @@ export const productData = [
     stock: 15,
     color: 'black',
     brand: 'Apple',
-    category: 'TV-boxes',
+    category: 'TV-box',
     images: [
       '../../assets/img/81802826001-l.jpg',
       '../../assets/img/81802826002-l.jpg',
@@ -332,7 +332,7 @@ export const productData = [
     id: 17,
     title: 'Alienware AW2720HFA',
     description: `Advantage in every moment of the fight. Victory in every fight. The incredible responsiveness and depth of gaming monitor immersion make the Alienware 27 the ideal choice for gamers.
-    The unrivaled IPS panel has a native refresh rate of up to 240Hz: 10x faster than a movie theater and 2x faster than conventional 120Hz gaming monitors.
+    The unrivaled IPS panel has a native refresh rate of up to 240Hz: 10x faster than a movie theater and 2x faster than conventional 120Hz gaming monitor.
     Response time 1 ms. No tricks. Real 1ms response time and Overdrive technology deliver fast, responsive, distortion-free gaming.
     AMD FreeSync technology keeps your graphics card and monitor in sync, so you get stunning full-size images without slowing down your gaming experience. This Alienware 27" monitor also supports NVIDIA G-SYNC technology.
     The new high-speed IPS gaming sensor delivers a true 1ms response time without the use of anti-blur algorithms that affect brightness, adaptive sync, and game world display.
@@ -345,7 +345,7 @@ export const productData = [
     stock: 9,
     color: 'white',
     brand: 'Alienware',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/22069224421-l.jpg',
       '../../assets/img/22069224422-l.jpg',
@@ -364,7 +364,7 @@ export const productData = [
     stock: 34,
     color: 'silver',
     brand: 'Acer',
-    category: 'monoblocks',
+    category: 'monoblock',
     images: [
       '../../assets/img/78686371951-l.jpg',
       '../../assets/img/78686371952-l.jpg',
@@ -382,7 +382,7 @@ export const productData = [
     stock: 14,
     color: 'silver',
     brand: 'Apple',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/58651378731-l.jpg',
       '../../assets/img/58651378733-l.jpg',
@@ -402,7 +402,7 @@ export const productData = [
     stock: 25,
     color: 'blue',
     brand: 'Apple',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/59631534211-l.jpg',
       '../../assets/img/59631534212-l.jpg',
@@ -424,7 +424,7 @@ export const productData = [
     stock: 8,
     color: 'blue',
     brand: 'Prestigio',
-    category: 'tablets',
+    category: 'tablet',
     images: [
       '../../assets/img/24956794612-l.jpg',
       '../../assets/img/24956794613-l.jpg',
@@ -443,7 +443,7 @@ export const productData = [
     stock: 22,
     color: 'silver',
     brand: 'Samsung',
-    category: 'tablets',
+    category: 'tablet',
     images: [
       '../../assets/img/78555782811-l.jpg',
       '../../assets/img/78555782812-l.jpg',
@@ -461,7 +461,7 @@ export const productData = [
     stock: 2,
     color: 'white',
     brand: 'Amazon',
-    category: 'ebooks',
+    category: 'ebook',
     images: [
       '../../assets/img/44114653771-l.jpg',
       '../../assets/img/44114653773-l.jpg',
@@ -480,7 +480,7 @@ export const productData = [
     stock: 27,
     color: 'black',
     brand: 'HP',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/60847696571-l.jpg',
       '../../assets/img/60847696572-l.jpg',
@@ -502,7 +502,7 @@ export const productData = [
     stock: 45,
     color: 'silver',
     brand: 'Xiaomi',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/51237623311-l.jpg',
       '../../assets/img/51237623314-l.jpg',
@@ -522,7 +522,7 @@ export const productData = [
     stock: 16,
     color: 'yellow',
     brand: 'Xiaomi',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/66910843091-l.jpg',
       '../../assets/img/66910843095-l.jpg',
@@ -541,7 +541,7 @@ export const productData = [
     stock: 36,
     color: 'black',
     brand: 'Onyx',
-    category: 'ebooks',
+    category: 'ebook',
     images: [
       '../../assets/img/97346480281-l.jpg',
       '../../assets/img/97346480282-l.jpg',
@@ -564,7 +564,7 @@ export const productData = [
     stock: 36,
     color: 'silver',
     brand: 'Samsung',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: [
       '../../assets/img/60989942581-l.jpg',
       '../../assets/img/60989942583-l.jpg',
@@ -584,7 +584,7 @@ export const productData = [
     stock: 6,
     color: 'silver',
     brand: 'Digma',
-    category: 'ebooks',
+    category: 'ebook',
     images: [
       '../../assets/img/91466368401-l.jpg',
       '../../assets/img/91466368402-l.jpg',
@@ -606,7 +606,7 @@ export const productData = [
     stock: 15,
     color: 'black',
     brand: 'Xiaomi',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: [
       '../../assets/img/11038775561-l.jpg',
       '../../assets/img/11038775562-l.jpg',
@@ -625,7 +625,7 @@ export const productData = [
     stock: 48,
     color: 'black',
     brand: 'PocketBook',
-    category: 'ebooks',
+    category: 'ebook',
     images: [
       '../../assets/img/97124123241-l.jpg',
       '../../assets/img/97124123242-l.jpg',
@@ -647,7 +647,7 @@ export const productData = [
     stock: 1,
     color: 'white',
     brand: 'Huawei',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/90959172361-l.jpg',
       '../../assets/img/90959172364-l.jpg',
@@ -666,7 +666,7 @@ export const productData = [
     stock: 29,
     color: 'black',
     brand: 'LG',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/69161952511-l.jpg',
       '../../assets/img/69161952512-l.jpg',
@@ -686,7 +686,7 @@ export const productData = [
     stock: 10,
     color: 'white',
     brand: 'Samsung',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/44951705371-l.jpg',
       '../../assets/img/44951705372-l.jpg',
@@ -704,7 +704,7 @@ export const productData = [
     stock: 2,
     color: 'black',
     brand: 'BenQ',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/55528362051-l.jpg',
       '../../assets/img/55528362052-l.jpg',
@@ -723,7 +723,7 @@ export const productData = [
     stock: 15,
     color: 'black',
     brand: 'Asus',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/30706677411-l.jpg',
       '../../assets/img/30706677412-l.jpg',
@@ -742,7 +742,7 @@ export const productData = [
     stock: 52,
     color: 'black',
     brand: 'Mecool',
-    category: 'TV-boxes',
+    category: 'TV-box',
     images: [
       '../../assets/img/64143195731-l.jpg',
       '../../assets/img/64143195732-l.jpg',
@@ -760,7 +760,7 @@ export const productData = [
     stock: 5,
     color: 'black',
     brand: 'Harper',
-    category: 'TV-boxes',
+    category: 'TV-box',
     images: [
       '../../assets/img/51717649991-l.jpg',
       '../../assets/img/51717649992-l.jpg',
@@ -779,7 +779,7 @@ export const productData = [
     stock: 35,
     color: 'black',
     brand: 'Ritmix',
-    category: 'ebooks',
+    category: 'ebook',
     images: ['../../assets/img/92954458711-l.jpg', '../../assets/img/92954458712-l.jpg'],
   },
   {
@@ -793,7 +793,7 @@ export const productData = [
     stock: 55,
     color: 'green',
     brand: 'Apple',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: ['../../assets/img/18459214551-l.jpg', '../../assets/img/18459214552-l.jpg'],
   },
   {
@@ -808,7 +808,7 @@ export const productData = [
     stock: 12,
     color: 'silver',
     brand: 'HP',
-    category: 'laptops',
+    category: 'laptop',
     images: [
       '../../assets/img/77879135071-l.jpg',
       '../../assets/img/77879135072-l.jpg',
@@ -826,7 +826,7 @@ export const productData = [
     stock: 3,
     color: 'blue',
     brand: 'Aspor',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: [
       '../../assets/img/92687736461-l.jpg',
       '../../assets/img/92687736462-l.jpg',
@@ -844,7 +844,7 @@ export const productData = [
     stock: 3,
     color: 'black',
     brand: 'Dell',
-    category: 'monoblocks',
+    category: 'monoblock',
     images: [
       '../../assets/img/52026264101-l.jpg',
       '../../assets/img/52026264102-l.jpg',
@@ -863,7 +863,7 @@ export const productData = [
     stock: 31,
     color: 'silver',
     brand: 'Apple',
-    category: 'monoblocks',
+    category: 'monoblock',
     images: [
       '../../assets/img/27558018552-l.jpg',
       '../../assets/img/27558018553-l.jpg',
@@ -885,7 +885,7 @@ export const productData = [
     stock: 1,
     color: 'black',
     brand: 'Ugoos',
-    category: 'TV-boxes',
+    category: 'TV-box',
     images: [
       '../../assets/img/36944848201-l.jpg',
       '../../assets/img/36944848202-l.jpg',
@@ -907,7 +907,7 @@ export const productData = [
     stock: 34,
     color: 'blue',
     brand: 'Xiaomi',
-    category: 'smartphones',
+    category: 'smartphone',
     images: [
       '../../assets/img/72101524531-l.jpg',
       '../../assets/img/72101524532-l.jpg',
@@ -926,7 +926,7 @@ export const productData = [
     stock: 85,
     color: 'red',
     brand: 'Apple',
-    category: 'smartwatches',
+    category: 'smartwatch',
     images: [
       '../../assets/img/71563283061-l.jpg',
       '../../assets/img/71563283062-l.jpg',
@@ -938,7 +938,7 @@ export const productData = [
     id: 48,
     title: 'Philips B-line 240B9',
     description: `Push the boundaries of what's possible with this Philips B Line frameless monitor with a 16:10 aspect ratio. This eco-friendly monitor of the next level has many useful functions.
-    The Philips monitor is a simple solution for laptops with a docking station and connection via a single cable. A single USB cable with dual mesh and Type-C and Type-A connectors provides video playback and Ethernet, DisplayLink and charging functions. The Windows Hello webcam guarantees increased security.`,
+    The Philips monitor is a simple solution for laptop with a docking station and connection via a single cable. A single USB cable with dual mesh and Type-C and Type-A connectors provides video playback and Ethernet, DisplayLink and charging functions. The Windows Hello webcam guarantees increased security.`,
     price: 393,
     discountPrice: 365.49,
     discountPercentage: 6.5,
@@ -946,7 +946,7 @@ export const productData = [
     stock: 24,
     color: 'black',
     brand: 'Philips',
-    category: 'monitors',
+    category: 'monitor',
     images: [
       '../../assets/img/44858939661-l.jpg',
       '../../assets/img/44858939662-l.jpg',
@@ -968,7 +968,7 @@ export const productData = [
     stock: 45,
     color: 'white',
     brand: 'HP',
-    category: 'monoblocks',
+    category: 'monoblock',
     images: [
       '../../assets/img/23436256191-l.jpg',
       '../../assets/img/23436256192-l.jpg',
@@ -990,7 +990,7 @@ export const productData = [
     stock: 77,
     color: 'black',
     brand: 'Xiaomi',
-    category: 'TV-boxes',
+    category: 'TV-box',
     images: [
       '../../assets/img/89856120651-l.jpg',
       '../../assets/img/89856120652-l.jpg',

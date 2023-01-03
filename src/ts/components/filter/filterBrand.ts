@@ -11,6 +11,9 @@ export function renderBrandFilter(data: Product[]) {
     brandItem.innerHTML = `
     <input type="checkbox" id="${brandName.toLowerCase()}" name="brand" value="${brandName.toLowerCase()}" class="brand">
     <label for="${brandName.toLowerCase()}">${brandName[0].toUpperCase() + brandName.slice(1)}</label>
+    <div class="filter__brand-quantity">(<span class="brand-item__found">${
+      data.filter((item) => brandName === item.brand).length
+    }</span> | <span class="brand-item__total">${data.filter((item) => brandName === item.brand).length}</span>)</div>
     `;
     return brandItem;
   };
