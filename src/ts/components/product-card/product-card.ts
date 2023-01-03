@@ -49,6 +49,23 @@ const setProductAvailability = (stock: number) => {
   quantity.textContent = `(${stock})`;
 };
 
+const watchTextExpand = () => {
+  const toggleButton = document.querySelector('.product-info__description-expand') as HTMLSpanElement;
+
+  toggleButton.addEventListener('click', (event: Event) => {
+    const target = event.currentTarget as HTMLSpanElement;
+    const text = target.previousElementSibling as HTMLParagraphElement;
+
+    if (text.style.display !== 'block') {
+      text.style.display = 'block';
+      target.textContent = 'Show less...';
+    } else {
+      text.style.display = '';
+      target.textContent = 'Show more...';
+    }
+  });
+};
+
 export const createProductCard = (id: number) => {
   const product: Product | undefined = productData.find((item) => item.id === id);
   const productBody = document.querySelector('.product__body') as HTMLDivElement;
@@ -110,7 +127,10 @@ export const createProductCard = (id: number) => {
     </p>
     <div class="product-info__description-wrapper">
       <p class="product-info__description-title">Description:</p>
-      <p class="product-info__description">${product.description}</p>
+      <div>
+        <p class="product-info__description">${product.description}</p>
+        <span class="product-info__description-expand">Show more...</span>
+      </div>
     </div>
   </div>
   `;
@@ -125,6 +145,7 @@ export const createProductCard = (id: number) => {
     createImageSlider(product.images);
     setProductPrice(product.price, product.discountPercentage);
     setProductAvailability(product.stock);
+    watchTextExpand();
   }
 };
 
