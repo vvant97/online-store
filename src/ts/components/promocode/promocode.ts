@@ -106,25 +106,38 @@ export const watchPromocode = () => {
   promocodeInput.addEventListener('input', (event: Event) => {
     showMatchingPromocode(event);
   });
+};
 
+export const watchPromocodeReaccounting = () => {
   document.addEventListener('click', (event: Event) => {
+    const promocodeInput = document.querySelector('.product-cart__checkout-promo-input') as HTMLInputElement;
     const promocodeItem = '.product-cart__checkout-promo-item';
     const removeButton = '.product-cart__checkout-promo-remove';
     const target = event.target as HTMLElement;
-
+  
     if (target.closest(promocodeItem)) {
       appendPromocode(event);
       promocodeInput.value = '';
       reaccountTotalCheckoutPrice();
     }
-
+  
     if (target.closest(removeButton)) {
       removePromocode(event);
       reaccountTotalCheckoutPrice();
     }
-
+  
     if (target.closest('.product-quantity__control') || target.closest('.product-cart__product-item-remove')) {
-      reaccountTotalCheckoutPrice();
+      try {
+        reaccountTotalCheckoutPrice();
+      } catch (error) {
+        return;
+      }
+    }
+
+    if (!productsStorage.load().length) {
+      PROMOCODES_DATA['S10'] = 10;
+      PROMOCODES_DATA['M20'] = 20;
+      PROMOCODES_DATA['L30'] = 30;
     }
   });
 };
