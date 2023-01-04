@@ -37,6 +37,7 @@ export function renderStockFilter(data: Product[]) {
   stockFilterContainer.append(stockSlider, stockInputsWrapper);
 
   if (stockSlider.noUiSlider) {
+    decodeQueryString(data);
     const minStockInput = document.querySelector('.min-stock-value') as HTMLDivElement;
     const maxStockInput = document.querySelector('.max-stock-value') as HTMLDivElement;
     const inputs = [minStockInput, maxStockInput];

@@ -41,6 +41,7 @@ export function renderFilters(data: Array<Product>) {
   renderColorFilter(data);
   renderPriceFilter(data);
   renderStockFilter(data);
+  renderFilterButtons(data);
 }
 
 export function renderFilterButtons(data: Array<Product>) {
