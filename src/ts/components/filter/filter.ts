@@ -77,6 +77,10 @@ export function renderFilterButtons(data: Array<Product>) {
     priceSlider.noUiSlider?.reset();
     stockSlider.noUiSlider?.reset();
 
+    const sortSelect = document.querySelector('.sort-select') as HTMLSelectElement;
+    sortSelect.value = 'featured';
+    data.sort((a, b) => b.rating - a.rating);
+
     renderCatalog(data);
   });
 }
@@ -87,8 +91,6 @@ export function updateFilters(filteredProducts: Product[]) {
     const input = <HTMLInputElement>item.querySelector('.category');
     const inputName = input.value;
     const spanFoundItems = <HTMLSpanElement>item.querySelector('.category-item__found');
-    const spanTotalItems = <HTMLSpanElement>item.querySelector('.category-item__total');
-    console.log(spanTotalItems.innerHTML);
     spanFoundItems.innerHTML = `${filteredProducts.filter((item) => inputName === item.category).length}`;
   });
 
@@ -103,7 +105,6 @@ export function updateFilters(filteredProducts: Product[]) {
   const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
 
   const priceData = filteredProducts.map((item) => item.discountPrice);
-  console.log(priceData);
   const minPrice = priceData.reduce((a, b) => Math.min(a, b));
   const maxPrice = priceData.reduce((a, b) => Math.max(a, b));
 

@@ -37,7 +37,8 @@ export function decodeQueryString(data: Product[]) {
     !params.has('brand') &&
     !params.has('color') &&
     !params.has('price') &&
-    !params.has('stock')
+    !params.has('stock') &&
+    !params.has('sort')
   ) {
     updateFiltersCount();
     const catalogView = params.get('view');
@@ -64,7 +65,12 @@ function checkView(filteredProducts: Product[]) {
 
   if (
     params.has('view') &&
-    (params.has('category') || params.has('brand') || params.has('color') || params.has('price') || params.has('stock'))
+    (params.has('category') ||
+      params.has('brand') ||
+      params.has('color') ||
+      params.has('price') ||
+      params.has('stock') ||
+      params.has('sort'))
   ) {
     const catalogView = params.get('view');
     if (catalogView === 'list') {
@@ -88,6 +94,7 @@ export function checkParams(data: Product[]) {
   const filteredColor = params.get('color')?.split('\u2195') || [];
   const [minPrice, maxPrice] = params.get('price')?.split('\u2195') || [];
   const [minStock, maxStock] = params.get('stock')?.split('\u2195') || [];
+  const sorting = params.get('sort') || '';
 
   if (filteredCategory.length) {
     filtered = filtered.filter((item) => filteredCategory.includes(item.category));
@@ -103,6 +110,34 @@ export function checkParams(data: Product[]) {
   }
   if (minStock && maxStock) {
     filtered = filtered.filter((item) => item.stock >= +minStock && item.stock <= +maxStock);
+  }
+
+  if (sorting.length) {
+    switch (sorting) {
+      case 'featured':
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'title-ascending':
+        filtered.sort((a, b) => {
+          if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+          if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+          return 0;
+        });
+        break;
+      case 'title-descending':
+        filtered.sort((a, b) => {
+          if (b.title.toLowerCase() < a.title.toLowerCase()) return -1;
+          if (b.title.toLowerCase() > a.title.toLowerCase()) return 1;
+          return 0;
+        });
+        break;
+      case 'price-descending':
+        filtered.sort((a, b) => b.discountPrice - a.discountPrice);
+        break;
+      case 'price-ascending':
+        filtered.sort((a, b) => a.discountPrice - b.discountPrice);
+        break;
+    }
   }
 
   return filtered;

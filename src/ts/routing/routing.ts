@@ -3,6 +3,7 @@ import { renderFilters } from '../components/filter/filter';
 import { createProductCard, productComponent } from '../components/product-card/product-card';
 import { productData } from '../components/productData';
 import { catalogComponent, controlCatalogView } from '../components/renderCatalog/renderCatalog';
+import { sortItems } from '../components/sort/sort';
 
 export function routing() {
   const content = document.querySelector('#app') as HTMLDivElement;
@@ -31,6 +32,7 @@ export function routing() {
           content.innerHTML = routes[pathname];
           controlCatalogView(productData);
           renderFilters(productData);
+          sortItems(productData);
           break;
         case '/cart':
           document.title = 'Cart';
