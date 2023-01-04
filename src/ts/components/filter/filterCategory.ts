@@ -2,7 +2,7 @@ import { decodeQueryString, encodeQueryString } from '../../routing/queryString'
 import { Product } from '../types';
 
 export function renderCategoryFilter(data: Product[]) {
-  const categoryList = [...new Set(data.map((item) => item.category))];
+  const categoryList = ['ebook', 'laptop', 'monitor', 'monoblock', 'smartwatch', 'smartphone', 'tablet', 'TV-box'];
   const categoryContainer = document.createElement('div') as HTMLDivElement;
   categoryContainer.className = 'filter__categories';
   const createCategoryItem = (categoryName: string): HTMLDivElement => {

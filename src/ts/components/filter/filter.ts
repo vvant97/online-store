@@ -86,6 +86,8 @@ export function renderFilterButtons(data: Array<Product>) {
 }
 
 export function updateFilters(filteredProducts: Product[]) {
+  if (!filteredProducts.length) return;
+
   const categoryItems: HTMLDivElement[] = [...document.querySelectorAll<HTMLDivElement>('.category-item')];
   categoryItems.forEach((item) => {
     const input = <HTMLInputElement>item.querySelector('.category');
