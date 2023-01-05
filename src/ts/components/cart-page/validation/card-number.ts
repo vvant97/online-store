@@ -1,4 +1,5 @@
 import { PAYMENT_SYSTEM_ICONS } from "../cart-templates";
+import { FirstSymbolError, SymbolsLengthError } from './errors';
 
 const setMatchingPaymentSystemIcon = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
@@ -56,7 +57,11 @@ const changeIncorrectInput = (event: Event) => {
 const isValidCardNumber = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
   const currentValue = input.value;
-  const charactersAmount = currentValue.length;
+  const charactersAmount = currentValue
+    .split('')
+    .filter((symbol) => +symbol)
+    .length;
+  const isCorrectCharactersAmount = charactersAmount === 16;
 
   if (
     !currentValue.startsWith('4') &&
@@ -64,7 +69,11 @@ const isValidCardNumber = (event: Event) => {
     !currentValue.startsWith('6') &&
     charactersAmount
   ) {
-    throw new Error('Your credit card must starts with 4, 5 or 6');
+    throw new FirstSymbolError('Your credit card must starts with 4, 5 or 6');
+  }
+
+  if (!isCorrectCharactersAmount) {
+    throw new SymbolsLengthError('Your credit card number must include 16 numbers');
   }
 };
 
@@ -77,7 +86,13 @@ export const validateCardNumber = () => {
       changeIncorrectInput(event);
       isValidCardNumber(event);
     } catch (error) {
-      console.log(error);
+      if (error instanceof FirstSymbolError) {
+        console.log('FirstSymbolError');
+      }
+
+      if (error instanceof SymbolsLengthError) {
+        console.log('SymbolsLengthError');
+      }
     }
   });
 };
