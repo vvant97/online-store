@@ -48,8 +48,16 @@
     @include flex($gap: 10px);
   }
 
+  &__icon-container {
+    width: 38px;
+  }
+
   &__icon {
-    @include font($fontSize: 2.5rem, $color: $colorParagraph);
+    @include font($fontSize: 3rem, $color: $colorParagraph);
+
+    display: block;
+    width: 38px;
+    line-height: 0;
   }
 
   &__card-details-container {

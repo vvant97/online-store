@@ -1,4 +1,5 @@
 import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
+import { validateCheckoutForm } from './validation/form';
 
 const createCheckoutTemplate = () => {
   const template = `
@@ -42,6 +43,7 @@ export const watchCheckoutOpenEvents = (selector: string) => {
 
     overlay.insertAdjacentHTML('afterbegin', checkoutForm);
     showOverlay();
+    validateCheckoutForm();
   });
 };
 
