@@ -16,11 +16,15 @@
   }
 
   &__input {
-    @include size($width: 100%, $padding: 10px 15px);
+    @include size($width: 100%, $padding: 10px 13px);
     @include font($fontSize: 1.3rem, $color: $colorParagraph);
 
     background-color: $colorBg;
     border: $border;
+
+    &.invalid {
+      border: 2px solid $colorRemove;
+    }
   }
 
   &__close {
@@ -79,4 +83,8 @@
       background: transparent;
     }
   }
+}
+
+.input-error {
+  @include font($fontSize: 1.2rem, $color: $colorRemove);
 }

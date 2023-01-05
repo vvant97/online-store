@@ -1,5 +1,13 @@
-import { validateCardNumber } from './card-number';
+import { watchCardNumber, isValidCardNumber } from './card-number';
 
 export const validateCheckoutForm = () => {
-  validateCardNumber();
+  const form = document.querySelector('.order') as HTMLFormElement;
+
+  watchCardNumber();
+
+  form.addEventListener('submit', (event: Event) => {
+    event.preventDefault();
+
+    isValidCardNumber();
+  });
 };
