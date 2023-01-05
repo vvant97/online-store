@@ -2,15 +2,20 @@ import { decodeQueryString, encodeQueryString } from '../../routing/queryString'
 import { Product } from '../types';
 
 export function renderCategoryFilter(data: Product[]) {
-  const categoryList = [...new Set(data.map((item) => item.category))];
+  const categoryList = ['ebook', 'laptop', 'monitor', 'monoblock', 'smartwatch', 'smartphone', 'tablet', 'TV-box'];
   const categoryContainer = document.createElement('div') as HTMLDivElement;
   categoryContainer.className = 'filter__categories';
   const createCategoryItem = (categoryName: string): HTMLDivElement => {
     const categoryItem = document.createElement('div');
-    categoryItem.className = 'filter__category-item category-item';
+    categoryItem.className = 'filter__category-item category-item filter-input';
     categoryItem.innerHTML = `
     <input type="checkbox" id="${categoryName}" name="category" value="${categoryName}" class="category">
     <label for="${categoryName}">${categoryName[0].toUpperCase() + categoryName.slice(1)}</label>
+    <div class="filter__category-quantity">(<span class="category-item__found">${
+      data.filter((item) => categoryName === item.category).length
+    }</span> | <span class="category-item__total">${
+      data.filter((item) => categoryName === item.category).length
+    }</span>)</div>
     `;
     return categoryItem;
   };

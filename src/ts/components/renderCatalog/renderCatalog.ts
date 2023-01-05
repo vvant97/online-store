@@ -22,16 +22,13 @@ export const catalogComponent = `
 
             <div class="products__sort">
               <p class="products__found found-products">Found:<span class="found-products__count">5</span></p>
-              <label class="products__sort-label" for="SortBy">Sort by:</label>
-              <select class="products__sort-select" name="sortby" id="SortBy">
-                <option selected value="manual">Featured</option>
-                <option value="best-selling">Best Selling</option>
-                <option value="title-ascending">Alphabetically, A-Z</option>
-                <option value="title-descending">Alphabetically, Z-A</option>
-                <option value="price-ascending">Price, low to high</option>
-                <option value="price-descending">Price, high to low</option>
-                <option value="created-descending">Date, new to old</option>
-                <option value="created-ascending">Date, old to new</option>
+              <label class="products__sort-label" for="sort-select">Sort by:</label>
+              <select class="products__sort-select sort-select" name="sort-select" id="sort-select">
+                <option class="sort-option" selected value="featured">Featured</option>
+                <option class="sort-option" value="title-ascending">Alphabetically, A-Z</option>
+                <option class="sort-option" value="title-descending">Alphabetically, Z-A</option>
+                <option class="sort-option" value="price-ascending">Price, low to high</option>
+                <option class="sort-option" value="price-descending">Price, high to low</option>
               </select>
             </div>
           </div>
@@ -172,6 +169,9 @@ export function renderCatalog(dataList: Product[]) {
   const catalogContainer = document.querySelector('.products__body') as HTMLDivElement;
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
+  const totalProductsCount = document.querySelector('.found-products__count') as HTMLSpanElement;
+  totalProductsCount.innerText = `${dataList.length}`;
+
   catalogContainer.innerHTML = '';
 
   if (gridViewButton.classList.contains('view-mode-active') && dataList.length) {
@@ -191,6 +191,7 @@ export function renderCatalog(dataList: Product[]) {
   } else {
     const message = document.createElement('p') as HTMLParagraphElement;
     message.innerText = "Sorry, there're no products found";
+    message.className = 'products__not-found';
     catalogContainer.append(message);
   }
 }
