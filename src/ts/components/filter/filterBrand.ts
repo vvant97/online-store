@@ -7,10 +7,13 @@ export function renderBrandFilter(data: Product[]) {
   brandContainer.className = 'filter__brands';
   const createBrandItem = (brandName: string): HTMLDivElement => {
     const brandItem = document.createElement('div');
-    brandItem.className = 'filter__brand-item brand-item';
+    brandItem.className = 'filter__brand-item brand-item filter-input';
     brandItem.innerHTML = `
     <input type="checkbox" id="${brandName.toLowerCase()}" name="brand" value="${brandName.toLowerCase()}" class="brand">
     <label for="${brandName.toLowerCase()}">${brandName[0].toUpperCase() + brandName.slice(1)}</label>
+    <div class="filter__brand-quantity">(<span class="brand-item__found">${
+      data.filter((item) => brandName === item.brand).length
+    }</span> | <span class="brand-item__total">${data.filter((item) => brandName === item.brand).length}</span>)</div>
     `;
     return brandItem;
   };
@@ -22,7 +25,7 @@ export function renderBrandFilter(data: Product[]) {
   filterBrandItems(data);
 }
 
-function filterBrandItems(data: Product[]) {
+export function filterBrandItems(data: Product[]) {
   const brandFilterInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll<HTMLInputElement>('.brand');
 
   const params = new URLSearchParams(location.search);
