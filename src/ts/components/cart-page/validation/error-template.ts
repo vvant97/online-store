@@ -7,6 +7,10 @@ export const ERRORS_DATA = {
     id: 1,
     message: 'Must include 16 numbers',
   },
+  SymbolsLengthErrorCvv: {
+    id: 2,
+    message: 'CVV must include 3 numbers',
+  }
 };
 
 export const appendErrorElement = (containerSelector: string, message: string, id: number) => {

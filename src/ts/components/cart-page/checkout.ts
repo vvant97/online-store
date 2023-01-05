@@ -23,7 +23,7 @@ const createCheckoutTemplate = () => {
           </div>
           <div class="order__card-additional">
             <input class="order__input order__expiration" type="text" placeholder="MM / YY">
-            <input class="order__input order__cvv" type="text" placeholder="CVV">
+            <input class="order__input order__cvv" type="text" placeholder="CVV" maxlength="3">
           </div>
         </div>
       </fieldset>
