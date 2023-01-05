@@ -282,11 +282,11 @@
 }
 
 .noUi-connect {
-  background-color: darken($yellowColor, 10%);
+  background-color: darken($lightYellowColor, 10%);
 }
 
 .noUi-target {
-  background-color: lighten($yellowColor, 10%);
+  background-color: lighten($lightYellowColor, 10%);
   border: none;
   border-radius: 10rem;
   box-shadow: none;
@@ -303,7 +303,7 @@
   box-shadow: none;
   border-radius: 100%;
   background-color: $colorBg;
-  border: 0.3rem solid darken($yellowColor, 10%);
+  border: 0.3rem solid darken($lightYellowColor, 10%);
 }
 
 .noUi-horizontal .noUi-handle {
