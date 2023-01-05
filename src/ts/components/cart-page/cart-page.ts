@@ -1,7 +1,6 @@
 import { ProductItem } from '../types';
 import { createRating } from '../rating/rating';
 import { createCartProductItemTemplate, createCartLayoutTemplate, createEmptyCartPageTemplate } from './cart-templates';
-import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
 import { watchPromocode } from '../promocode/promocode';
@@ -103,10 +102,8 @@ export const renderCartPage = () => {
   if (location.pathname.includes('cart')) {
     const products = createCartProductItems(productsStorage.load());
     const mainContainer = document.querySelector('.main__app') as HTMLDivElement;
-    const breadcrumbs = createBreadcrumbs('Your Shopping Cart');
 
     mainContainer.innerHTML = createCartLayoutTemplate();
-    mainContainer.prepend(breadcrumbs);
 
     appendProducts(products);
     setAllProductsRating();

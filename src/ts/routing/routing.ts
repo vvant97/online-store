@@ -21,12 +21,13 @@ export function routing() {
   };
 
   const loaderComponents = (pathname: string) => {
+    window.history.pushState({}, pathname, pathname + window.location.search);
     if (pathname.slice(1, 8) == 'product') {
       document.title = 'Product';
       content.innerHTML = routes['/product'];
       const productId = +pathname.split('-')[1];
       createProductCard(productId);
-      window.history.pushState({}, pathname, pathname);
+      window.history.replaceState({}, pathname, pathname);
     } else {
       switch (pathname) {
         case '/':
@@ -36,7 +37,6 @@ export function routing() {
           renderFilters(productData);
           sortItems(productData);
           searchItems(productData);
-          window.history.pushState({}, pathname, pathname + window.location.search);
           break;
         case '/cart':
           document.title = 'Cart';
@@ -46,7 +46,7 @@ export function routing() {
         default:
           document.title = 'Error 404';
           content.innerHTML = routes['404'];
-          window.history.pushState({}, pathname, pathname);
+          window.history.replaceState({}, pathname, pathname);
       }
     }
   };
@@ -62,8 +62,10 @@ export function routing() {
       const href = link.getAttribute('href');
       if (!href) {
         loaderComponents('/');
+        location.reload();
       } else {
         loaderComponents(href);
+        location.reload();
       }
     });
   });

@@ -7,7 +7,7 @@ import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 
 export const getDiscountPrice = (price: number, discountNumber: number): number => {
   const discount = Math.round(discountNumber);
-  const newPrice = (price - (price * (discount / 100))).toFixed(2);
+  const newPrice = (price - price * (discount / 100)).toFixed(2);
 
   return +newPrice;
 };
@@ -140,7 +140,7 @@ export const createProductCard = (id: number) => {
 
     productInfoContainer.prepend(createRating(product.rating));
     productQuantity.append(createProductQuantity(product.stock, product.id));
-    productBody.before(createBreadcrumbs(product.title));
+    productBody.before(createBreadcrumbs(product.title, product.category, product.brand));
 
     createImageSlider(product.images);
     setProductPrice(product.price, product.discountPercentage);

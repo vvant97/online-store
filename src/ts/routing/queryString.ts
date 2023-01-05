@@ -1,5 +1,6 @@
 import { updateFilters, updateFiltersCount } from '../components/filter/filter';
 import { renderCatalog } from '../components/renderCatalog/renderCatalog';
+import { sortingOptions } from '../components/sort/sort';
 import { Product } from '../components/types';
 
 export function encodeQueryString(key: string, values: Array<string>) {
@@ -131,23 +132,7 @@ export function checkParams(data: Product[]) {
   }
 
   if (sorting.length) {
-    switch (sorting) {
-      case 'featured':
-        filtered.sort((a, b) => b.rating - a.rating);
-        break;
-      case 'title-ascending':
-        filtered.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1));
-        break;
-      case 'title-descending':
-        filtered.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1));
-        break;
-      case 'price-descending':
-        filtered.sort((a, b) => b.discountPrice - a.discountPrice);
-        break;
-      case 'price-ascending':
-        filtered.sort((a, b) => a.discountPrice - b.discountPrice);
-        break;
-    }
+    sortingOptions(sorting, filtered);
   }
 
   return filtered;
