@@ -27,8 +27,10 @@ export const isValidCvv = () => {
   } else {
     const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthErrorCvv.id}`) as HTMLElement;
 
-    input.classList.remove('invalid');
-    errorElement.remove();
+    if (errorElement) {
+      input.classList.remove('invalid');
+      errorElement.remove();
+    }
   }
 
   return isValidCharactersAmount;

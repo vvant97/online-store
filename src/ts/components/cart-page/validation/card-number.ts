@@ -57,9 +57,9 @@ export const isValidCardNumber = () => {
   const input = document.querySelector('.order__card') as HTMLInputElement;
   const currentValue = input.value;
   const isCorrectCharactersAmount = currentValue.split('').filter((symbol) => symbol !== ' ').length === 16;
-  const isCorrectFirstSymbol = !currentValue.startsWith('4') && !currentValue.startsWith('5') && !currentValue.startsWith('6');
+  const isCorrectFirstSymbol = currentValue.startsWith('4') || currentValue.startsWith('5') || currentValue.startsWith('6');
 
-  if (isCorrectFirstSymbol) {
+  if (!isCorrectFirstSymbol) {
     const error = new FirstSymbolError(ERRORS_DATA.FirstSymbolError.message);
     const errorElement = document.querySelector(`#error${ERRORS_DATA.FirstSymbolError.id}`) as HTMLElement;
 
@@ -97,7 +97,11 @@ export const isValidCardNumber = () => {
     }
   }
 
-  return (isCorrectCharactersAmount && isCorrectFirstSymbol) || true;
+  if (!isCorrectFirstSymbol || !isCorrectCharactersAmount) {
+    return false;
+  }
+
+  return true;
 };
 
 export const watchCardNumber = () => {
