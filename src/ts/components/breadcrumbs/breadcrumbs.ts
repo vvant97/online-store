@@ -7,7 +7,7 @@ export const createBreadcrumbs = (title: string) => {
           <a class="breadcrumbs__link" href="/">Home</a>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link">${title}</a>
+          <a class="breadcrumbs__link" style="pointer-events: none">${title}</a>
         </li>
       </ul>
     </div>

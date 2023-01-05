@@ -9,7 +9,7 @@ const getImageItems = (imagesArray: string[], type: Image) => {
     item.className = `product-slider__${type}-item`;
     item.style.backgroundImage = `url("${source}")`;
     item.style.backgroundRepeat = 'no-repeat';
-    item.style.backgroundSize = '85%';
+    item.style.backgroundSize = 'contain';
     item.style.backgroundPosition = '50%';
 
     if (type === 'gallery') {
@@ -80,7 +80,7 @@ const resizeCurrentImage = () => {
     const sliderItems = Array.from(document.querySelectorAll('.product-slider__list-item')) as HTMLLIElement[];
 
     sliderItems.forEach((item) => {
-      item.style.backgroundSize = '85%';
+      item.style.backgroundSize = 'contain';
       item.style.backgroundPosition = '50%';
     });
   });

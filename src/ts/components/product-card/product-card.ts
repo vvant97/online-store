@@ -20,7 +20,7 @@ const setProductPrice = (price: number, discountNumber: number) => {
 
   if (discount) {
     const newPrice = getDiscountPrice(price, discountNumber);
-    actualPriceContainer.textContent = `${newPrice}`;
+    actualPriceContainer.textContent = `$${newPrice}`;
     oldPriceContainer.textContent = `$${price.toFixed(2)}`;
     discountContainer.textContent = `-${discount}%`;
   } else {
@@ -49,6 +49,23 @@ const setProductAvailability = (stock: number) => {
   quantity.textContent = `(${stock})`;
 };
 
+const watchTextExpand = () => {
+  const toggleButton = document.querySelector('.product-info__description-expand') as HTMLSpanElement;
+
+  toggleButton.addEventListener('click', (event: Event) => {
+    const target = event.currentTarget as HTMLSpanElement;
+    const text = target.previousElementSibling as HTMLParagraphElement;
+
+    if (text.style.display !== 'block') {
+      text.style.display = 'block';
+      target.textContent = 'Show less...';
+    } else {
+      text.style.display = '';
+      target.textContent = 'Show more...';
+    }
+  });
+};
+
 export const createProductCard = (id: number) => {
   const product: Product | undefined = productData.find((item) => item.id === id);
   const productBody = document.querySelector('.product__body') as HTMLDivElement;
@@ -74,7 +91,7 @@ export const createProductCard = (id: number) => {
       <i class="product-slider__gallery-icon product-slider__gallery-icon-next bi bi-caret-right"></i>
     </ul>
   </div>
-  <div class="product-info">
+  <div class="product-info product-pick" id="${product.id}">
     <div class="product-info__rating"></div>
     <h2 class="product-info__title">${product.title}</h2>
     <div class="product-info__price">
@@ -110,7 +127,10 @@ export const createProductCard = (id: number) => {
     </p>
     <div class="product-info__description-wrapper">
       <p class="product-info__description-title">Description:</p>
-      <p class="product-info__description">${product.description}</p>
+      <div>
+        <p class="product-info__description">${product.description}</p>
+        <span class="product-info__description-expand">Show more...</span>
+      </div>
     </div>
   </div>
   `;
@@ -125,6 +145,7 @@ export const createProductCard = (id: number) => {
     createImageSlider(product.images);
     setProductPrice(product.price, product.discountPercentage);
     setProductAvailability(product.stock);
+    watchTextExpand();
   }
 };
 

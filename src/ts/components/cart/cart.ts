@@ -4,9 +4,10 @@ import { Product, ProductItem } from '../types';
 import { getDiscountPrice } from '../product-card/product-card';
 import ProductsStorage from '../../storage/ProductsStorage';
 import CartState from '../../storage/CartState';
+import { renderCartPage } from '../cart-page/cart-page';
 
 export const productsStorage = new ProductsStorage('cartProducts');
-const cartState = new CartState('cartAsideItems', '.cart__list');
+export const cartState = new CartState('cartAsideItems', '.cart__list');
 
 const showCart = () => {
   const cart = document.querySelector('.cart') as HTMLDivElement;
@@ -33,13 +34,13 @@ const hideCart = () => {
   });
 };
 
-const getProductQuantity = (): number => {
-  const quantity = document.querySelector('.product-quantity__input') as HTMLInputElement;
+const getProductQuantity = (id: number): number => {
+  const quantity = document.querySelector(`.product-quantity__input-${id}`) as HTMLInputElement;
 
   return quantity ? +quantity.value : 1;
 };
 
-const setProductsAmount = (...selectors: string[]) => {
+export const setProductsAmount = (...selectors: string[]) => {
   const products = productsStorage.load();
   const amount = products.reduce((acc, product) => acc + product.quantity, 0);
 
@@ -50,7 +51,7 @@ const setProductsAmount = (...selectors: string[]) => {
   });
 };
 
-const setTotalPrice = (...selectors: string[]) => {
+export const setTotalPrice = (...selectors: string[]) => {
   const products = productsStorage.load();
   const price = products.reduce((acc, val) => acc + val.price, 0);
 
@@ -64,15 +65,21 @@ const setTotalPrice = (...selectors: string[]) => {
 const addToCart = (id: number) => {
   const product = productData.find((product) => product.id === id) as Product;
   const discount = getDiscountPrice(product.price, product.discountPercentage);
-  const quantity = getProductQuantity();
+  const quantity = getProductQuantity(id);
   const price = ((discount || product.price) * quantity).toFixed(2);
   const productsList = document.querySelector('.cart__list') as HTMLUListElement;
+  const brand = product.brand;
+  const category = product.category;
+  const rating = product.rating;
+  const oldPrice = product.price;
+  const discountPercent = Math.floor(product.discountPercentage);
+  const stock = product.stock;
 
   const template = `
     <li class="cart__item" data-product-id="${id}">
       <div class="cart__product-image" style="background-image: url('${product.images[0]}')"></div>
       <div class="cart__product-wrapper">
-        <div class="cart__product-title">${product.title}</div>
+        <a class="cart__product-title" href="/product-${product.id}">${product.title}</a>
         <div class="cart__product-info">
           <div class="cart__product-price-wrapper">
             <p class="cart__product-quantity">${quantity}  x</p>
@@ -92,6 +99,12 @@ const addToCart = (id: number) => {
     discount,
     quantity,
     priceByOne: discount || product.price,
+    brand,
+    category,
+    rating,
+    oldPrice,
+    discountPercent,
+    stock,
   };
 
   productsStorage.save(productItemData);
@@ -117,6 +130,20 @@ const checkAddToCartAvailability = () => {
   });
 };
 
+const openCartAside = () => {
+  const cart = document.querySelector('.cart') as HTMLDivElement;
+
+  cart.classList.add('active');
+  showOverlay();
+};
+
+const closeCartAside = () => {
+  const cart = document.querySelector('.cart') as HTMLDivElement;
+
+  cart.classList.remove('active');
+  hideOverlay();
+};
+
 const watchCart = () => {
   document.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
@@ -138,16 +165,31 @@ const watchCart = () => {
       setTotalPrice('.header__total-amount', '.cart__total');
       setProductsAmount('.cart__amount', '.header__cart-quantity');
       cartState.save();
+
+      openCartAside();
     }
 
     if (target.closest('.cart__product-delete')) {
-      const cartItem = target.closest('.cart__item') as HTMLLIElement;
-      const productId = +(<string>cartItem.dataset.productId);
+      const cartAsideItem = target.closest('.cart__item') as HTMLLIElement;
+      const productId = +(<string>cartAsideItem.dataset.productId);
 
-      cartItem.remove();
+      if (window.location.pathname.includes('cart')) {
+        const cartItems = document.querySelectorAll('.product-cart__product-item');
+        const cartItemToRemove = [...cartItems].find((item) => +item.id === productId) as HTMLLIElement;
+
+        cartItemToRemove.remove();
+      }
+     
+      cartAsideItem.remove();
       productsStorage.removeSome(productId);
       setTotalPrice('.header__total-amount', '.cart__total');
       setProductsAmount('.cart__amount', '.header__cart-quantity');
+
+      if (location.pathname.includes('cart')) {
+        setTotalPrice('.product-cart__checkout-total');
+        setProductsAmount('.product-cart__checkout-amount');
+      }
+
       cartState.save();
     }
 
@@ -155,37 +197,64 @@ const watchCart = () => {
   });
 };
 
-export const updateProductInfo = () => {
-  const productId = +(<string>(<HTMLSpanElement>document.querySelector('.product-info__id')).textContent);
-  const productToReplace = productsStorage.loadSome(productId);
+const updateProductInfo = (id: number) => {
+  const productToReplace = productsStorage.loadSome(id);
 
   if (!productToReplace) {
     return;
   }
 
-  const quantity = getProductQuantity();
-  const price = +(productToReplace.priceByOne * quantity).toFixed(2);
-  const cartAsideItem = document.querySelector(`.cart__item[data-product-id="${productId}"]`) as HTMLLIElement;
+  const quantity = getProductQuantity(id);
+  const price = productToReplace.priceByOne * quantity;
+  const cartAsideItem = document.querySelector(`.cart__item[data-product-id="${id}"]`) as HTMLLIElement;
   const cartAsideProductQuantity = cartAsideItem.querySelector('.cart__product-quantity') as HTMLParagraphElement;
   const cartAsideProductPrice = cartAsideItem.querySelector('.cart__product-price') as HTMLParagraphElement;
 
-  productsStorage.removeSome(productId);
+  if (window.location.pathname.includes('cart')) {
+    const cartPageProductFullPriceContainer = document.querySelector(`.product-cart__product-item__price-${id}`) as HTMLParagraphElement;
+
+    cartPageProductFullPriceContainer.textContent = `$${price.toFixed(2)}`;
+  }
+
+  productsStorage.removeSome(id);
   productToReplace.quantity = quantity;
   productToReplace.price = price;
   cartAsideProductQuantity.textContent = `${quantity}  x`;
-  cartAsideProductPrice.textContent = `$${price}`;
+  cartAsideProductPrice.textContent = `$${price.toFixed(2)}`;
   productsStorage.save(productToReplace);
   setTotalPrice('.header__total-amount', '.cart__total');
   setProductsAmount('.cart__amount', '.header__cart-quantity');
+
+  if (location.pathname.includes('cart')) {
+    setTotalPrice('.product-cart__checkout-total');
+    setProductsAmount('.product-cart__checkout-amount');
+  }
+
   cartState.save();
 };
 
 export const updateCart = () => {
-  const quantityControls = document.querySelector('.product-quantity__controls') as HTMLDivElement;
+  document.addEventListener('click', (event: Event) => {
+    const target = (<HTMLDivElement>event.target).closest('.product-quantity__controls');
 
-  if (quantityControls) {
-    quantityControls.addEventListener('click', updateProductInfo);
-  }
+    if (target) {
+      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const productId = +product.id;
+
+      updateProductInfo(productId);
+    }
+  });
+
+  document.addEventListener('change', (event: Event) => {
+    const target = (<HTMLDivElement>event.target).closest('.product-quantity__input');
+
+    if (target) {
+      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const productId = +product.id;
+
+      updateProductInfo(productId);
+    }
+  });
 };
 
 export const initCart = () => {
@@ -197,4 +266,13 @@ export const initCart = () => {
   checkAddToCartAvailability();
   watchCart();
   updateCart();
+
+  document.addEventListener('click', (event: Event) => {
+    const target = (<HTMLAnchorElement>event.target).classList.contains('go-to-cart');
+
+    if (target) {
+      renderCartPage();
+      closeCartAside();
+    }
+  });
 };

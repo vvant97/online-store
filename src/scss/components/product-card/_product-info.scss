@@ -171,5 +171,21 @@
 
   &__description {
     @include font($fontSize: 1.4rem, $fontWeight: 300, $lineHeight: 1.5, $color: $colorParagraph);
+
+    display: -webkit-box;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 5; 
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    transition: $transition;
+  }
+
+  &__description-expand {
+    @include font($fontSize: 1.4rem, $fontWeight: 500, $lineHeight: 1.5, $color: $colorParagraph);
+
+    text-decoration: underline;
+    cursor: pointer;
   }
 }
