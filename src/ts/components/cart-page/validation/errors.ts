@@ -20,3 +20,24 @@ export class SymbolsLengthErrorCvv extends SymbolsLengthError {
     this.message = ERRORS_DATA.SymbolsLengthErrorCvv.message;
   }
 }
+
+export class SymbolsLengthErrorExpiration extends SymbolsLengthError {
+  constructor(message: string) {
+    super(message);
+    this.message = ERRORS_DATA.SymbolsLengthErrorExpiration.message;
+  }
+}
+
+export class AllSymbolsLengthErrorExpiration extends SymbolsLengthErrorExpiration {
+  constructor(message: string) {
+    super(message);
+    this.message = ERRORS_DATA.AllSymbolsLengthErrorExpiration.message;
+  }
+}
+
+export class ExpirationMonthError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.message = ERRORS_DATA.ExpirationMonthError.message;
+  }
+}

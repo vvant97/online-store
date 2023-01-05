@@ -10,6 +10,18 @@ export const ERRORS_DATA = {
   SymbolsLengthErrorCvv: {
     id: 2,
     message: 'CVV must include 3 numbers',
+  },
+  SymbolsLengthErrorExpiration: {
+    id: 3,
+    message: 'Exp. date must include MM and YY',
+  },
+  AllSymbolsLengthErrorExpiration: {
+    id: 4,
+    message: 'Invalid expiration date',
+  },
+  ExpirationMonthError: {
+    id: 5,
+    message: 'Month must be 01-12',
   }
 };
 
