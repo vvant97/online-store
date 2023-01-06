@@ -6,6 +6,8 @@ export function renderPriceFilter(data: Product[]) {
   const priceData = data.map((item) => item.discountPrice);
   const minPrice = priceData.reduce((a, b) => Math.min(a, b));
   const maxPrice = priceData.reduce((a, b) => Math.max(a, b));
+  // const minPrice = 14.5;
+  // const maxPrice = 2558.75;
 
   const priceSlider = document.createElement('div') as noUiSlider.target;
   priceSlider.className = 'filter__price price-slider slider';
@@ -13,8 +15,8 @@ export function renderPriceFilter(data: Product[]) {
   priceInputsWrapper.className = 'slider__inputs-wrapper price-inputs-wrapper';
 
   priceInputsWrapper.innerHTML = `
-    <div class="slider__input min-price-value">$${minPrice}</div>
-    <div class="slider__input max-price-value">$${maxPrice}</div>
+    <div class="slider__input min-price-value">$${minPrice.toFixed(2)}</div>
+    <div class="slider__input max-price-value">$${maxPrice.toFixed(2)}</div>
   `;
 
   noUiSlider
@@ -28,7 +30,11 @@ export function renderPriceFilter(data: Product[]) {
       },
     })
     .on('change', (values: (string | number)[]): void => {
+      const minPriceInput = document.querySelector('.min-price-value') as HTMLDivElement;
+      const maxPriceInput = document.querySelector('.max-price-value') as HTMLDivElement;
       const pricesRange = values.map((el: string | number): string => el.toString());
+      minPriceInput.innerHTML = pricesRange[0];
+      maxPriceInput.innerHTML = pricesRange[1];
       encodeQueryString('price', pricesRange);
       decodeQueryString(data);
     });
@@ -52,6 +58,9 @@ export function renderPriceFilter(data: Product[]) {
     if (params.toString() && params.has('price')) {
       const filteredPrice = params.get('price')?.split('\u2195') || [];
       priceSlider.noUiSlider.set(filteredPrice);
+      minPriceInput.innerHTML = filteredPrice[0];
+      maxPriceInput.innerHTML = filteredPrice[1];
+      decodeQueryString(data);
     }
   }
 }

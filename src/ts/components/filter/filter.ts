@@ -1,12 +1,13 @@
 import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
-import { Product } from '../types';
+import { filterOptions, Product } from '../types';
 import { renderBrandFilter } from './filterBrand';
 import { renderCategoryFilter } from './filterCategory';
 import { renderColorFilter } from './filterColor';
 import { renderPriceFilter } from './filterPrice';
 import { renderStockFilter } from './filterStock';
 import * as noUiSlider from 'nouislider';
-import { renderCatalog } from '../renderCatalog/renderCatalog';
+import { sortingOptions } from '../sort/sort';
+import { renderFilterButtons } from './filterButtons';
 
 export const showFilter = () => {
   const filter = document.querySelector('.filter') as HTMLDivElement;
@@ -44,47 +45,6 @@ export function renderFilters(data: Array<Product>) {
   renderFilterButtons(data);
 }
 
-export function renderFilterButtons(data: Array<Product>) {
-  const copyLinkButton = document.querySelector('.filter__copy-button') as HTMLButtonElement;
-  const resetFiltersButton = document.querySelector('.filter__reset-button') as HTMLButtonElement;
-
-  copyLinkButton.addEventListener('click', () => {
-    copyLinkButton.innerHTML = 'Copied!';
-    navigator.clipboard
-      .writeText(window.location.href)
-      .then(() => {
-        setTimeout(() => (copyLinkButton.innerHTML = 'Copy Link'), 500);
-      })
-      .catch((e) => console.log(e));
-  });
-
-  resetFiltersButton.addEventListener('click', () => {
-    window.history.pushState({}, location.pathname, `${location.pathname}`);
-    const categoryContainer = document.querySelector('.filter__categories') as HTMLDivElement;
-    categoryContainer.remove();
-    renderCategoryFilter(data);
-
-    const brandContainer = document.querySelector('.filter__brands') as HTMLDivElement;
-    brandContainer.remove();
-    renderBrandFilter(data);
-
-    const colorContainer = document.querySelector('.filter__colors') as HTMLDivElement;
-    colorContainer.remove();
-    renderColorFilter(data);
-
-    const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
-    const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
-    priceSlider.noUiSlider?.reset();
-    stockSlider.noUiSlider?.reset();
-
-    const sortSelect = document.querySelector('.sort-select') as HTMLSelectElement;
-    sortSelect.value = 'featured';
-    data.sort((a, b) => b.rating - a.rating);
-
-    renderCatalog(data);
-  });
-}
-
 export function updateFilters(filteredProducts: Product[]) {
   if (!filteredProducts.length) return;
 
@@ -112,6 +72,10 @@ export function updateFilters(filteredProducts: Product[]) {
 
   if (priceSlider) {
     priceSlider.noUiSlider?.set([minPrice, maxPrice]);
+    const minPriceInput = document.querySelector('.min-price-value') as HTMLDivElement;
+    const maxPriceInput = document.querySelector('.max-price-value') as HTMLDivElement;
+    minPriceInput.innerHTML = `${minPrice.toFixed(2)}`;
+    maxPriceInput.innerHTML = `${maxPrice.toFixed(2)}`;
   }
 
   const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
@@ -144,4 +108,49 @@ export function updateFiltersCount() {
 
   priceSlider?.noUiSlider?.reset();
   stockSlider?.noUiSlider?.reset();
+}
+
+export function filterProducts(data: Product[], options: filterOptions) {
+  let filtered = data.slice();
+
+  if (options.categories.length) {
+    filtered = filtered.filter((item) => options.categories.includes(item.category));
+  }
+  if (options.brands.length) {
+    filtered = filtered.filter((item) => options.brands.includes(item.brand.toLowerCase()));
+  }
+  if (options.colors.length) {
+    filtered = filtered.filter((item) => options.colors.includes(item.color));
+  }
+  if (options.prices.length) {
+    const minPrice = options.prices[0];
+    const maxPrice = options.prices[1];
+    filtered = filtered.filter((item) => item.discountPrice >= +minPrice && item.discountPrice <= +maxPrice);
+  }
+  if (options.stock.length) {
+    const minStock = options.stock[0];
+    const maxStock = options.stock[1];
+    filtered = filtered.filter((item) => item.stock >= +minStock && item.stock <= +maxStock);
+  }
+
+  if (options.search.length) {
+    filtered = filtered.filter(
+      (item) =>
+        item.title.toLowerCase().includes(options.search) ||
+        item.description.toLowerCase().includes(options.search) ||
+        item.category.toLowerCase().includes(options.search) ||
+        item.brand.toLowerCase().includes(options.search) ||
+        item.color.toLowerCase().includes(options.search) ||
+        item.price.toString().includes(options.search) ||
+        item.discountPrice.toString().includes(options.search) ||
+        item.stock.toString().includes(options.search) ||
+        item.rating.toString().includes(options.search),
+    );
+  }
+
+  if (options.sorting.length) {
+    sortingOptions(options.sorting, filtered);
+  }
+
+  return filtered;
 }

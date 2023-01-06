@@ -14,7 +14,7 @@ export type Product = {
 };
 
 export interface ProductItem {
-  image: string,
+  image: string;
   title: string;
   id: number;
   price: number;
@@ -28,3 +28,13 @@ export interface ProductItem {
   discountPercent: number;
   stock: number;
 }
+
+export type filterOptions = {
+  categories: string[];
+  brands: string[];
+  colors: string[];
+  prices: string[];
+  stock: string[];
+  sorting: string;
+  search: string;
+};
