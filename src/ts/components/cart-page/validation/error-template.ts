@@ -35,6 +35,18 @@ export const ERRORS_DATA = {
     id: 6,
     message: 'Full name is too short',
   },
+  TooShortAddressError: {
+    id: 7,
+    message: 'Address is too short',
+  },
+  InvalidEmailAddressError: {
+    id: 8,
+    message: 'Invalid email address',
+  },
+  InvalidPhoneNumberError: {
+    id: 9,
+    message: 'Invalid phone number',
+  }
 };
 
 export const appendErrorElement = (containerSelector: string, message: string, id: number) => {
