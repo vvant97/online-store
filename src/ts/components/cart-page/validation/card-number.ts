@@ -1,6 +1,5 @@
 import { PAYMENT_SYSTEM_ICONS } from '../cart-templates';
-import { FirstSymbolError, SymbolsLengthError } from './errors';
-import { appendErrorElement, ERRORS_DATA } from './error-template';
+import { handleInputErrors, ERRORS_DATA } from './error-template';
 
 const setMatchingPaymentSystemIcon = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
@@ -59,43 +58,21 @@ export const isValidCardNumber = () => {
   const isCorrectCharactersAmount = currentValue.split('').filter((symbol) => symbol !== ' ').length === 16;
   const isCorrectFirstSymbol = currentValue.startsWith('4') || currentValue.startsWith('5') || currentValue.startsWith('6');
 
-  if (!isCorrectFirstSymbol) {
-    const error = new FirstSymbolError(ERRORS_DATA.FirstSymbolError.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.FirstSymbolError.id}`) as HTMLElement;
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-number',
+    condition: !isCorrectFirstSymbol,
+    errorMessage: ERRORS_DATA.FirstSymbolError.message,
+    errorId: ERRORS_DATA.FirstSymbolError.id,
+  });
 
-    if (errorElement) {
-      errorElement.remove();
-    }
-
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-number', error.message, ERRORS_DATA.FirstSymbolError.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.FirstSymbolError.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
-
-  if (!isCorrectCharactersAmount) {
-    const error = new SymbolsLengthError(ERRORS_DATA.SymbolsLengthError.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthError.id}`) as HTMLElement;
-
-    if (errorElement) {
-      errorElement.remove();
-    }
-
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-number', error.message, ERRORS_DATA.SymbolsLengthError.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthError.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-number',
+    condition: !isCorrectCharactersAmount,
+    errorMessage: ERRORS_DATA.SymbolsLengthError.message,
+    errorId: ERRORS_DATA.SymbolsLengthError.id,
+  });
 
   if (!isCorrectFirstSymbol || !isCorrectCharactersAmount) {
     return false;

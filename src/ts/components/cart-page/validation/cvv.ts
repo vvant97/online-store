@@ -1,10 +1,12 @@
-import { SymbolsLengthErrorCvv } from './errors';
-import { appendErrorElement, ERRORS_DATA } from './error-template';
+import { handleInputErrors, ERRORS_DATA } from './error-template';
 
 const changeIncorrectInput = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
   const currentValue = input.value;
-  const numbers = currentValue.split('').filter((symbol) => symbol !== ' ' && +symbol || symbol === '0').join('');
+  const numbers = currentValue
+    .split('')
+    .filter((symbol) => (symbol !== ' ' && +symbol) || symbol === '0')
+    .join('');
 
   input.value = numbers;
 };
@@ -14,24 +16,13 @@ export const isValidCvv = () => {
   const currentValue = input.value;
   const isValidCharactersAmount = currentValue.length === 3;
 
-  if (!isValidCharactersAmount) {
-    const error = new SymbolsLengthErrorCvv(ERRORS_DATA.SymbolsLengthErrorCvv.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthErrorCvv.id}`) as HTMLElement;
-
-    if (errorElement) {
-      errorElement.remove();
-    }
-
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-additional', error.message, ERRORS_DATA.SymbolsLengthErrorCvv.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthErrorCvv.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-additional',
+    condition: !isValidCharactersAmount,
+    errorMessage: ERRORS_DATA.SymbolsLengthErrorCvv.message,
+    errorId: ERRORS_DATA.SymbolsLengthErrorCvv.id,
+  });
 
   return isValidCharactersAmount;
 };

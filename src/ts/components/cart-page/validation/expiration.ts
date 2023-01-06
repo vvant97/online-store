@@ -1,5 +1,4 @@
-import { AllSymbolsLengthErrorExpiration, SymbolsLengthErrorExpiration, ExpirationMonthError } from './errors';
-import { appendErrorElement, ERRORS_DATA } from './error-template';
+import { handleInputErrors, ERRORS_DATA } from './error-template';
 
 const changeIncorrectInput = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
@@ -24,64 +23,34 @@ export const isValidExpiration = () => {
   const currentValue = input.value;
   const isValidCharactersAmount = currentValue.length === 7;
   const isValidNumbersAmount = [...currentValue].filter((symbol) => symbol.match('[0-9]')).length === 4;
-  const isCorrectMonth = +[...currentValue].filter((symbol) => symbol.match('[0-9]')).slice(0, 2).join('') <= 12;
+  const isCorrectMonth = +[...currentValue]
+    .filter((symbol) => symbol.match('[0-9]'))
+    .slice(0, 2)
+    .join('') <= 12;
 
-  if (isValidNumbersAmount && !isValidCharactersAmount) {
-    const error = new AllSymbolsLengthErrorExpiration(ERRORS_DATA.AllSymbolsLengthErrorExpiration.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.AllSymbolsLengthErrorExpiration.id}`) as HTMLElement;
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-additional',
+    condition: isValidNumbersAmount && !isValidCharactersAmount,
+    errorMessage: ERRORS_DATA.AllSymbolsLengthErrorExpiration.message,
+    errorId: ERRORS_DATA.AllSymbolsLengthErrorExpiration.id,
+  });
 
-    if (errorElement) {
-      errorElement.remove();
-    }
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-additional',
+    condition: !isValidNumbersAmount,
+    errorMessage: ERRORS_DATA.SymbolsLengthErrorExpiration.message,
+    errorId: ERRORS_DATA.SymbolsLengthErrorExpiration.id,
+  });
 
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-additional', error.message, ERRORS_DATA.AllSymbolsLengthErrorExpiration.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.AllSymbolsLengthErrorExpiration.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
-
-  if (!isValidNumbersAmount) {
-    const error = new SymbolsLengthErrorExpiration(ERRORS_DATA.SymbolsLengthErrorExpiration.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthErrorExpiration.id}`) as HTMLElement;
-
-    if (errorElement) {
-      errorElement.remove();
-    }
-
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-additional', error.message, ERRORS_DATA.SymbolsLengthErrorExpiration.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.SymbolsLengthErrorExpiration.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
-
-  if (!isCorrectMonth) {
-    const error = new ExpirationMonthError(ERRORS_DATA.ExpirationMonthError.message);
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.ExpirationMonthError.id}`) as HTMLElement;
-
-    if (errorElement) {
-      errorElement.remove();
-    }
-
-    input.classList.add('invalid');
-    appendErrorElement('.order__card-additional', error.message, ERRORS_DATA.ExpirationMonthError.id);
-  } else {
-    const errorElement = document.querySelector(`#error${ERRORS_DATA.ExpirationMonthError.id}`) as HTMLElement;
-
-    if (errorElement) {
-      input.classList.remove('invalid');
-      errorElement.remove();
-    }
-  }
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-additional',
+    condition: !isCorrectMonth,
+    errorMessage: ERRORS_DATA.ExpirationMonthError.message,
+    errorId: ERRORS_DATA.ExpirationMonthError.id,
+  });
 
   if (!isValidCharactersAmount || !isValidNumbersAmount || !isCorrectMonth) {
     return false;
