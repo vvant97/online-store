@@ -83,6 +83,18 @@
       background: transparent;
     }
   }
+
+  &__confirmation {
+    @include flex($flexDirection: column, $alignItems: center, $gap: 15px);
+  }
+
+  &__confirmation-icon {
+    @include font($fontSize: 3rem, $color: $colorSuccess);
+  }
+
+  &__confirmation-title {
+    @include font($fontSize: 1.6rem);
+  }
 }
 
 .input-error {

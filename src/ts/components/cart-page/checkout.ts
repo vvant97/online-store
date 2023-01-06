@@ -1,4 +1,4 @@
-import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
+import { showOverlay } from '../bg-overlay/bg-overlay';
 import { validateCheckoutForm } from './validation/form';
 
 const createCheckoutTemplate = () => {
@@ -37,14 +37,16 @@ const createCheckoutTemplate = () => {
 export const watchCheckoutOpenEvents = (selector: string) => {
   const handlingElement = document.querySelector(selector) as HTMLElement;
 
-  handlingElement.addEventListener('click', () => {
-    const overlay = document.querySelector('.bg-overlay') as HTMLElement;
-    const checkoutForm = createCheckoutTemplate();
-
-    overlay.insertAdjacentHTML('afterbegin', checkoutForm);
-    showOverlay();
-    validateCheckoutForm();
-  });
+  if (handlingElement) {
+    handlingElement.addEventListener('click', () => {
+      const overlay = document.querySelector('.bg-overlay') as HTMLElement;
+      const checkoutForm = createCheckoutTemplate();
+  
+      overlay.insertAdjacentHTML('afterbegin', checkoutForm);
+      showOverlay();
+      validateCheckoutForm();
+    });
+  }
 };
 
 export const watchCheckoutCloseEvents = () => {
@@ -55,8 +57,9 @@ export const watchCheckoutCloseEvents = () => {
     const checkoutFormCloseButton = document.querySelector('.order__close') as HTMLElement;
 
     if (target === overlay || target === checkoutFormCloseButton) {
-      checkoutForm.remove();
-      hideOverlay();
+      if (checkoutForm) {
+        checkoutForm.remove();
+      }
     }
   });
 };
