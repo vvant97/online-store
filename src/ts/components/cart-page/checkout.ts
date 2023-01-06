@@ -1,4 +1,4 @@
-import { showOverlay } from '../bg-overlay/bg-overlay';
+import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
 import { validateCheckoutForm } from './validation/form';
 
 const createCheckoutTemplate = () => {
@@ -59,6 +59,7 @@ export const watchCheckoutCloseEvents = () => {
     if (target === overlay || target === checkoutFormCloseButton) {
       if (checkoutForm) {
         checkoutForm.remove();
+        hideOverlay();
       }
     }
   });
