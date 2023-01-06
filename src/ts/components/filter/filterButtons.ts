@@ -1,9 +1,10 @@
 import { Product } from '../types';
-import * as noUiSlider from 'nouislider';
 import { renderBrandFilter } from './filterBrand';
 import { renderCategoryFilter } from './filterCategory';
 import { renderColorFilter } from './filterColor';
 import { renderCatalog } from '../renderCatalog/renderCatalog';
+import { renderPriceFilter } from './filterPrice';
+import { renderStockFilter } from './filterStock';
 
 export function renderFilterButtons(data: Array<Product>) {
   const copyLinkButton = document.querySelector('.filter__copy-button') as HTMLButtonElement;
@@ -33,10 +34,17 @@ export function renderFilterButtons(data: Array<Product>) {
     colorContainer.remove();
     renderColorFilter(data);
 
-    const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
-    const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
-    priceSlider.noUiSlider?.reset();
-    stockSlider.noUiSlider?.reset();
+    const priceSlider = document.querySelector('.filter__price') as HTMLDivElement;
+    const priceInputs = document.querySelector('.price-inputs-wrapper') as HTMLDivElement;
+    priceSlider.remove();
+    priceInputs.remove();
+    renderPriceFilter(data);
+
+    const stockSlider = document.querySelector('.filter__stock') as HTMLDivElement;
+    const stockInputs = document.querySelector('.stock-inputs-wrapper') as HTMLDivElement;
+    stockSlider.remove();
+    stockInputs.remove();
+    renderStockFilter(data);
 
     const sortSelect = document.querySelector('.sort-select') as HTMLSelectElement;
     sortSelect.value = 'featured';

@@ -3,8 +3,8 @@ import { filterOptions, Product } from '../types';
 import { renderBrandFilter } from './filterBrand';
 import { renderCategoryFilter } from './filterCategory';
 import { renderColorFilter } from './filterColor';
-import { renderPriceFilter } from './filterPrice';
-import { renderStockFilter } from './filterStock';
+import { renderPriceFilter, updatePriceFilter } from './filterPrice';
+import { renderStockFilter, updateStockFilter } from './filterStock';
 import * as noUiSlider from 'nouislider';
 import { sortingOptions } from '../sort/sort';
 import { renderFilterButtons } from './filterButtons';
@@ -65,26 +65,20 @@ export function updateFilters(filteredProducts: Product[]) {
   });
 
   const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
-
   const priceData = filteredProducts.map((item) => item.discountPrice);
-  const minPrice = priceData.reduce((a, b) => Math.min(a, b));
-  const maxPrice = priceData.reduce((a, b) => Math.max(a, b));
-
-  if (priceSlider) {
-    priceSlider.noUiSlider?.set([minPrice, maxPrice]);
-    const minPriceInput = document.querySelector('.min-price-value') as HTMLDivElement;
-    const maxPriceInput = document.querySelector('.max-price-value') as HTMLDivElement;
-    minPriceInput.innerHTML = `${minPrice.toFixed(2)}`;
-    maxPriceInput.innerHTML = `${maxPrice.toFixed(2)}`;
-  }
-
+  const minPrice = priceData.reduce((a, b) => Math.min(a, b)).toFixed(2);
+  const maxPrice = priceData.reduce((a, b) => Math.max(a, b)).toFixed(2);
   const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
   const stockData = filteredProducts.map((item) => item.stock);
-  const maxStock = stockData.reduce((a, b) => Math.max(a, b));
-  const minStock = stockData.reduce((a, b) => Math.min(a, b));
+  const maxStock = stockData.reduce((a, b) => Math.max(a, b)).toString();
+  const minStock = stockData.reduce((a, b) => Math.min(a, b)).toString();
+
+  if (priceSlider) {
+    updatePriceFilter([minPrice, maxPrice]);
+  }
 
   if (stockSlider) {
-    stockSlider.noUiSlider?.set([minStock, maxStock]);
+    updateStockFilter([minStock, maxStock]);
   }
 }
 
@@ -106,8 +100,13 @@ export function updateFiltersCount() {
   const priceSlider = document.querySelector('.price-slider') as noUiSlider.target;
   const stockSlider = document.querySelector('.stock-slider') as noUiSlider.target;
 
-  priceSlider?.noUiSlider?.reset();
-  stockSlider?.noUiSlider?.reset();
+  if (priceSlider) {
+    updatePriceFilter(['14.50', '2558.75']);
+  }
+
+  if (stockSlider) {
+    updateStockFilter(['1', '123']);
+  }
 }
 
 export function filterProducts(data: Product[], options: filterOptions) {
