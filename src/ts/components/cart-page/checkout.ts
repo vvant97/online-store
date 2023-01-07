@@ -34,18 +34,21 @@ const createCheckoutTemplate = () => {
   return template;
 };
 
+export function appendCheckoutForm() {
+  const overlay = document.querySelector('.bg-overlay') as HTMLElement;
+  const checkoutForm = createCheckoutTemplate();
+
+  overlay.insertAdjacentHTML('afterbegin', checkoutForm);
+
+  showOverlay();
+  validateCheckoutForm();
+}
+
 export const watchCheckoutOpenEvents = (selector: string) => {
   const handlingElement = document.querySelector(selector) as HTMLElement;
 
   if (handlingElement) {
-    handlingElement.addEventListener('click', () => {
-      const overlay = document.querySelector('.bg-overlay') as HTMLElement;
-      const checkoutForm = createCheckoutTemplate();
-  
-      overlay.insertAdjacentHTML('afterbegin', checkoutForm);
-      showOverlay();
-      validateCheckoutForm();
-    });
+    handlingElement.addEventListener('click', appendCheckoutForm);
   }
 };
 
