@@ -1,0 +1,45 @@
+.pagination {
+  @include flex($gap: 15px);
+
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: $mobileExtraSmall) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  [class*="-container"] {
+    @include flex($alignItems: center, $gap: 8px);
+  }
+
+  &__title {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+  }
+
+  &__limit {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+    @include size($width: 37px, $height: 28px);
+
+    border: $border;
+    text-align: center;
+  }
+
+  &__controls {
+    @include flex($alignItems: center, $gap: 8px);
+  }
+
+  &__nav {
+    @include font($fontSize: 2.5rem, $color: $colorParagraph);
+    @include size($padding: 0 5px);
+
+    border: $border;
+    cursor: pointer;
+  }
+
+  &__page {
+    @include font($fontSize: 1.4rem);
+  }
+}

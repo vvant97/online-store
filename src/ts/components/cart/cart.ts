@@ -6,6 +6,7 @@ import ProductsStorage from '../../storage/ProductsStorage';
 import CartState from '../../storage/CartState';
 import { renderCartPage } from '../cart-page/cart-page';
 import { appendCheckoutForm } from '../cart-page/checkout';
+import { renderProductsList, setCurrentPage } from '../cart-page/pagination';
 
 export const productsStorage = new ProductsStorage('cartProducts');
 export const cartState = new CartState('cartAsideItems', '.cart__list');
@@ -267,6 +268,9 @@ export const updateCart = () => {
       const productId = +product.id;
 
       updateProductInfo(productId);
+
+      setCurrentPage();
+      renderProductsList();
     }
   });
 
