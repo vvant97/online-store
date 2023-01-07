@@ -28,26 +28,22 @@ export function renderPriceFilter(data: Product[]) {
     })
     .on('change', (values: (string | number)[]): void => {
       const pricesRange = values.map((el: string | number): string => el.toString());
-      encodeQueryString('price', pricesRange);
-      decodeQueryString(data);
+      const priceData = data.map((item) => item.discountPrice);
 
-      const params = new URLSearchParams(location.search);
-      if (params.toString() && params.has('price')) {
-        const filteredPrice = params.get('price')?.split('\u2195') || [];
-        updatePriceFilter(filteredPrice);
-      }
+      const minPrice = priceData.reduce((prev, curr) => {
+        return Math.abs(curr - +pricesRange[0]) < Math.abs(prev - +pricesRange[0]) ? curr : prev;
+      });
+
+      const maxPrice = priceData.reduce((prev, curr) => {
+        return Math.abs(curr - +pricesRange[1]) < Math.abs(prev - +pricesRange[1]) ? curr : prev;
+      });
+
+      encodeQueryString('price', [minPrice.toFixed(2), maxPrice.toFixed(2)]);
+      decodeQueryString(data);
     });
 
   const priceFilterContainer = document.querySelector('.filter__price-wrapper') as HTMLLIElement;
   priceFilterContainer.append(priceSlider, priceInputsWrapper);
-
-  const params = new URLSearchParams(location.search);
-  window.addEventListener('load', () => {
-    if (priceSlider && params.toString() && params.has('price')) {
-      const filteredPrice = params.get('price')?.split('\u2195') || [];
-      updatePriceFilter(filteredPrice);
-    }
-  });
 }
 
 export function updatePriceFilter(filteredPrice: Array<string>) {

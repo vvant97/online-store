@@ -56,16 +56,44 @@ describe('#Filter function', () => {
       categories: [],
       brands: [],
       colors: [],
-      prices: [],
+      prices: ['1111.50', '1354.50'],
       stock: [],
       sorting: 'featured',
       search: '',
     };
 
-    expect(filterProducts(products, options)).toEqual([products[39], products[5]]);
+    expect(filterProducts(products, options)).toEqual([products[19], products[6]]);
   });
 
-  it('should filter catalog products according to the multiple selected options', () => {
+  it('should filter products according to the stock', () => {
+    const options: filterOptions = {
+      categories: [],
+      brands: [],
+      colors: [],
+      prices: [],
+      stock: ['89', '96'],
+      sorting: 'featured',
+      search: '',
+    };
+
+    expect(filterProducts(products, options)).toEqual([products[1], products[9], products[10]]);
+  });
+
+  it('should filter products according to the search', () => {
+    const options: filterOptions = {
+      categories: [],
+      brands: [],
+      colors: [],
+      prices: [],
+      stock: [],
+      sorting: 'featured',
+      search: 'macb',
+    };
+
+    expect(filterProducts(products, options)).toEqual([products[18], products[6]]);
+  });
+
+  it('should filter products according to the multiple selected options', () => {
     const options: filterOptions = {
       categories: ['smartphone'],
       brands: ['apple'],

@@ -1,12 +1,10 @@
 import { productData } from '../ts/components/productData';
 import { sortingOptions } from '../ts/components/sort/sort';
-import { Product } from '../ts/components/types';
 
 describe('#Sort function', () => {
   let products = productData.slice(0, 5);
 
   beforeEach(() => {
-    // jest.resetModules();
     products = productData.slice(0, 5);
   });
 

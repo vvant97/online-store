@@ -113,7 +113,7 @@ export function createProductGridCard(product: Product): HTMLLIElement {
   return productItem;
 }
 
-function createProductListCard(product: Product): HTMLLIElement {
+export function createProductListCard(product: Product): HTMLLIElement {
   const productItem = document.createElement('li');
   productItem.className = 'products__item catalog-list__product';
   productItem.dataset.productId = `${product.id}`;
@@ -170,7 +170,7 @@ export function renderCatalog(dataList: Product[]) {
   const gridViewButton = document.querySelector('.grid-view') as HTMLButtonElement;
   const listViewButton = document.querySelector('.list-view') as HTMLButtonElement;
   const totalProductsCount = document.querySelector('.found-products__count') as HTMLSpanElement;
-  totalProductsCount.innerText = `${dataList.length}`;
+  totalProductsCount.innerHTML = `${dataList.length}`;
 
   catalogContainer.innerHTML = '';
 

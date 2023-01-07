@@ -28,26 +28,22 @@ export function renderStockFilter(data: Product[]) {
     })
     .on('change', (values: (string | number)[]): void => {
       const stockRange = values.map((el: string | number): string => el.toString().replace(/\.00$/, ''));
-      encodeQueryString('stock', stockRange);
-      decodeQueryString(data);
+      const stockData = data.map((item) => item.stock);
 
-      const params = new URLSearchParams(location.search);
-      if (params.toString() && params.has('stock')) {
-        const filteredStock = params.get('stock')?.split('\u2195') || [];
-        updateStockFilter(filteredStock);
-      }
+      const minStock = stockData.reduce((prev, curr) => {
+        return Math.abs(curr - +stockRange[0]) < Math.abs(prev - +stockRange[0]) ? curr : prev;
+      });
+
+      const maxStock = stockData.reduce((prev, curr) => {
+        return Math.abs(curr - +stockRange[1]) < Math.abs(prev - +stockRange[1]) ? curr : prev;
+      });
+
+      encodeQueryString('stock', [minStock.toString(), maxStock.toString()]);
+      decodeQueryString(data);
     });
 
   const stockFilterContainer = document.querySelector('.filter__stock-wrapper') as HTMLLIElement;
   stockFilterContainer.append(stockSlider, stockInputsWrapper);
-
-  const params = new URLSearchParams(location.search);
-  window.addEventListener('load', () => {
-    if (stockSlider && params.toString() && params.has('stock')) {
-      const filteredStock = params.get('stock')?.split('\u2195') || [];
-      updateStockFilter(filteredStock);
-    }
-  });
 }
 
 export function updateStockFilter(filteredStock: Array<string>) {
