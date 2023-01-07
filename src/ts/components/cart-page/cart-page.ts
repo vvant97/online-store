@@ -6,7 +6,13 @@ import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '..
 import { createProductQuantity } from '../product-quantity/product-quantity';
 import { watchPromocode } from '../promocode/promocode';
 import { watchCheckoutOpenEvents } from './checkout';
-import { watchPagination, renderProductsList, setDefaultProductsLimit, setCurrentPage } from './pagination';
+import { 
+  watchPagination, 
+  renderProductsList, 
+  setDefaultProductsLimit, 
+  setCurrentPage,
+  setDefaultProductsPage,
+} from './pagination';
 
 const createCartProductItems = (productsInCart: ProductItem[]) => {
   const products: HTMLLIElement[] = productsInCart.map((product, index) => {
@@ -125,6 +131,8 @@ export const renderCartPage = () => {
     watchCheckoutOpenEvents('.product-cart__checkout-open');
 
     setDefaultProductsLimit();
+    setDefaultProductsPage();
+    renderProductsList();
     watchPagination();
   }
 };
