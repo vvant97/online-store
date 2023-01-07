@@ -9,11 +9,11 @@ interface ErrorHandlingOptions {
 export const ERRORS_DATA = {
   FirstSymbolError: {
     id: 0,
-    message: 'Must starts with 4, 5 or 6',
+    message: 'CCN must starts with 4, 5 or 6',
   },
   SymbolsLengthError: {
     id: 1,
-    message: 'Must include 16 numbers',
+    message: 'CCN must include 16 numbers',
   },
   SymbolsLengthErrorCvv: {
     id: 2,

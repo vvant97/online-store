@@ -34,10 +34,6 @@ function confirmOrder(event: Event) {
 
   setTimeout(() => {
     location.href = '/';
-
-    setTimeout(() => {
-      location.reload();
-    }, 0);
   }, 5000);
 }
 

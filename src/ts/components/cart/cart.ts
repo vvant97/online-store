@@ -289,9 +289,14 @@ function handleCartAsideCheckoutButtonEvents() {
     const target = event.target as HTMLButtonElement;
 
     if (target.matches('.go-to-checkout')) {
+      const products = productsStorage.load().length;
+
       closeCartAside();
       renderCartPage();
-      appendCheckoutForm();
+      
+      if (products) {
+        appendCheckoutForm();
+      }
     }
   });
 }
