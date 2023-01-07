@@ -1,4 +1,4 @@
-import { PAYMENT_SYSTEM_ICONS } from "../cart-templates";
+import { PAYMENT_SYSTEM_ICONS } from '../cart-templates';
 import { FirstSymbolError, SymbolsLengthError } from './errors';
 
 const setMatchingPaymentSystemIcon = (event: Event) => {
@@ -21,7 +21,7 @@ const setCardNumberMask = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
   const currentValue = input.value;
   const numbers = currentValue.split('').filter((symbol) => +symbol.toString());
-  
+
   let newInputValue = '';
 
   numbers.forEach((number, index) => {
@@ -29,16 +29,14 @@ const setCardNumberMask = (event: Event) => {
       newInputValue += ` ${number}`;
     } else {
       newInputValue += number;
-    }    
+    }
   });
-  
+
   input.value = newInputValue;
 };
 
 const isInputCorrect = (input: HTMLInputElement) => {
-  return input.value
-    .split('')
-    .every((symbol) => +symbol || symbol === '0' || symbol === ' ');
+  return input.value.split('').every((symbol) => +symbol || symbol === '0' || symbol === ' ');
 };
 
 const changeIncorrectInput = (event: Event) => {
@@ -54,13 +52,10 @@ const changeIncorrectInput = (event: Event) => {
   setCardNumberMask(event);
 };
 
-const isValidCardNumber = (event: Event) => {
+export const isValidCardNumber = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
   const currentValue = input.value;
-  const charactersAmount = currentValue
-    .split('')
-    .filter((symbol) => +symbol)
-    .length;
+  const charactersAmount = currentValue.split('').filter((symbol) => +symbol).length;
   const isCorrectCharactersAmount = charactersAmount === 16;
 
   if (

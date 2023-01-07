@@ -1,8 +1,18 @@
-import { showOverlay, hideOverlay } from '../bg-overlay/bg-overlay';
-import { validateCheckoutForm } from './validation/form';
+import { createCheckoutTemplate } from '../ts/components/cart-page/checkout';
 
-export const createCheckoutTemplate = (): string => {
-  const template = `
+describe('#Create checkoutForm', () => {
+  it('should work correctly', () => {
+    expect(createCheckoutTemplate()).toBeDefined();
+    expect(typeof createCheckoutTemplate).toBe('function');
+    expect(createCheckoutTemplate()).toBeTruthy();
+  });
+
+  it('should return string', () => {
+    expect(typeof createCheckoutTemplate()).toBe('string');
+  });
+
+  it('should create correct HTML code', () => {
+    const template = `
     <form class="order">
       <i class="order__close bi bi-x-lg"></i>
       <fieldset class="order__user-details">
@@ -30,35 +40,6 @@ export const createCheckoutTemplate = (): string => {
       <button class="order__submit" type="submit">Place an order</button>
     </form>
   `;
-
-  return template;
-};
-
-export const watchCheckoutOpenEvents = (selector: string) => {
-  const handlingElement = document.querySelector(selector) as HTMLElement;
-
-  handlingElement.addEventListener('click', () => {
-    const overlay = document.querySelector('.bg-overlay') as HTMLElement;
-    const checkoutForm = createCheckoutTemplate();
-
-    overlay.insertAdjacentHTML('afterbegin', checkoutForm);
-    showOverlay();
-    validateCheckoutForm();
+    expect(createCheckoutTemplate()).toBe(template);
   });
-};
-
-export const watchCheckoutCloseEvents = () => {
-  if (location.pathname.includes('cart')) {
-    document.addEventListener('click', (event: Event) => {
-      const target = event.target as HTMLElement;
-      const overlay = document.querySelector('.bg-overlay') as HTMLElement;
-      const checkoutForm = document.querySelector('.order') as HTMLFormElement;
-      const checkoutFormCloseButton = document.querySelector('.order__close') as HTMLElement;
-
-      if (target === overlay || target === checkoutFormCloseButton) {
-        checkoutForm.remove();
-        hideOverlay();
-      }
-    });
-  }
-};
+});
