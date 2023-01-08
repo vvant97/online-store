@@ -17,3 +17,24 @@ export function sortItems(data: Product[]) {
     decodeQueryString(data);
   });
 }
+
+export function sortingOptions(option: string, data: Array<Product>): Array<Product> {
+  switch (option) {
+    case 'featured':
+      data.sort((a, b) => b.rating - a.rating);
+      break;
+    case 'title-ascending':
+      data.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1));
+      break;
+    case 'title-descending':
+      data.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1));
+      break;
+    case 'price-descending':
+      data.sort((a, b) => b.discountPrice - a.discountPrice);
+      break;
+    case 'price-ascending':
+      data.sort((a, b) => a.discountPrice - b.discountPrice);
+      break;
+  }
+  return data;
+}

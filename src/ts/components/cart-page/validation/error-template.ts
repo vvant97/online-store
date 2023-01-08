@@ -9,7 +9,7 @@ interface ErrorHandlingOptions {
 export const ERRORS_DATA = {
   FirstSymbolError: {
     id: 0,
-    message: 'CCN must starts with 4, 5 or 6',
+    message: 'CCN must start with 4, 5 or 6',
   },
   SymbolsLengthError: {
     id: 1,

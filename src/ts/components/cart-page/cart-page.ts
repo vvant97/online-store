@@ -1,20 +1,19 @@
 import { ProductItem } from '../types';
 import { createRating } from '../rating/rating';
 import { createCartProductItemTemplate, createCartLayoutTemplate, createEmptyCartPageTemplate } from './cart-templates';
-import { createBreadcrumbs } from '../breadcrumbs/breadcrumbs';
 import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '../cart/cart';
 import { createProductQuantity } from '../product-quantity/product-quantity';
 import { watchPromocode } from '../promocode/promocode';
 import { watchCheckoutOpenEvents } from './checkout';
-import { 
-  watchPagination, 
-  renderProductsList, 
-  setDefaultProductsLimit, 
+import {
+  watchPagination,
+  renderProductsList,
+  setDefaultProductsLimit,
   setCurrentPage,
   setDefaultProductsPage,
 } from './pagination';
 
-const createCartProductItems = (productsInCart: ProductItem[]) => {
+export const createCartProductItems = (productsInCart: ProductItem[]): HTMLLIElement[] => {
   const products: HTMLLIElement[] = productsInCart.map((product, index) => {
     const item = document.createElement('li');
     const template = createCartProductItemTemplate(product, index);
@@ -64,10 +63,14 @@ const handleRemoveButtonsEvent = () => {
 
   [...removeButtons].forEach((button) => {
     button.addEventListener('click', (event: Event) => {
-      const cartProductToDelete = (<HTMLButtonElement>event.target).closest('.product-cart__product-item') as HTMLLIElement;
+      const cartProductToDelete = (<HTMLButtonElement>event.target).closest(
+        '.product-cart__product-item',
+      ) as HTMLLIElement;
       const productId = +cartProductToDelete.id;
       const cartAsideProducts = [...document.querySelectorAll('.cart__item')] as HTMLLIElement[];
-      const cartAsideProductToDelete = cartAsideProducts.find((product) => +<string>product.dataset.productId === productId) as HTMLLIElement;
+      const cartAsideProductToDelete = cartAsideProducts.find(
+        (product) => +(<string>product.dataset.productId) === productId,
+      ) as HTMLLIElement;
 
       cartProductToDelete.remove();
       cartAsideProductToDelete.remove();
@@ -113,10 +116,8 @@ export const renderCartPage = () => {
   if (location.pathname.includes('cart')) {
     const products = createCartProductItems(productsStorage.load());
     const mainContainer = document.querySelector('.main__app') as HTMLDivElement;
-    const breadcrumbs = createBreadcrumbs('Your Shopping Cart');
 
     mainContainer.innerHTML = createCartLayoutTemplate();
-    mainContainer.prepend(breadcrumbs);
 
     appendProducts(products);
     setAllProductsRating();
