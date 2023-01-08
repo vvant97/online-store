@@ -16,11 +16,15 @@
   }
 
   &__input {
-    @include size($width: 100%, $padding: 10px 15px);
+    @include size($width: 100%, $padding: 10px 13px);
     @include font($fontSize: 1.3rem, $color: $colorParagraph);
 
     background-color: $colorBg;
     border: $border;
+
+    &.invalid {
+      border: 1px solid $colorRemove;
+    }
   }
 
   &__close {
@@ -33,7 +37,7 @@
 
   &__user-details,
   &__card-details {
-    @include flex($flexDirection: column, $gap: 15px);
+    @include flex($flexDirection: column, $gap: 13px);
   }
 
   &__title {
@@ -61,7 +65,7 @@
   }
 
   &__card-details-container {
-    @include flex($flexDirection: column, $gap: 10px);
+    @include flex($flexDirection: column, $gap: 13px);
     @include size($padding: 15px);
 
     border: $border;
@@ -79,4 +83,20 @@
       background: transparent;
     }
   }
+
+  &__confirmation {
+    @include flex($flexDirection: column, $alignItems: center, $gap: 15px);
+  }
+
+  &__confirmation-icon {
+    @include font($fontSize: 3rem, $color: $colorSuccess);
+  }
+
+  &__confirmation-title {
+    @include font($fontSize: 1.6rem);
+  }
+}
+
+.input-error {
+  @include font($fontSize: 1.2rem, $color: $colorRemove);
 }

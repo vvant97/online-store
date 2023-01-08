@@ -13,6 +13,20 @@ export const createCartLayoutTemplate = (): string => {
       <div class="product-cart__info">
         <div class="product-cart__title-area">
           <h2 class="product-cart__title">My cart:</h2>
+          <div class="pagination">
+            <div class="pagination__limit-container">
+              <p class="pagination__title">Limit:</p>
+              <input class="pagination__limit" type="text">
+            </div>
+            <div class="pagination__pages-container">
+              <p class="pagination__title">Page:</p>
+              <div class="pagination__controls">
+                <i class="pagination__nav pagination__nav-prev bi bi-arrow-left-short"></i>
+                <span class="pagination__page">1</span>
+                <i class="pagination__nav pagination__nav-next bi bi-arrow-right-short"></i>
+              </div>
+            </div>
+          </div>
         </div>
         <ul class="product-cart__product-list"></ul>
       </div>
@@ -48,7 +62,7 @@ export const createCartLayoutTemplate = (): string => {
   return template;
 };
 
-export const createCartProductItemTemplate = (options: ProductItem): string => {
+export const createCartProductItemTemplate = (options: ProductItem, order: number): string => {
   const discountPercent = options.discountPercent;
 
   let priceTemplate = `$${options.priceByOne.toFixed(2)}`;
@@ -61,6 +75,7 @@ export const createCartProductItemTemplate = (options: ProductItem): string => {
   }
 
   const template = `
+    <p class="product-cart__product-item-order">${order + 1}</p>
     <div class="product-cart__product-item-info">
       <div class="product-cart__product-item-image" style="background-image: url('${options.image}')"></div>
       <div class="product-cart__product-item-about">

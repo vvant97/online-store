@@ -5,11 +5,18 @@ import { productsStorage, setTotalPrice, setProductsAmount, cartState } from '..
 import { createProductQuantity } from '../product-quantity/product-quantity';
 import { watchPromocode } from '../promocode/promocode';
 import { watchCheckoutOpenEvents } from './checkout';
+import {
+  watchPagination,
+  renderProductsList,
+  setDefaultProductsLimit,
+  setCurrentPage,
+  setDefaultProductsPage,
+} from './pagination';
 
 export const createCartProductItems = (productsInCart: ProductItem[]): HTMLLIElement[] => {
-  const products: HTMLLIElement[] = productsInCart.map((product) => {
+  const products: HTMLLIElement[] = productsInCart.map((product, index) => {
     const item = document.createElement('li');
-    const template = createCartProductItemTemplate(product);
+    const template = createCartProductItemTemplate(product, index);
 
     item.className = 'product-cart__product-item product-pick';
     item.innerHTML = template;
@@ -71,6 +78,9 @@ const handleRemoveButtonsEvent = () => {
       setTotalPrice('.header__total-amount', '.cart__total', '.product-cart__checkout-total');
       setProductsAmount('.cart__amount', '.header__cart-quantity', '.product-cart__checkout-amount');
       cartState.save();
+
+      setCurrentPage();
+      renderProductsList();
     });
   });
 };
@@ -120,5 +130,10 @@ export const renderCartPage = () => {
 
     watchCartIsEmpty();
     watchCheckoutOpenEvents('.product-cart__checkout-open');
+
+    setDefaultProductsLimit();
+    setDefaultProductsPage();
+    renderProductsList();
+    watchPagination();
   }
 };
