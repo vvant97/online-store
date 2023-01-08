@@ -23,6 +23,20 @@ describe('#Create cart template', () => {
       <div class="product-cart__info">
         <div class="product-cart__title-area">
           <h2 class="product-cart__title">My cart:</h2>
+          <div class="pagination">
+            <div class="pagination__limit-container">
+              <p class="pagination__title">Limit:</p>
+              <input class="pagination__limit" type="text">
+            </div>
+            <div class="pagination__pages-container">
+              <p class="pagination__title">Page:</p>
+              <div class="pagination__controls">
+                <i class="pagination__nav pagination__nav-prev bi bi-arrow-left-short"></i>
+                <span class="pagination__page">1</span>
+                <i class="pagination__nav pagination__nav-next bi bi-arrow-right-short"></i>
+              </div>
+            </div>
+          </div>
         </div>
         <ul class="product-cart__product-list"></ul>
       </div>
@@ -77,9 +91,9 @@ describe('#Create product cart item', () => {
   };
 
   it('should work correctly', () => {
-    expect(createCartProductItemTemplate(product)).toBeDefined();
+    expect(createCartProductItemTemplate(product, 1)).toBeDefined();
     expect(typeof createCartProductItemTemplate).toBe('function');
-    expect(createCartProductItemTemplate(product)).toBeTruthy();
+    expect(createCartProductItemTemplate(product, 1)).toBeTruthy();
   });
 
   it('should return string', () => {
