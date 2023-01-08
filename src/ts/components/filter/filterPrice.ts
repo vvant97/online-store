@@ -44,6 +44,17 @@ export function renderPriceFilter(data: Product[]) {
 
   const priceFilterContainer = document.querySelector('.filter__price-wrapper') as HTMLLIElement;
   priceFilterContainer.append(priceSlider, priceInputsWrapper);
+
+  if (priceSlider.noUiSlider) {
+    const minPriceInput = document.querySelector('.min-price-value') as HTMLDivElement;
+    const maxPriceInput = document.querySelector('.max-price-value') as HTMLDivElement;
+    const inputs = [minPriceInput, maxPriceInput];
+
+    priceSlider.noUiSlider.on('update', (values: (string | number)[], handle: number): void => {
+      const pricesRange = values.map((el: string | number): string => el.toString());
+      inputs[handle].innerHTML = pricesRange[handle];
+    });
+  }
 }
 
 export function updatePriceFilter(filteredPrice: Array<string>) {
