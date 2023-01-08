@@ -42,6 +42,10 @@ export function routing() {
           document.title = 'Cart';
           content.innerHTML = routes[pathname];
           window.history.pushState({}, pathname, pathname);
+          window.addEventListener('popstate', () => {
+            loaderComponents('/');
+            window.history.pushState({}, '/', '/');
+          });
           break;
         default:
           document.title = 'Error 404';
@@ -64,6 +68,9 @@ export function routing() {
         loaderComponents('/');
         const params = new URLSearchParams(location.search);
         if (params.toString().length) location.reload();
+      } else if (href === '/') {
+        loaderComponents(href);
+        window.history.pushState({}, '/', '/');
       } else {
         loaderComponents(href);
         const params = new URLSearchParams(location.search);

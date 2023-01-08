@@ -53,19 +53,17 @@ export const watchCheckoutOpenEvents = (selector: string) => {
 };
 
 export const watchCheckoutCloseEvents = () => {
-  if (location.pathname.includes('cart')) {
-    document.addEventListener('click', (event: Event) => {
-      const target = event.target as HTMLElement;
-      const overlay = document.querySelector('.bg-overlay') as HTMLElement;
-      const checkoutForm = document.querySelector('.order') as HTMLFormElement;
-      const checkoutFormCloseButton = document.querySelector('.order__close') as HTMLElement;
+  document.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
+    const overlay = document.querySelector('.bg-overlay') as HTMLElement;
+    const checkoutForm = document.querySelector('.order') as HTMLFormElement;
+    const checkoutFormCloseButton = document.querySelector('.order__close') as HTMLElement;
 
-      if (target === overlay || target === checkoutFormCloseButton) {
-        if (checkoutForm) {
-          checkoutForm.remove();
-          hideOverlay();
-        }
+    if (target === overlay || target === checkoutFormCloseButton) {
+      if (checkoutForm) {
+        checkoutForm.remove();
+        hideOverlay();
       }
-    });
-  }
+    }
+  });
 };
