@@ -5,6 +5,8 @@ import { getDiscountPrice } from '../product-card/product-card';
 import ProductsStorage from '../../storage/ProductsStorage';
 import CartState from '../../storage/CartState';
 import { renderCartPage } from '../cart-page/cart-page';
+import { appendCheckoutForm } from '../cart-page/checkout';
+import { renderProductsList, setCurrentPage } from '../cart-page/pagination';
 
 export const productsStorage = new ProductsStorage('cartProducts');
 export const cartState = new CartState('cartAsideItems', '.cart__list');
@@ -169,6 +171,26 @@ const watchCart = () => {
       openCartAside();
     }
 
+    if (target.closest('.product-info__buy-button')) {
+      const cartButton = document.querySelector('.add-to-cart') as HTMLElement;
+      const isInCart = cartButton.dataset.isInCart === 'true';
+      const productId = +(<string>cartButton.dataset.buttonId);
+
+      if (!isInCart) {
+        addToCart(productId);
+      }
+
+      setTotalPrice('.header__total-amount', '.cart__total');
+      setProductsAmount('.cart__amount', '.header__cart-quantity');
+      cartState.save();
+
+      window.history.pushState({}, '', '/cart');
+
+      closeCartAside();
+      renderCartPage();
+      appendCheckoutForm();
+    }
+
     if (target.closest('.cart__product-delete')) {
       const cartAsideItem = target.closest('.cart__item') as HTMLLIElement;
       const productId = +(<string>cartAsideItem.dataset.productId);
@@ -179,7 +201,7 @@ const watchCart = () => {
 
         cartItemToRemove.remove();
       }
-     
+
       cartAsideItem.remove();
       productsStorage.removeSome(productId);
       setTotalPrice('.header__total-amount', '.cart__total');
@@ -211,7 +233,9 @@ const updateProductInfo = (id: number) => {
   const cartAsideProductPrice = cartAsideItem.querySelector('.cart__product-price') as HTMLParagraphElement;
 
   if (window.location.pathname.includes('cart')) {
-    const cartPageProductFullPriceContainer = document.querySelector(`.product-cart__product-item__price-${id}`) as HTMLParagraphElement;
+    const cartPageProductFullPriceContainer = document.querySelector(
+      `.product-cart__product-item__price-${id}`,
+    ) as HTMLParagraphElement;
 
     cartPageProductFullPriceContainer.textContent = `$${price.toFixed(2)}`;
   }
@@ -238,10 +262,15 @@ export const updateCart = () => {
     const target = (<HTMLDivElement>event.target).closest('.product-quantity__controls');
 
     if (target) {
-      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const product = <HTMLDivElement | HTMLLinkElement>(
+        (<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick')
+      );
       const productId = +product.id;
 
       updateProductInfo(productId);
+
+      setCurrentPage();
+      renderProductsList();
     }
   });
 
@@ -249,13 +278,32 @@ export const updateCart = () => {
     const target = (<HTMLDivElement>event.target).closest('.product-quantity__input');
 
     if (target) {
-      const product = <HTMLDivElement | HTMLLinkElement>(<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick');
+      const product = <HTMLDivElement | HTMLLinkElement>(
+        (<HTMLDivElement | HTMLLinkElement>event.target).closest('.product-pick')
+      );
       const productId = +product.id;
 
       updateProductInfo(productId);
     }
   });
 };
+
+function handleCartAsideCheckoutButtonEvents() {
+  document.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLButtonElement;
+
+    if (target.matches('.go-to-checkout')) {
+      const products = productsStorage.load().length;
+
+      closeCartAside();
+      renderCartPage();
+      
+      if (products) {
+        appendCheckoutForm();
+      }
+    }
+  });
+}
 
 export const initCart = () => {
   showCart();
@@ -266,6 +314,7 @@ export const initCart = () => {
   checkAddToCartAvailability();
   watchCart();
   updateCart();
+  handleCartAsideCheckoutButtonEvents();
 
   document.addEventListener('click', (event: Event) => {
     const target = (<HTMLAnchorElement>event.target).classList.contains('go-to-cart');

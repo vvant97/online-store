@@ -1,5 +1,5 @@
-import { PAYMENT_SYSTEM_ICONS } from "../cart-templates";
-import { FirstSymbolError, SymbolsLengthError } from './errors';
+import { PAYMENT_SYSTEM_ICONS } from '../cart-templates';
+import { handleInputErrors, ERRORS_DATA } from './error-template';
 
 const setMatchingPaymentSystemIcon = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
@@ -20,8 +20,8 @@ const setMatchingPaymentSystemIcon = (event: Event) => {
 const setCardNumberMask = (event: Event) => {
   const input = event.currentTarget as HTMLInputElement;
   const currentValue = input.value;
-  const numbers = currentValue.split('').filter((symbol) => +symbol.toString());
-  
+  const numbers = currentValue.split('').filter((symbol) => symbol !== ' ');
+
   let newInputValue = '';
 
   numbers.forEach((number, index) => {
@@ -29,16 +29,14 @@ const setCardNumberMask = (event: Event) => {
       newInputValue += ` ${number}`;
     } else {
       newInputValue += number;
-    }    
+    }
   });
-  
+
   input.value = newInputValue;
 };
 
 const isInputCorrect = (input: HTMLInputElement) => {
-  return input.value
-    .split('')
-    .every((symbol) => +symbol || symbol === '0' || symbol === ' ');
+  return input.value.split('').every((symbol) => +symbol || symbol === '0' || symbol === ' ');
 };
 
 const changeIncorrectInput = (event: Event) => {
@@ -54,45 +52,40 @@ const changeIncorrectInput = (event: Event) => {
   setCardNumberMask(event);
 };
 
-const isValidCardNumber = (event: Event) => {
-  const input = event.currentTarget as HTMLInputElement;
+export const isValidCardNumber = () => {
+  const input = document.querySelector('.order__card') as HTMLInputElement;
   const currentValue = input.value;
-  const charactersAmount = currentValue
-    .split('')
-    .filter((symbol) => +symbol)
-    .length;
-  const isCorrectCharactersAmount = charactersAmount === 16;
+  const isCorrectCharactersAmount = currentValue.split('').filter((symbol) => symbol !== ' ').length === 16;
+  const isCorrectFirstSymbol = currentValue.startsWith('4') || currentValue.startsWith('5') || currentValue.startsWith('6');
 
-  if (
-    !currentValue.startsWith('4') &&
-    !currentValue.startsWith('5') &&
-    !currentValue.startsWith('6') &&
-    charactersAmount
-  ) {
-    throw new FirstSymbolError('Your credit card must starts with 4, 5 or 6');
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-number',
+    condition: !isCorrectFirstSymbol,
+    errorMessage: ERRORS_DATA.FirstSymbolError.message,
+    errorId: ERRORS_DATA.FirstSymbolError.id,
+  });
+
+  handleInputErrors({
+    inputElement: input,
+    containerSelector: '.order__card-number',
+    condition: !isCorrectCharactersAmount,
+    errorMessage: ERRORS_DATA.SymbolsLengthError.message,
+    errorId: ERRORS_DATA.SymbolsLengthError.id,
+  });
+
+  if (!isCorrectFirstSymbol || !isCorrectCharactersAmount) {
+    return false;
   }
 
-  if (!isCorrectCharactersAmount) {
-    throw new SymbolsLengthError('Your credit card number must include 16 numbers');
-  }
+  return true;
 };
 
-export const validateCardNumber = () => {
+export const watchCardNumber = () => {
   const input = document.querySelector('.order__card') as HTMLInputElement;
 
   input.addEventListener('input', (event: Event) => {
-    try {
-      setMatchingPaymentSystemIcon(event);
-      changeIncorrectInput(event);
-      isValidCardNumber(event);
-    } catch (error) {
-      if (error instanceof FirstSymbolError) {
-        console.log('FirstSymbolError');
-      }
-
-      if (error instanceof SymbolsLengthError) {
-        console.log('SymbolsLengthError');
-      }
-    }
+    setMatchingPaymentSystemIcon(event);
+    changeIncorrectInput(event);
   });
 };

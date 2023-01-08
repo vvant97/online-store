@@ -53,10 +53,17 @@
   }
 
   &__title-area {
+    @include flex($justifyContent: space-between, $alignItems: center);
     @include size($padding: 12px 0);
 
     border-top: $border;
     border-bottom: $border;
+
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
   }
 
   &__title {
@@ -71,6 +78,7 @@
     @include flex($alignItems: center);
     @include size($padding: 30px 0);
 
+    position: relative;
     border-top: $border;
 
     &:first-child {
@@ -327,5 +335,13 @@
     @include font($fontSize: 1.4rem, $fontWeight: 700);
 
     text-align: right;
+  }
+
+  &__product-item-order {
+    @include font($fontSize: 1.2rem, $fontWeight: 300);
+
+    position: absolute;
+    top: 30px;
+    right: 0;
   }
 }

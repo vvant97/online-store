@@ -5,7 +5,12 @@
   top: 0;
   left: 0;
   height: 80px;
+  min-height: 80px;
   border-bottom: 1px solid #e2e2e2;
+
+  @media screen and (max-width: $tablet) {
+    min-height: auto;
+  }
 
   &__big-container {
     padding-top: 15px;

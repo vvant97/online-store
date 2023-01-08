@@ -144,6 +144,16 @@
     @include button;
   }
 
+  .go-to-checkout {
+    border: 2px solid $colorFontSecondary;
+    background: transparent;
+    color: $colorFontPrimary;
+
+    &:hover {
+      background: $colorFontSecondary;
+    }
+  }
+
   &__item {
     @include flex($gap: 15px);
     @include size($padding: 15px);
