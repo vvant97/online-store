@@ -44,6 +44,17 @@ export function renderStockFilter(data: Product[]) {
 
   const stockFilterContainer = document.querySelector('.filter__stock-wrapper') as HTMLLIElement;
   stockFilterContainer.append(stockSlider, stockInputsWrapper);
+
+  if (stockSlider.noUiSlider) {
+    const minStockInput = document.querySelector('.min-stock-value') as HTMLDivElement;
+    const maxStockInput = document.querySelector('.max-stock-value') as HTMLDivElement;
+    const inputs = [minStockInput, maxStockInput];
+
+    stockSlider.noUiSlider.on('update', (values: (string | number)[], handle: number): void => {
+      const stockRange = values.map((el: string | number): string => el.toString().replace(/\.00$/, ''));
+      inputs[handle].innerHTML = stockRange[handle];
+    });
+  }
 }
 
 export function updateStockFilter(filteredStock: Array<string>) {

@@ -9,7 +9,7 @@ export function renderSearch() {
     if (location.pathname !== '/') {
       const searchInput = document.querySelector('.search-input') as HTMLInputElement;
       if (searchInput.value === '') return;
-      const searchValue = searchInput.value;
+      const searchValue = searchInput.value.toLowerCase();
       location.href = `/?search=${searchValue}`;
     }
   });
@@ -26,7 +26,7 @@ export function searchItems(data: Product[]) {
   decodeQueryString(data);
 
   searchInput.addEventListener('keyup', () => {
-    encodeQueryString('search', [searchInput.value]);
+    encodeQueryString('search', [searchInput.value.toLowerCase()]);
     decodeQueryString(data);
     if (searchInput.value === '') {
       encodeQueryString('search', []);
