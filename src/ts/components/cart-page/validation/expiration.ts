@@ -23,10 +23,11 @@ export const isValidExpiration = () => {
   const currentValue = input.value;
   const isValidCharactersAmount = currentValue.length === 7;
   const isValidNumbersAmount = [...currentValue].filter((symbol) => symbol.match('[0-9]')).length === 4;
-  const isCorrectMonth = +[...currentValue]
+  const currentMonth = +[...currentValue]
     .filter((symbol) => symbol.match('[0-9]'))
     .slice(0, 2)
-    .join('') <= 12;
+    .join('');
+  const isCorrectMonth = currentMonth <= 12 && currentMonth >= 1;
 
   handleInputErrors({
     inputElement: input,
