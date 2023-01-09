@@ -9,7 +9,7 @@ export const createCheckoutTemplate = (): string => {
         <p class="order__title">Personal details</p>
         <input class="order__input order__name" type="text" placeholder="Full name">
         <input class="order__input order__address" type="text" placeholder="Delivery address">
-        <input class="order__input order__phone" type="tel" placeholder="Phone" maxlength="10">
+        <input class="order__input order__phone" type="tel" placeholder="Phone">
         <input class="order__input order__email" type="email" placeholder="Email">
       </fieldset>
       <fieldset class="order__card-details">

@@ -11,7 +11,7 @@ function changeIncorrectInput(event: Event) {
 function isValidPhoneNumber() {
   const input = document.querySelector('.order__phone') as HTMLInputElement;
   const currentValue = input.value;
-  const isValidPhone = currentValue.length === 10;
+  const isValidPhone = currentValue.length >= 10;
 
   handleInputErrors({
     inputElement: input,
