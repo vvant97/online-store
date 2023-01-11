@@ -1,0 +1,102 @@
+.order {
+  @include flex($flexDirection: column, $gap: 25px);
+  @include size($width: 320px, $padding: 30px);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-height: 100%;
+  overflow: scroll;
+  background: $colorBgSecondary;
+  box-shadow: $shadow;
+  transform: translate(-50%, -50%);
+
+  @media screen and (max-width: $mobile) {
+    padding: 15px;
+  }
+
+  &__input {
+    @include size($width: 100%, $padding: 10px 13px);
+    @include font($fontSize: 1.3rem, $color: $colorParagraph);
+
+    background-color: $colorBg;
+    border: $border;
+
+    &.invalid {
+      border: 1px solid $colorRemove;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  &__user-details,
+  &__card-details {
+    @include flex($flexDirection: column, $gap: 13px);
+  }
+
+  &__title {
+    @include font($fontSize: 1.6rem);
+  }
+
+  &__card-number {
+    @include flex($alignItems: center, $gap: 10px);
+  }
+
+  &__card-additional {
+    @include flex($gap: 10px);
+  }
+
+  &__icon-container {
+    width: 38px;
+  }
+
+  &__icon {
+    @include font($fontSize: 3rem, $color: $colorParagraph);
+
+    display: block;
+    width: 38px;
+    line-height: 0;
+  }
+
+  &__card-details-container {
+    @include flex($flexDirection: column, $gap: 13px);
+    @include size($padding: 15px);
+
+    border: $border;
+  }
+
+  &__submit {
+    @include button;
+
+    font-size: 1.4rem;
+    border: 2px solid $colorFontSecondary;
+    background: $colorFontSecondary;
+    color: $colorFontPrimary;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &__confirmation {
+    @include flex($flexDirection: column, $alignItems: center, $gap: 15px);
+  }
+
+  &__confirmation-icon {
+    @include font($fontSize: 3rem, $color: $colorSuccess);
+  }
+
+  &__confirmation-title {
+    @include font($fontSize: 1.6rem);
+  }
+}
+
+.input-error {
+  @include font($fontSize: 1.2rem, $color: $colorRemove);
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <title>Elyte</title>
+</head>
+
+<body class="home">
+
+  <div class="root">
+    <header class="header">
+      <div class="header__big-container">
+        <div class="header__search search">
+          <div class="search-form">
+            <button type="button" class="search-form__icon"><i class="bi bi-search"></i></button>
+            <form action="#" class="search-form__item">
+              <button type="submit" class="search-form__btn"><i class="bi bi-search"></i></button>
+              <input autocomplete="off" type="text" name="form[]" placeholder="Search product here..."
+                class="search-form__input search-input">
+            </form>
+          </div>
+        </div>
+        <a href="/" class="header__logo">
+          <img class="header__logo-img" src="assets/svg/logo.svg" alt="logo">
+        </a>
+        <div class="header__cart">
+          <p class="header__cart-total">Total: <span class="header__total-amount">$0.00</span></p>
+          <button type="button" class="header__cart-icon">
+            <i class="cart-open bi bi-cart"></i>
+            <span class="header__cart-quantity">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="main__container">
+        <div class="main__app" id="app"></div>
+
+        <div class="bg-overlay"></div>
+
+        <div class="cart">
+          <div class="cart__header">
+            <div class="cart__amount-title">There are <span class="cart__amount">0</span> products</div>
+            <i class="cart__close bi bi-x-lg"></i>
+          </div>
+          <div class="cart__main">
+            <ul class="cart__list"></ul>
+          </div>
+          <div class="cart__footer">
+            <div class="cart__total-container">
+              <p class="cart__total-title">Total</p>
+              <p class="cart__total">$0.00</p>
+            </div>
+            <div class="cart__controls">
+              <label class="cart__agreement-label" for="cart__agreement">
+                <input class="cart__agreement" type="checkbox" id="cart__agreement">
+                <p class="cart__agreement-text">I have read and agree with the <br> <a href="#"
+                    class="cart__agreement-link">terms & condition.</a></p>
+              </label>
+              <div class="cart__buttons">
+                <a href="/cart" class="cart__button go-to-cart">View cart</a>
+                <a href="/cart" class="cart__button go-to-checkout">Checkout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__big-container">
+        <div class="footer__authors">
+          <div class="footer__git-icon">
+            <img src="assets/svg/github.svg" alt="git logo">
+          </div>
+          <div class="footer__author-names">
+            <a href="https://github.com/vvant97" target="_blank" class="footer__author-name footer-link">Vladyslav
+              Tyshchenko</a>
+            <a href="https://github.com/elian-cheng" target="_blank" class="footer__author-name footer-link">Olga
+              Chernega</a>
+          </div>
+        </div>
+        <div class="footer__info">
+          <p class="footer__year">2022</p>
+          <a href="https://rs.school/js/" target="_blank" class="footer__rs-link footer-link">
+            <img src="assets/svg/rs-school.svg" alt="rs school logo">
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

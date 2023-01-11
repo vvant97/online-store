@@ -1,0 +1,8 @@
+.product__body {
+  @include flex($gap: 60px);
+  @include size($padding: 100px 0 55px);
+
+  @media screen and (max-width: $tablet) {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,50 @@
+.breadcrumbs {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: $border;
+
+  @media screen and (max-width: $mobile) {
+    top: 65px;
+  }
+
+  &__list {
+    @include flex($alignItems: center);
+  }
+
+  &__item {
+    &:after {
+      content: '/';
+      padding: 0 5px;
+      font-size: 1.2rem;
+      color: $colorParagraph;
+    }
+
+    &:last-of-type {
+      cursor: default;
+
+      &:after {
+        content: none;
+      }
+
+      .breadcrumbs__link:hover {
+        color: $colorParagraph;
+      }
+    }
+  }
+
+  &__link {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+
+    &:visited {
+      color: $colorParagraph;
+    }
+
+    &:hover {
+      color: $colorFontPrimary;
+    }
+  }
+}

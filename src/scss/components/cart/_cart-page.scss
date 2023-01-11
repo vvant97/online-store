@@ -1,0 +1,347 @@
+%productInfo {
+  @include font($fontSize: 1.2rem);
+}
+
+%productInfoSpan {
+  font-weight: 300;
+}
+
+.product-cart {
+  @include flex($gap: 30px);
+  @include size($padding: 100px 0 55px 0);
+
+  position: relative;
+
+  @media screen and (max-width: $tablet) {
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+    width: auto;
+    margin: auto;
+  }
+
+  &__info {
+    @include size($padding: 30px);
+
+    align-self: flex-start;
+    flex: 0 0 70%;
+    box-shadow: $shadow;
+
+    @media screen and (max-width: $tablet) {
+      align-self: initial;
+    }
+  }
+
+  &__checkout {
+    @include flex($flexDirection: column, $gap: 25px);
+    @include size($padding: 30px);
+
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    flex: 1;
+    background: $colorBgSecondary;
+    box-shadow: $shadow;
+
+    @media screen and (max-width: $tablet) {
+      align-self: initial;
+    }
+  }
+
+  &__title-area {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($padding: 12px 0);
+
+    border-top: $border;
+    border-bottom: $border;
+
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+
+  &__title {
+    @include font($fontSize: 1.8rem);
+  }
+
+  &__product-list {
+    @include flex($flexDirection: column);
+  }
+
+  &__product-item {
+    @include flex($alignItems: center);
+    @include size($padding: 30px 0);
+
+    position: relative;
+    border-top: $border;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      padding: 30px 0 0;
+    }
+
+    @media screen and (max-width: $tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  &__product-item-info {
+    @include flex($gap: 15px);
+
+    flex: 0 0 60%;
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      flex-direction: column;
+    }
+  }
+
+  &__product-item-controls {
+    @include flex($justifyContent: space-between, $alignItems: center, $gap: 15px);
+
+    flex: 1;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+
+  &__product-item__qty {
+    @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 15px);
+
+    @media screen and (max-width: $tablet) {
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: $mobileExtraSmall) {
+      flex-direction: column;
+    }
+  }
+
+  &__product-item-remove {
+    @include font($fontSize: 1.4rem, $color: $colorRemove);
+
+    text-decoration: underline;
+  }
+
+  &__product-item-image {
+    @include size($width: 100px, $height: 120px);
+
+    border: $border;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: $mobileSmall) {
+      width: 70px;
+      height: 90px;
+    }
+  }
+
+  &__product-item-about {
+    @include flex($flexDirection: column, $gap: 11px);
+  }
+
+  &__product-item-id,
+  &__product-item-title,
+  &__product-item-price,
+  &__product-item-brand,
+  &__product-item-category,
+  &__product-item-stock {
+    @extend %productInfo;
+  }
+
+  &__product-item-id span,
+  &__product-item-price span,
+  &__product-item-brand span,
+  &__product-item-category span,
+  &__product-item-stock span  {
+    @extend %productInfoSpan;
+
+    padding-left: 5px;
+  }
+
+  &__product-item-stock span {
+    color: $colorSuccess;
+  }
+
+  &__product-item-title,
+  &__product-item-price {
+    font-size: 1.4rem;
+  }
+
+  &__product-item-old-price {
+    text-decoration: line-through;
+  }
+
+  &__product-item-price &__product-item-discount {
+    @include font($fontSize: 1.2rem, $color: $colorFontLight);
+    @include size($padding: 3px 6px);
+
+    background: $colorFontPrimary;
+  }
+
+  &__product-item-title {
+    transition: 0.3s all;
+
+    &:visited {
+      color: $colorFontPrimary;
+    }
+
+    &:hover {
+      color: $colorParagraph;
+    }
+  }
+
+  &__product-item-rating .rating__star {
+    font-size: 1.2rem;
+  }
+
+  &__product-item-rating .rating__average {
+    font-size: 1.2rem;
+  }
+
+  &__product-item__price {
+    @include font($fontSize: 1.4rem);
+
+    text-align: right;
+  }
+
+  &__empty {
+    @include flex($flexDirection: column, $justifyContent: center, $alignItems: center, $gap: 10px);
+    @include size($padding: 50px 0 35px);
+  }
+
+  &__empty-title {
+    @include font($fontSize: 2rem);
+  }
+
+  &__empty-icon {
+    @include font($fontSize: 3rem);
+  }
+
+  &__checkout-title-area {
+    @include flex($flexDirection: column, $gap: 15px);
+    @include size($padding: 17px 0);
+
+    border-top: $border;
+    border-bottom: $border;
+  }
+
+  &__checkout-items,
+  &__checkout-price {
+    @include flex($justifyContent: space-between);
+  }
+
+  &__checkout-title {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+  }
+
+  &__checkout-amount,
+  &__checkout-total {
+    @include font($fontSize: 1.4rem, $fontWeight: 700);
+  }
+
+  &__checkout-total {
+    &.old {
+      font-weight: 300;
+      text-decoration: line-through;
+      color: $colorParagraph;
+    }
+  }
+
+  &__checkout-open {
+    @include button;
+
+    border: 2px solid $colorFontSecondary;
+    background: $colorFontSecondary;
+    color: $colorFontPrimary;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &__checkout-promo {
+    position: relative;
+  }
+
+  &__checkout-promo-input {
+    @include size($width: 100%, $padding: 15px);
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+
+    background-color: $colorBg;
+    border: $border;
+    border-bottom: none;
+  }
+
+  &__checkout-promo-list {
+    @include flex($flexDirection: column);
+    @include size($width: 100%);
+
+    position: absolute;
+    top: 49px;
+    left: 0;
+    overflow: scroll;
+    border: $border;
+    border-top: none;
+    background: $colorBg;
+  }
+
+  &__checkout-promo-item {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($padding: 15px);
+    @include font($fontSize: 1.2rem, $color: $colorParagraph);
+
+    display: none;
+    cursor: pointer;
+
+    &:hover {
+      background: $colorBgSecondary;
+    }
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  &__checkout-promo-active-code {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include font($fontSize: 1.2rem, $color: $colorParagraph);
+
+    margin-top: 12px;
+
+    &:nth-of-type(1) {
+      margin-top: 15px;
+    }
+  }
+
+  &__checkout-promo-remove {
+    color: $colorRemove;
+    cursor: pointer;
+  }
+
+  &__checkout-new-price {
+    @include font($fontSize: 1.4rem, $fontWeight: 700);
+
+    text-align: right;
+  }
+
+  &__product-item-order {
+    @include font($fontSize: 1.2rem, $fontWeight: 300);
+
+    position: absolute;
+    top: 30px;
+    right: 0;
+  }
+}

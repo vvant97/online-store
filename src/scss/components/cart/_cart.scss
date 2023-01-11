@@ -1,0 +1,215 @@
+.cart {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100vh;
+  background: $colorBg;
+  visibility: hidden;
+  opacity: 0;
+  transition: $transition;
+
+  &.active {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+  }
+
+  &__amount-title {
+    font-size: 1.4rem;
+    line-height: 1;
+    color: $colorParagraph;
+  }
+
+  &__amount {
+    padding: 0 5px;
+    color: $colorFontPrimary;
+    background: $colorFontSecondary;
+  }
+
+  &__close {
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__main {
+    flex: 1;
+    overflow: scroll;
+    border-top: 1px solid $colorBorder;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    border-top: 1px solid $colorBorder;
+  }
+
+  &__total-title {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: $colorParagraph;
+  }
+
+  &__total {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $colorFontPrimary;
+  }
+
+  &__controls {
+    padding: 15px 15px;
+    border-top: 1px solid $colorBorder;
+  }
+
+  &__agreement-label {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__agreement {
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    border: 1px solid $colorBorder;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:checked:before {
+      content: '\f272';
+      font-family: 'bootstrap-icons';
+      font-size: 1rem;
+    }
+  }
+
+  &__agreement-text {
+    margin: 0;
+    font-size: 1.3rem;
+    color: $colorParagraph;
+  }
+
+  &__agreement-link {
+    text-decoration: underline;
+    color: rgba(111, 111, 111, 0.7);
+    transition: all 0.3s;
+
+    &:visited {
+      color: rgba(111, 111, 111, 0.7);
+    }
+
+    &:hover {
+      color: $colorParagraph;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 0 0;
+  }
+
+  &__button {
+    @include button;
+  }
+
+  .go-to-checkout {
+    border: 2px solid $colorFontSecondary;
+    background: transparent;
+    color: $colorFontPrimary;
+
+    &:hover {
+      background: $colorFontSecondary;
+    }
+  }
+
+  &__item {
+    @include flex($gap: 15px);
+    @include size($padding: 15px);
+
+    border-top: $border;
+
+    &:nth-of-type(1) {
+      border-top: none;
+    }
+  }
+
+  &__product-image {
+    @include size($width: 65px, $height: 77px);
+
+    border: $border;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__product-wrapper {
+    flex: 1;
+  }
+
+  &__product-title {
+    @include size($margin: 5px 0 0);
+    @include font($fontSize: 1.4rem);
+
+    transition: 0.3s all;
+
+    &:visited {
+      color: $colorFontPrimary;
+    }
+
+    &:hover {
+      color: $colorParagraph;
+    }
+  }
+
+  &__product-info {
+    @include flex($justifyContent: space-between, $alignItems: center);
+    @include size($margin: 10px 0 0);
+  }
+
+  &__product-quantity {
+    @include font($fontSize: 1.4rem, $color: $colorParagraph);
+  }
+
+  &__product-price {
+    @include size($margin: 5px 0 0);
+    @include font($fontSize: 1.4rem);
+  }
+
+  &__product-delete {
+    @include font($fontSize: 1.6rem, $color: $colorRemove);
+    
+    cursor: pointer;
+  }
+}
