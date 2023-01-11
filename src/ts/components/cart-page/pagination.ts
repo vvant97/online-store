@@ -68,7 +68,6 @@ export function setDefaultProductsPage() {
 
   if (query) {
     addQuery(query.split('=')[0], query.split('=')[1]);
-
     currentPageContainer.textContent = query.split('=')[1];
   }
 }
@@ -77,7 +76,7 @@ function getCurrentPage() {
   const currentPageContainer = <HTMLElement>document.querySelector('.pagination__page');
   const estimatedPages = getPagesAmount();
   const currentPage = <string>currentPageContainer.textContent;
-  
+
   if (+currentPage > estimatedPages) {
     return estimatedPages;
   }
@@ -119,11 +118,10 @@ function decrementPageNumber() {
   const currentPageContainer = <HTMLElement>document.querySelector('.pagination__page');
   const currentPage = getCurrentPage();
 
-  currentPageContainer.textContent = `${+currentPage - 1}`;
-
   if (currentPageContainer.textContent === '0') {
     currentPageContainer.textContent = '1';
   }
+  currentPageContainer.textContent = `${+currentPage - 1}`;
 }
 
 function getPagesAmount() {
@@ -136,7 +134,8 @@ function getPagesAmount() {
 
 export function setCurrentPage() {
   const currentPageContainer = <HTMLElement>document.querySelector('.pagination__page');
-  const currentPage = getCurrentPage();
+  let currentPage = getCurrentPage();
+  if (currentPage === 0) currentPage = 1;
 
   currentPageContainer.textContent = `${currentPage}`;
   addQuery(`page`, `${currentPage}`);
@@ -166,12 +165,12 @@ export function renderProductsList() {
       product.style.display = 'none';
       product.classList.add('filtered');
     }
+    const productOrder = product.querySelector('.product-cart__product-item-order') as HTMLParagraphElement;
+    productOrder.innerHTML = `${index + 1}`;
   });
 
-  const firstProduct = <HTMLLIElement>products
-    .filter((product) => !product.classList.contains('filtered'))[0];
-  const lastProduct = <HTMLLIElement>products
-    .filter((product) => !product.classList.contains('filtered')).at(-1);
+  const firstProduct = <HTMLLIElement>products.filter((product) => !product.classList.contains('filtered'))[0];
+  const lastProduct = <HTMLLIElement>products.filter((product) => !product.classList.contains('filtered')).at(-1);
 
   firstProduct.style.borderTop = 'none';
   lastProduct.style.paddingBottom = '0';
@@ -198,11 +197,14 @@ export function watchPagination() {
     const target = event.target as HTMLElement;
 
     if (target.matches('.pagination__nav-prev')) {
+      const currentPageContainer = <HTMLElement>document.querySelector('.pagination__page');
+
+      if (currentPageContainer.textContent === '1') return;
       decrementPageNumber();
       renderProductsList();
-      
+
       const page = getCurrentPage();
-  
+
       addQuery(`page`, `${page}`);
       pageStorage.save(`page=${page}`);
     }
@@ -212,7 +214,7 @@ export function watchPagination() {
       renderProductsList();
 
       const page = getCurrentPage();
-  
+
       addQuery(`page`, `${page}`);
       pageStorage.save(`page=${page}`);
     }
